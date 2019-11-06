@@ -10,8 +10,8 @@ This is a project made @ Unical University in Cosenza, Italy. Our proposal is to
 
 ## Authors
 
-* **Francesco Scala** - [Franco7Scala] (https://github.com/Franco7Scala)
-* **Sergio Flesca** - [sflesca] (https://github.com/sflesca)
+* **Francesco Scala** - [Franco7Scala](https://github.com/Franco7Scala)
+* **Sergio Flesca** - [sflesca](https://github.com/sflesca)
 
 ## License
 
