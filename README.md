@@ -4,7 +4,7 @@ This is a project made @ Unical University in Cosenza, Italy. Our proposal is to
 
 ## Built With
 
-* [PyCharm](http://www.dropwizard.io/1.0.2/docs/) - IDE used
+* [PyCharm](https://www.jetbrains.com/pycharm/) - IDE used
 * [GloVe](https://nlp.stanford.edu/projects/glove/) - Pre-trained word vectors
 
 ## Authors
