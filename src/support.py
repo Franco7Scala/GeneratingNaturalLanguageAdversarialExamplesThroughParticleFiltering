@@ -6,7 +6,10 @@ BASE_PATH_RESOURCES = ""
 URL_GLOVE = "http://nlp.stanford.edu/data/glove.6B.zip"
 
 
-def colored_print(text, color):
+def colored_print(text, color = "", verbose = True):
+    if not verbose:
+        return
+
     if color == "yellow":
         code_color = '\033[93m'
 
@@ -21,9 +24,6 @@ def colored_print(text, color):
 
     elif color == "pink":
         code_color = '\033[95m'
-
-    else:
-        code_color = ''
 
     print(code_color + str(text) + '\033[0m')
 
