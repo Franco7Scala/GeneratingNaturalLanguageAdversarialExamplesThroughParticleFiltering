@@ -6,7 +6,7 @@ This is a project made @ Unical University in Cosenza, Italy. Our proposal is to
 
 * [PyCharm](https://www.jetbrains.com/pycharm/) - IDE used
 * [GloVe](https://nlp.stanford.edu/projects/glove/) - Pre-trained word vectors
-* [Our mind] - Pre-trained natural neural network
+* [Our mind](https://en.wikipedia.org/wiki/Brain) - Pre-trained natural neural network
 
 ## Authors
 
