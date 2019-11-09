@@ -40,8 +40,8 @@ def get_word_vector(verbose = False):
 
 def get_phrases(verbose = False):
     # downloading phrases IMDB
-    imdb_remote_path, imdb_txt_path, imdb_tar_path = support.get_imdb_paths()
-    if not any(file_name.name(imdb_txt_path) for file_name in os.listdir(support.get_base_path())):
+    imdb_remote_path, imdb_folder_path, imdb_tar_path = support.get_imdb_paths()
+    if not any(file_name.name(imdb_folder_path) for file_name in os.listdir(support.get_base_path())):
         support.colored_print("Downloading IMDB review dataset...", "green", verbose)
         urllib.request.urlretrieve(imdb_remote_path, imdb_tar_path)
         # unzipping and saving IMDB
