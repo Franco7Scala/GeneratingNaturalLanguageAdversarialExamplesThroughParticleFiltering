@@ -21,17 +21,6 @@ class PhraseManager:
     def _read_test_phrases(self):
         pass
 
-    def _read_classes(self, classes_local_path):
-        string = ""
-        counter = 1
-        with open(classes_local_path) as file:
-            line = file.readline()
-            while line:
-                string += line + ": " + str(counter) + "\n"
-                counter += 1
-
-        return string
-
 
 class Phrase:
 

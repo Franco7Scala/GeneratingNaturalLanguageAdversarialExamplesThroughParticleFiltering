@@ -14,7 +14,16 @@ class AGsNewsPhraseManager(PhraseManager):
 
     def get_classes(self):
         _, _, _, ags_classes_local_path, _, _ = support.get_ags_news_paths()
-        return self._read_classes(ags_classes_local_path)
+        string = ""
+        counter = 1
+        with open(ags_classes_local_path) as file:
+            line = file.readline()
+            while line:
+                string += line.replace("\n", "") + ": " + str(counter) + "\n"
+                counter += 1
+                line = file.readline()
+
+        return string[0:len(string) - 1]
 
     def _read_phrases(self, path_phrases):
         phrases = []
@@ -22,7 +31,10 @@ class AGsNewsPhraseManager(PhraseManager):
             line = file.readline()
             while line:
                 values = file.readline().split(",")
-                phrase = Phrase(values[1][1:-1], int(values[0][1:-1]))
-                phrases.append(phrase)
+                if len(values) > 1:
+                    phrase = Phrase(values[1][1:-1], int(values[0][1:-1]))
+                    phrases.append(phrase)
+
+                line = file.readline()
 
         return phrases

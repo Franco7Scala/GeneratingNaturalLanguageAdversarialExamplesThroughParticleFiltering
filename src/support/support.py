@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
+import requests
 
 
 def colored_print(text, color = "", verbose = True):
@@ -31,15 +32,24 @@ def print_progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1,
         print("")
 
 
+def download(url, file_name):
+    get_response = requests.get(url, stream=True)
+    with open(file_name, 'wb') as f:
+        for chunk in get_response.iter_content(chunk_size=1024):
+            if chunk:
+                f.write(chunk)
+
+
 def get_base_path():
-    return ""
+    return "/Users/francesco/Software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_dynamic/"
 
 
 def get_glove_paths():
     glove_remote_path = "http://nlp.stanford.edu/data/glove.6B.zip"
-    glove_txt_path = get_base_path() + "glove.txt"
+    glove_txt_path = get_base_path() + "glove.6B.100d.txt"
     glove_zip_path = get_base_path() + "glove.6B.zip"
-    return glove_remote_path, glove_txt_path, glove_zip_path
+    glove_to_delete_paths = [get_base_path() + "glove.6B.50d.txt", get_base_path() + "glove.6B.100d.txt", get_base_path() + "glove.6B.200d.txt", get_base_path() + "glove.6B.300d.txt", glove_zip_path]
+    return glove_remote_path, glove_txt_path, glove_zip_path, glove_to_delete_paths
 
 
 def get_word2vec_path():
@@ -49,7 +59,7 @@ def get_word2vec_path():
 
 def get_imdb_paths():
     imdb_remote_path = "https://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz"
-    imdb_folder_path = get_base_path() + "imdb.txt"
+    imdb_folder_path = get_base_path() + "aclImdb"
     imdb_tar_path = get_base_path() + "aclImdb_v1.tar.gz"
     imdb_train_folder_neg_path = get_base_path() + "aclImdb/train/neg/"
     imdb_train_folder_pos_path = get_base_path() + "aclImdb/train/pos/"
@@ -68,11 +78,9 @@ def get_ags_news_paths():
     return ags_classes_remote_path, ags_train_remote_path, ags_test_remote_path, ags_classes_local_path, ags_train_local_path, ags_test_local_path
 
 
-def get_yahoo_answers_topic_paths(): #http://cogcomp.seas.upenn.edu/Data/yahoo.answers.tar.gz
-    yahoo_classes_remote_path = "https://raw.githubusercontent.com/LC-John/Yahoo-Answers-Topic-Classification-Dataset/master/dataset/classes.txt"
-    yahoo_train_remote_path = "https://github.com/LC-John/Yahoo-Answers-Topic-Classification-Dataset/raw/master/dataset/yahoo_answers_dict.pkl.gz"
-    yahoo_test_remote_path = "https://github.com/LC-John/Yahoo-Answers-Topic-Classification-Dataset/raw/master/dataset/yahoo_answers_test.pkl.gz"
+def get_yahoo_answers_topic_paths():
+    yahoo_examples_remote_path = "http://cogcomp.seas.upenn.edu/Data/yahoo.answers.tar.gz"
     yahoo_classes_local_path = get_base_path() + "yahoo_classes.txt"
-    yahoo_train_local_path = get_base_path() + "yahoo_train.csv"
-    yahoo_test_local_path = get_base_path() + "yahoo_test.csv"
-    return yahoo_classes_remote_path, yahoo_train_remote_path, yahoo_test_remote_path, yahoo_classes_local_path, yahoo_train_local_path, yahoo_test_local_path
+    yahoo_examples_local_path = get_base_path() + "Yahoo/Yahoo.ESA/"
+    yahoo_examples_tar_path = get_base_path() + "yahoo.answers.tar.gz"
+    return yahoo_examples_remote_path, yahoo_classes_local_path, yahoo_examples_local_path, yahoo_examples_tar_path

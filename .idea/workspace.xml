@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/test2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources_preparer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources_preparer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/support/ags_news_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/ags_news_phrase_manager.py" afterDir="false" />
@@ -11,6 +9,8 @@
       <change beforePath="$PROJECT_DIR$/src/support/phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/phrase_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/support/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/support.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/support/yahoo_answers_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/yahoo_answers_phrase_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/test2.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
