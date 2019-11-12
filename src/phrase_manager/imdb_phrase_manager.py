@@ -1,6 +1,6 @@
 import os
 
-from src.support.phrase_manager import PhraseManager, Phrase
+from src.phrase_manager.phrase_manager import PhraseManager, Phrase
 from src.support import support
 
 
@@ -19,9 +19,10 @@ class IMDBPhraseManager(PhraseManager):
 
     def _read_phrases(self, path_phrases):
         phrases = []
+        labels = []
         for i in range(0, len(path_phrases)):
             for file in os.listdir(path_phrases[i]):
-                phrase = Phrase(open(os.fsdecode(path_phrases[i] + file), "r").read(), i)
-                phrases.append(phrase)
+                phrases.append(open(os.fsdecode(path_phrases[i] + file), "r").read())
+                labels.append(i)
 
-        return phrases
+        return phrases, labels

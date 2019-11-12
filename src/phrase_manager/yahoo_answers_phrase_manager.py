@@ -1,6 +1,6 @@
 import os
 
-from src.support.phrase_manager import PhraseManager, Phrase
+from src.phrase_manager.phrase_manager import PhraseManager, Phrase
 from src.support import support
 
 
@@ -38,11 +38,14 @@ class YahooAnswersPhraseManager(PhraseManager):
 
     def _read_phrases(self, path_phrases):
         train_phrases = []
+        train_labels = []
         test_phrases = []
+        test_labels = []
         reading_phrase = False
         for file_name in os.listdir(path_phrases):
             with open(path_phrases + file_name, encoding="utf8", errors='ignore') as file_phrases:
                 current_phrases = []
+                current_labels = []
                 current_phrase = ""
                 category_name = file_name.replace(".", " ")
                 line = file_phrases.readline()
@@ -51,7 +54,8 @@ class YahooAnswersPhraseManager(PhraseManager):
                         if "</TEXT>" in line:
                             reading_phrase = False
                             current_phrase = current_phrase.replace("\n", " ")
-                            current_phrases.append(Phrase(current_phrase, category_name))
+                            current_phrases.append(current_phrase)
+                            current_labels.append(category_name)
                             current_phrase = ""
 
                         else:
@@ -64,10 +68,15 @@ class YahooAnswersPhraseManager(PhraseManager):
 
                 if len(current_phrases) > 10:
                     train_phrases.extend(current_phrases[0: len(current_phrases)-5])
+                    train_labels.extend(current_labels[0: len(current_labels) - 5])
                     test_phrases.extend(current_phrases[-5: 0])
+                    test_labels.extend(current_labels[-5: 0])
 
                 else:
                     train_phrases.extend(current_phrases)
+                    train_labels.extend(current_labels)
 
-        self.phrases_train = train_phrases
-        self.phrases_test = test_phrases
+        self.train_phrases = train_phrases
+        self.train_labels = train_labels
+        self.test_phrases = test_phrases
+        self.test_labels = test_labels

@@ -1,5 +1,3 @@
-import pickle
-from src.support.phrase_manager import Phrase
 from src import resources_preparer
 
 

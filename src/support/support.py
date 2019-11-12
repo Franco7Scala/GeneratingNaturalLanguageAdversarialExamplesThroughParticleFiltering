@@ -84,3 +84,11 @@ def get_yahoo_answers_topic_paths():
     yahoo_examples_local_path = get_base_path() + "Yahoo/Yahoo.ESA/"
     yahoo_examples_tar_path = get_base_path() + "yahoo.answers.tar.gz"
     return yahoo_examples_remote_path, yahoo_classes_local_path, yahoo_examples_local_path, yahoo_examples_tar_path
+
+
+def get_log_path():
+    return get_base_path() + "log/"
+
+
+def get_model_path():
+    return get_base_path() + "model/"

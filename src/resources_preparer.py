@@ -3,9 +3,9 @@ import zipfile
 import tarfile
 
 from src.support import support
-from src.support.imdb_phrase_manager import IMDBPhraseManager
-from src.support.ags_news_phrase_manager import AGsNewsPhraseManager
-from src.support.yahoo_answers_phrase_manager import YahooAnswersPhraseManager
+from src.phrase_manager.imdb_phrase_manager import IMDBPhraseManager
+from src.phrase_manager.ags_news_phrase_manager import AGsNewsPhraseManager
+from src.phrase_manager.yahoo_answers_phrase_manager import YahooAnswersPhraseManager
 from gensim.scripts.glove2word2vec import glove2word2vec
 from gensim.models.keyedvectors import KeyedVectors
 

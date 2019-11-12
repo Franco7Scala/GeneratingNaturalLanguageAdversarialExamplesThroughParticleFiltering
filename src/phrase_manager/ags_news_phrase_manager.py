@@ -1,4 +1,4 @@
-from src.support.phrase_manager import PhraseManager, Phrase
+from src.phrase_manager.phrase_manager import PhraseManager, Phrase
 from src.support import support
 
 
@@ -27,14 +27,15 @@ class AGsNewsPhraseManager(PhraseManager):
 
     def _read_phrases(self, path_phrases):
         phrases = []
+        labels = []
         with open(path_phrases) as file:
             line = file.readline()
             while line:
                 values = file.readline().split(",")
                 if len(values) > 1:
-                    phrase = Phrase(values[1][1:-1], int(values[0][1:-1]))
-                    phrases.append(phrase)
+                    phrases.append(values[1][1:-1])
+                    labels.append(int(values[0][1:-1]))
 
                 line = file.readline()
 
-        return phrases
+        return phrases, labels
