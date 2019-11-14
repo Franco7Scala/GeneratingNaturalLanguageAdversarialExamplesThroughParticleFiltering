@@ -4,6 +4,10 @@ from src.support import support
 
 class AGsNewsPhraseManager(PhraseManager):
 
+    def __init__(self, num_words):
+        self.name = "Ag's news"
+        super().__init__(num_words)
+
     def _read_train_phrases(self):
         _, _, _, _, ags_train_local_path, _ = support.get_ags_news_paths()
         return self._read_phrases(ags_train_local_path)

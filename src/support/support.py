@@ -3,6 +3,18 @@ import sys
 import requests
 
 
+BATCH_SIZE = "BATCH_SIZE"
+EPOCHS = "EPOCHS"
+MAX_LENGTH = "MAX_LENGTH"
+QUANTITY_CLASSES = "QUANTITY_CLASSES"
+LOSS = "LOSS"
+ACTIVATION_LAST_LAYER = "ACTIVATION_LAST_LAYER"
+EMBEDDING_DIMENSION = "EMBEDDING_DIMENSION"
+QUANTITY_WORDS = "QUANTITY_WORDS"
+USE_GLOVE = "USE_GLOVE"
+CHAR_MAX_LENGTH = "CHAR_MAX_LENGTH"
+
+
 def colored_print(text, color = "", verbose = True):
     if verbose:
         if color == "yellow":

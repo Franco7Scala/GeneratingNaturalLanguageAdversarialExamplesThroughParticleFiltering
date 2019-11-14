@@ -4,13 +4,13 @@ from src.support import support
 from sklearn.utils import shuffle
 
 
-def train_text_classifier(x_train, y_train, x_test, y_test, dataset_name, model, batch_size, epochs, verbose = False):
+def train_text_classifier(x_train, y_train, x_test, y_test, dataset_name, model, verbose = False):
     x_train, y_train = shuffle(x_train, y_train, random_state=0)
     support.colored_print("Training...", "green", verbose)
-    support.colored_print("Model:\nname: {};\nbatch_size: {};\nepochs: {};\ndataset: {}.".format(model.name, batch_size, epochs, dataset_name), "blue", verbose)
+    support.colored_print("Model:\nname: {};\nbatch_size: {};\nepochs: {};\ndataset: {}.".format(model.name, model.batch_size, model.epochs, dataset_name), "blue", verbose)
     model.fit(x_train, y_train,
-              batch_size=batch_size,
-              epochs=epochs,
+              batch_size=model.batch_size,
+              epochs=model.epochs,
               validation_split=0.2,
               shuffle=True,
               callbacks=[keras.callbacks.TensorBoard(log_dir=support.get_log_path() + "{}/{}/".format(dataset_name, model.name), histogram_freq=0, write_graph=True)])

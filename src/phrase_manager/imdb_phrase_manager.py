@@ -6,6 +6,10 @@ from src.support import support
 
 class IMDBPhraseManager(PhraseManager):
 
+    def __init__(self, num_words):
+        self.name = "IMDB"
+        super().__init__(num_words)
+
     def _read_train_phrases(self):
         _, _, _, imdb_train_folder_neg_path, imdb_train_folder_pos_path, _, _ = support.get_imdb_paths()
         return self._read_phrases([imdb_train_folder_neg_path, imdb_train_folder_pos_path])

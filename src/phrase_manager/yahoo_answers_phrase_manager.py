@@ -6,9 +6,10 @@ from src.support import support
 
 class YahooAnswersPhraseManager(PhraseManager):
 
-    def __init__(self):
+    def __init__(self, num_words):
         self.read = False
-        super().__init__()
+        self.name = "Yahoo answers"
+        super().__init__(num_words)
 
     def _read_train_phrases(self):
         _, _, yahoo_examples_local_path, _ = support.get_yahoo_answers_topic_paths()

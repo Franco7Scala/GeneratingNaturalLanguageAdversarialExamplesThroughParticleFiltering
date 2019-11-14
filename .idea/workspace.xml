@@ -2,16 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classifier/char_cnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classifier/lstm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classifier/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classifier/word_cnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classifier/text_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/text_classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources_preparer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources_preparer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/support/ags_news_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/ags_news_phrase_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/support/imdb_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/imdb_phrase_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/support/phrase_manager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources_static/install_dependencies.sh" beforeDir="false" afterPath="$PROJECT_DIR$/resources_static/install_dependencies.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/text_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/trash/text_classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/phrase_manager/ags_news_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/ags_news_phrase_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/phrase_manager/imdb_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/imdb_phrase_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/phrase_manager/yahoo_answers_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/yahoo_answers_phrase_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/phrases_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/bidirectional_lstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources_preparer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/resources_preparer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/support/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/support.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/support/yahoo_answers_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/yahoo_answers_phrase_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,10 +44,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/support" />
+      <recent name="$PROJECT_DIR$/src/classifier" />
+      <recent name="$PROJECT_DIR$/src/trash" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/phrase_manager" />
-      <recent name="$PROJECT_DIR$/src/support" />
-      <recent name="$PROJECT_DIR$/src/adversarial_examples_generator" />
     </key>
   </component>
   <component name="RunDashboard">

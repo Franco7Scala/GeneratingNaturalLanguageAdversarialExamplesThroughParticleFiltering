@@ -1,5 +1,4 @@
-from src import resources_preparer
-
+from src.support import resources_preparer
 
 """
 www = "\"3\",\"bla bla bla\""
