@@ -14,6 +14,9 @@ QUANTITY_WORDS = "QUANTITY_WORDS"
 USE_GLOVE = "USE_GLOVE"
 CHAR_MAX_LENGTH = "CHAR_MAX_LENGTH"
 
+WORD_LEVEL = "word"
+CHAR_LEVEL = "char"
+
 
 def colored_print(text, color = "", verbose = True):
     if verbose:
@@ -57,11 +60,9 @@ def get_base_path():
 
 
 def get_glove_paths():
-    glove_remote_path = "http://nlp.stanford.edu/data/glove.6B.zip"
-    glove_txt_path = get_base_path() + "glove.6B.100d.txt"
-    glove_zip_path = get_base_path() + "glove.6B.zip"
-    glove_to_delete_paths = [get_base_path() + "glove.6B.50d.txt", get_base_path() + "glove.6B.100d.txt", get_base_path() + "glove.6B.200d.txt", get_base_path() + "glove.6B.300d.txt", glove_zip_path]
-    return glove_remote_path, glove_txt_path, glove_zip_path, glove_to_delete_paths
+    glove_remote_path = "http://datasetsresearch.altervista.org/datasets/glove.6B.100d.txt"
+    glove_local_path = get_base_path() + "glove.6B.100d.txt"
+    return glove_remote_path, glove_local_path
 
 
 def get_word2vec_path():
@@ -70,32 +71,30 @@ def get_word2vec_path():
 
 
 def get_imdb_paths():
-    imdb_remote_path = "https://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz"
+    imdb_remote_path = "http://datasetsresearch.altervista.org/datasets/aclImdb.zip"
     imdb_folder_path = get_base_path() + "aclImdb"
-    imdb_tar_path = get_base_path() + "aclImdb_v1.tar.gz"
+    imdb_zip_path = get_base_path() + "aclImdb.zip"
     imdb_train_folder_neg_path = get_base_path() + "aclImdb/train/neg/"
     imdb_train_folder_pos_path = get_base_path() + "aclImdb/train/pos/"
     imdb_test_folder_neg_path = get_base_path() + "aclImdb/test/neg/"
     imdb_test_folder_pos_path = get_base_path() + "aclImdb/test/pos/"
-    return imdb_remote_path, imdb_folder_path, imdb_tar_path, imdb_train_folder_neg_path, imdb_train_folder_pos_path, imdb_test_folder_neg_path, imdb_test_folder_pos_path
+    return imdb_remote_path, imdb_folder_path, imdb_zip_path, imdb_train_folder_neg_path, imdb_train_folder_pos_path, imdb_test_folder_neg_path, imdb_test_folder_pos_path
 
 
 def get_ags_news_paths():
-    ags_classes_remote_path = "https://raw.githubusercontent.com/mhjabreel/CharCnn_Keras/master/data/ag_news_csv/classes.txt"
-    ags_train_remote_path = "https://raw.githubusercontent.com/mhjabreel/CharCnn_Keras/master/data/ag_news_csv/train.csv"
-    ags_test_remote_path = "https://raw.githubusercontent.com/mhjabreel/CharCnn_Keras/master/data/ag_news_csv/test.csv"
-    ags_classes_local_path = get_base_path() + "ags_classes.txt"
-    ags_train_local_path = get_base_path() + "ags_train.csv"
-    ags_test_local_path = get_base_path() + "ags_test.csv"
-    return ags_classes_remote_path, ags_train_remote_path, ags_test_remote_path, ags_classes_local_path, ags_train_local_path, ags_test_local_path
+    ags_remote_path = "http://datasetsresearch.altervista.org/datasets/ag_news_csv.zip"
+    ags_zip_path = get_base_path() + "ag_news_csv.zip"
+    ags_classes_local_path = get_base_path() + "ag_news_csv/classes.txt"
+    ags_train_local_path = get_base_path() + "ag_news_csv/train.csv"
+    ags_test_local_path = get_base_path() + "ag_news_csv/test.csv"
+    return ags_remote_path, ags_zip_path, ags_classes_local_path, ags_train_local_path, ags_test_local_path
 
 
 def get_yahoo_answers_topic_paths():
-    yahoo_examples_remote_path = "http://cogcomp.seas.upenn.edu/Data/yahoo.answers.tar.gz"
-    yahoo_classes_local_path = get_base_path() + "yahoo_classes.txt"
-    yahoo_examples_local_path = get_base_path() + "Yahoo/Yahoo.ESA/"
-    yahoo_examples_tar_path = get_base_path() + "yahoo.answers.tar.gz"
-    return yahoo_examples_remote_path, yahoo_classes_local_path, yahoo_examples_local_path, yahoo_examples_tar_path
+    yahoo_examples_remote_path = "http://datasetsresearch.altervista.org/datasets/yahoo_10.zip"
+    yahoo_examples_zip_path = get_base_path() + "yahoo_10.zip"
+    yahoo_examples_local_path = get_base_path() + "yahoo_10"
+    return yahoo_examples_remote_path, yahoo_examples_zip_path, yahoo_examples_local_path
 
 
 def get_log_path():

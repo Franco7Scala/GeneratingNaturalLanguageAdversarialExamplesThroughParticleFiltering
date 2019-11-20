@@ -4,20 +4,20 @@ from src.support import support
 
 class AGsNewsPhraseManager(PhraseManager):
 
-    def __init__(self, num_words):
+    def __init__(self, configuration):
         self.name = "Ag's news"
-        super().__init__(num_words)
+        super().__init__(configuration)
 
     def _read_train_phrases(self):
-        _, _, _, _, ags_train_local_path, _ = support.get_ags_news_paths()
+        _, _, _, ags_train_local_path, _ = support.get_ags_news_paths()
         return self._read_phrases(ags_train_local_path)
 
     def _read_test_phrases(self):
-        _, _, _, _, _, ags_test_local_path = support.get_ags_news_paths()
+        _, _, _, _, ags_test_local_path = support.get_ags_news_paths()
         return self._read_phrases(ags_test_local_path)
 
     def get_classes(self):
-        _, _, _, ags_classes_local_path, _, _ = support.get_ags_news_paths()
+        _, _, ags_classes_local_path, _, _ = support.get_ags_news_paths()
         string = ""
         counter = 1
         with open(ags_classes_local_path) as file:

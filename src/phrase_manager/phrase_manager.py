@@ -19,10 +19,10 @@ class PhraseManager:
         return self.test_phrases, self.test_labels
 
     def get_dataset(self, level):
-        if level == "word":
+        if level == support.WORD_LEVEL:
             return self._word_process(self.configuration[support.MAX_LENGTH], self.configuration[support.QUANTITY_WORDS])
 
-        elif level == "char":
+        elif level == support.CHAR_LEVEL:
             return self._char_process(self.configuration[support.MAX_LENGTH])
 
         else:
