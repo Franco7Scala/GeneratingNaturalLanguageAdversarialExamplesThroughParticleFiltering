@@ -14,9 +14,7 @@ class LSTM(Model):
         self.epochs = phrase_manager.configuration[support.LSTM_EPOCHS]
         # model's params
         drop_out = 0.3
-        use_glove = phrase_manager.configuration[support.USE_GLOVE] #TODO TO MOVE IN A NEW CONF FILE
-
-
+        use_glove = phrase_manager.configuration[support.LSTM_USE_GLOVE]
         max_length = phrase_manager.configuration[support.MAX_LENGTH]
         quantity_classes = phrase_manager.configuration[support.QUANTITY_CLASSES]
         loss = phrase_manager.configuration[support.LOSS]

@@ -6,9 +6,11 @@ import requests
 WORD_CNN_BATCH_SIZE = "batch_size_wc"
 WORD_CNN_EPOCHS = "epochs_wc"
 WORD_CNN_EMBEDDING_DIMENSION = "embedding_dimension_wc"
+WORD_CNN_USE_GLOVE = "use_glove_wc"
 LSTM_BATCH_SIZE = "batch_size_lstm"
 LSTM_EPOCHS = "epochs_lstm"
 LSTM_DIMENSION = "embedding_dimension_lstm"
+LSTM_USE_GLOVE = "use_glove_lstm"
 BLSTM_BATCH_SIZE = "batch_size_blstm"
 BLSTM_EPOCHS = "epochs_blstm"
 BLSTM_EMBEDDING_DIMENSION = "embedding_dimension_blstm"
@@ -20,9 +22,6 @@ QUANTITY_CLASSES = "quantity_classes"
 LOSS = "loss"
 ACTIVATION_LAST_LAYER = "activation_last_layer"
 QUANTITY_WORDS = "quantity_words"
-
-WORD_CNN_USE_GLOVE = "use_glove_wc"
-LSTM_USE_GLOVE = "use_glove_lstm"
 
 WORD_LEVEL = "word"
 CHAR_LEVEL = "char"
@@ -37,6 +36,9 @@ def colored_print(text, color = "", verbose = True):
             code_color = '\033[94m'
 
         elif color == "green":
+            code_color = '\033[32m'
+
+        elif color == "light_green":
             code_color = '\033[92m'
 
         elif color == "red":
@@ -67,6 +69,10 @@ def download(url, file_name):
 
 def get_base_path():
     return "/Users/francesco/Software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_dynamic/"
+
+
+def get_phrase_manager_configuration_path():
+    return "/Users/francesco/Software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_static/phrase_manager_configurations.json"
 
 
 def get_glove_paths():
@@ -107,9 +113,9 @@ def get_yahoo_answers_topic_paths():
     return yahoo_examples_remote_path, yahoo_examples_zip_path, yahoo_examples_local_path
 
 
-def get_log_path():
-    return get_base_path() + "log/"
+def get_log_path(dataset_name, model_name):
+    return get_base_path() + "log/{}/{}/".format(dataset_name, model_name)
 
 
-def get_model_path():
-    return get_base_path() + "model/"
+def get_model_path(dataset_name, model_name):
+    return get_base_path() + "model/{}/{}.h5".format(dataset_name, model_name)

@@ -1,8 +1,10 @@
 import numpy
 import keras
 
+from os import path
 from src.support import support
 from sklearn.utils import shuffle
+from keras.models import load_model
 
 
 class Model:
@@ -12,26 +14,32 @@ class Model:
         self.model = None   # must be defined in subclasses
 
     def fit(self, x_train, y_train, x_test, y_test, dataset_name, verbose = False):
-        x_train, y_train = shuffle(x_train, y_train, random_state=0)
-        support.colored_print("Training...", "green", verbose)
-        support.colored_print("Model:\nname: {};\nbatch_size: {};\nepochs: {};\ndataset: {}.".format(self.name, self.batch_size, self.epochs, dataset_name), "blue", verbose)
-        self.model.fit(x_train, y_train,
-                       batch_size=self.batch_size,
-                       epochs=self.epochs,
-                       validation_split=0.2,
-                       shuffle=True,
-                       callbacks=[keras.callbacks.TensorBoard(log_dir=support.get_log_path() + "{}/{}/".format(dataset_name, self.name), histogram_freq=0, write_graph=True)])
-        scores = self.model.evaluate(x_test, y_test)
-        support.colored_print("Training completed...", "green", verbose)
-        support.colored_print("Results:\nloss: {}; accuracy: {}.".format(scores[0], scores[1]), "blue", verbose)
-        support.colored_print("Saving model...", "green", verbose)
-        self.model.save_weights(support.get_model_path() + "{}/{}/".format(dataset_name, self.name))
+        if path.exists(support.get_model_path(dataset_name, self.name)):
+            support.colored_print("Loading model...", "green", verbose)
+            support.colored_print("Model:\nname: {};\nbatch_size: {};\nepochs: {};\ndataset: {}.".format(self.name, self.batch_size, self.epochs, dataset_name), "blue", verbose)
+            self.model = load_model(support.get_model_path(dataset_name, self.name))
+
+        else:
+            x_train, y_train = shuffle(x_train, y_train, random_state=0)
+            support.colored_print("Training model...", "green", verbose)
+            support.colored_print("Model:\nname: {};\nbatch_size: {};\nepochs: {};\ndataset: {}.".format(self.name, self.batch_size, self.epochs, dataset_name), "blue", verbose)
+            self.model.fit(x_train, y_train,
+                           batch_size=self.batch_size,
+                           epochs=self.epochs,
+                           validation_split=0.2,
+                           shuffle=True,
+                           callbacks=[keras.callbacks.TensorBoard(log_dir=support.get_log_path(dataset_name, self.name), histogram_freq=0, write_graph=True)])
+            scores = self.model.evaluate(x_test, y_test)
+            support.colored_print("Training completed...", "green", verbose)
+            support.colored_print("Results:\nloss: {}; accuracy: {}.".format(scores[0], scores[1]), "blue", verbose)
+            support.colored_print("Saving model...", "green", verbose)
+            self.model.save(support.get_model_path(dataset_name, self.name))
 
     def evaluate(self, x, y):
         return self.model.evaluate(x, y)
 
     def _get_embedding_matrix(self, word_index, num_words, embedding_dimensions, verbose):
-        embeddings_index = self._get_embedding_index(embedding_dimensions, verbose)
+        embeddings_index = self._get_embedding_index(verbose)
         support.colored_print("Preparing embedding matrix...", "green", verbose)
         embedding_matrix = numpy.zeros((num_words + 1, embedding_dimensions))
         for word, i in word_index.items():
@@ -44,8 +52,8 @@ class Model:
 
         return embedding_matrix
 
-    def _get_embedding_index(self, embedding_dimensions, verbose):
-        file_path = support.get_base_path() + "glove.6B.{}d.txt".format(str(embedding_dimensions))
+    def _get_embedding_index(self, verbose):
+        _, file_path = support.get_glove_paths()
         embeddings_index = {}
         file = open(file_path)
         for line in file:

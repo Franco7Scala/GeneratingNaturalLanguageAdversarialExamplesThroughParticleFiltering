@@ -1,4 +1,4 @@
-from src.support import resources_preparer
+#from src.support import resources_preparer
 
 """
 www = "\"3\",\"bla bla bla\""
@@ -80,6 +80,7 @@ for file_name in os.listdir(path_phrases):
 
 """
 
+"""
 #resources_preparer.get_word_vector(True)
 
 a, b, c = resources_preparer.get_phrases(True)
@@ -107,7 +108,14 @@ print(b.get_classes())
 print("CCCCCCCCCCCCC")
 print(c.get_classes())
 
+"""
+import json
 
+with open("/Users/francesco/Software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_static/phrase_manager_configurations.json") as json_file:
+    data = json.load(json_file)
+    print(type(data["imdb"]))
+    for a in data["imdb"]:
+        print(a)
 
 
 

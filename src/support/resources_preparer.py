@@ -1,5 +1,6 @@
 import os
 import zipfile
+import json
 
 from src.support import support
 from src.phrase_manager.imdb_phrase_manager import IMDBPhraseManager
@@ -28,7 +29,7 @@ def get_word_vector(verbose = False):
     return KeyedVectors.load_word2vec_format(word2vec_txt_path, binary = False)
 
 
-def get_phrases(verbose = False):    #TODO read configuration file on json file
+def get_phrases(verbose = False):
     # downloading phrases IMDB
     imdb_remote_path, imdb_folder_path, imdb_zip_path, _, _, _, _ = support.get_imdb_paths()
     if not any(file_name in imdb_folder_path for file_name in os.listdir(support.get_base_path())):
@@ -48,7 +49,7 @@ def get_phrases(verbose = False):    #TODO read configuration file on json file
 
     # initializing IMDB review dataset
     support.colored_print("Initializing IMDB review dataset...", "green", verbose)
-    imdb_phrase_manager = IMDBPhraseManager()
+    imdb_phrase_manager = IMDBPhraseManager(_read_configuration("imdb"))
 
     # downloading phrases AG's news
     ags_remote_path, ags_zip_path, ags_classes_local_path, ags_train_local_path, ags_test_local_path = support.get_ags_news_paths()
@@ -69,7 +70,7 @@ def get_phrases(verbose = False):    #TODO read configuration file on json file
 
     # initializing AG's news review dataset
     support.colored_print("Initializing AG's news dataset...", "green", verbose)
-    ags_news_phrase_manager = AGsNewsPhraseManager()
+    ags_news_phrase_manager = AGsNewsPhraseManager(_read_configuration("ags"))
 
     # downloading phrases Yahoo answers
     yahoo_examples_remote_path, yahoo_examples_zip_path, yahoo_examples_local_path = support.get_yahoo_answers_topic_paths()
@@ -89,6 +90,11 @@ def get_phrases(verbose = False):    #TODO read configuration file on json file
 
     # initializing Yahoo answers review dataset
     support.colored_print("Initializing Yahoo answers review dataset...", "green", verbose)
-    yahoo_answers_phrase_manager = YahooAnswersPhraseManager()
+    yahoo_answers_phrase_manager = YahooAnswersPhraseManager(_read_configuration("yahoo"))
 
     return imdb_phrase_manager, ags_news_phrase_manager, yahoo_answers_phrase_manager
+
+
+def _read_configuration(dataset_name):
+    with open(dataset_name) as json_file:
+        return json.load(json_file)[dataset_name]

@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering.iml" filepath="$PROJECT_DIR$/.idea/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../ProjectEEMCB/.idea/ProjectEEMCB.iml" filepath="$PROJECT_DIR$/../ProjectEEMCB/.idea/ProjectEEMCB.iml" />
     </modules>
   </component>
 </project>

@@ -17,9 +17,7 @@ class WordCNN(Model):
         filters = 250
         kernel_size = 3
         hidden_dims = 250
-        use_glove = phrase_manager.configuration[support.USE_GLOVE] #TODO TO MOVE IN A NEW CONF FILE
-
-
+        use_glove = phrase_manager.configuration[support.WORD_CNN_USE_GLOVE]
         word_max_length = phrase_manager.configuration[support.WORD_MAX_LENGTH]
         quantity_classes = phrase_manager.configuration[support.QUANTITY_CLASSES]
         loss = phrase_manager.configuration[support.LOSS]
