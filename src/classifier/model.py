@@ -7,9 +7,7 @@ from sklearn.utils import shuffle
 
 class Model:
 
-    def __init__(self, phrase_manager):
-        self.batch_size = phrase_manager.configuration[support.BATCH_SIZE]
-        self.epochs = phrase_manager.configuration[support.EPOCHS]
+    def __init__(self):
         self.name = None    # must be defined in subclasses
         self.model = None   # must be defined in subclasses
 
@@ -47,7 +45,7 @@ class Model:
         return embedding_matrix
 
     def _get_embedding_index(self, embedding_dimensions, verbose):
-        file_path = support.get_base_path() + 'glove.6B.{}d.txt'.format(str(embedding_dimensions))
+        file_path = support.get_base_path() + "glove.6B.{}d.txt".format(str(embedding_dimensions))
         embeddings_index = {}
         file = open(file_path)
         for line in file:

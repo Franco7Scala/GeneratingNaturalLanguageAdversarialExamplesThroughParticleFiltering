@@ -1,6 +1,5 @@
 import os
 import zipfile
-import tarfile
 
 from src.support import support
 from src.phrase_manager.imdb_phrase_manager import IMDBPhraseManager

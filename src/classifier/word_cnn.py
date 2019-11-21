@@ -9,19 +9,23 @@ from src.support import support
 class WordCNN(Model):
 
     def __init__(self, phrase_manager, verbose = False):
-        super().__init__(phrase_manager)
+        super().__init__()
         self.name = "Word CNN"
+        self.batch_size = phrase_manager.configuration[support.WORD_CNN_BATCH_SIZE]
+        self.epochs = phrase_manager.configuration[support.WORD_CNN_EPOCHS]
         # model's params
         filters = 250
         kernel_size = 3
         hidden_dims = 250
-        max_length = phrase_manager.configuration[support.MAX_LENGTH]
+        use_glove = phrase_manager.configuration[support.USE_GLOVE] #TODO TO MOVE IN A NEW CONF FILE
+
+
+        word_max_length = phrase_manager.configuration[support.WORD_MAX_LENGTH]
         quantity_classes = phrase_manager.configuration[support.QUANTITY_CLASSES]
         loss = phrase_manager.configuration[support.LOSS]
         activation_last_layer = phrase_manager.configuration[support.ACTIVATION_LAST_LAYER]
-        embedding_dimensions = phrase_manager.configuration[support.EMBEDDING_DIMENSION]
+        embedding_dimensions = phrase_manager.configuration[support.WORD_CNN_EMBEDDING_DIMENSION]
         quantity_words = phrase_manager.configuration[support.QUANTITY_WORDS]
-        use_glove = phrase_manager.configuration[support.USE_GLOVE]
         support.colored_print("Building Word CNN model...", "green", verbose)
         self.model = Sequential()
         if use_glove:
@@ -29,12 +33,12 @@ class WordCNN(Model):
             self.model.add(Embedding(input_dim=quantity_words + 1,
                                      output_dim=embedding_dimensions,
                                      weights=[embedding_matrix],
-                                     input_length=max_length,
+                                     input_length=word_max_length,
                                      name="embedding_layer",
                                      trainable=False))
 
         else:
-            self.model.add(Embedding(quantity_words, embedding_dimensions, input_length=max_length))
+            self.model.add(Embedding(quantity_words, embedding_dimensions, input_length=word_max_length))
 
         self.model.add(Dropout(0.2))
         self.model.add(Conv1D(filters, kernel_size, padding='valid', activation='relu', strides=1))
