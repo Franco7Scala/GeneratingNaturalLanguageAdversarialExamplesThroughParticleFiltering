@@ -9,9 +9,10 @@ from keras.models import load_model
 
 class Model:
 
-    def __init__(self):
+    def __init__(self, phrase_manager):
         self.name = None    # must be defined in subclasses
         self.model = None   # must be defined in subclasses
+        self.phrase_manager = phrase_manager
 
     def fit(self, x_train, y_train, x_test, y_test, dataset_name, verbose = False):
         if path.exists(support.get_model_path(dataset_name, self.name)):
@@ -37,6 +38,15 @@ class Model:
 
     def evaluate(self, x, y):
         return self.model.evaluate(x, y)
+
+    def predict(self, x, level):
+        if level == support.WORD_LEVEL:
+            perturbed_vector = self.phrase_manager.text_to_vector_word(x)
+
+        elif level == support.CHAR_LEVEL:
+            perturbed_vector = self.phrase_manager.text_to_vector_char(x)
+
+        return self.model.predict(perturbed_vector)
 
     def _get_embedding_matrix(self, word_index, num_words, embedding_dimensions, verbose):
         embeddings_index = self._get_embedding_index(verbose)

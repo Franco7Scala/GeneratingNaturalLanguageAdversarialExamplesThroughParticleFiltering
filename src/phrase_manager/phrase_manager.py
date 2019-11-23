@@ -11,6 +11,7 @@ class PhraseManager:
         self.train_phrases, self.train_labels = self._read_train_phrases()
         self.test_phrases, self.test_labels = self._read_test_phrases()
         self.configuration = configuration
+        self.tokenizer = None
 
     def get_phrases_train(self):
         return self.train_phrases, self.train_labels
@@ -20,7 +21,7 @@ class PhraseManager:
 
     def get_dataset(self, level):
         if level == support.WORD_LEVEL:
-            return self._word_process(self.configuration[support.MAX_LENGTH], self.configuration[support.QUANTITY_WORDS])
+            return self._word_process(self.configuration[support.MAX_LENGTH])
 
         elif level == support.CHAR_LEVEL:
             return self._char_process(self.configuration[support.MAX_LENGTH])
@@ -67,6 +68,7 @@ class PhraseManager:
 
             else:
                 doc_vec[j] = embedding_dic['UNK']
+
         return doc_vec
 
     def _onehot_dic_build(self):
@@ -85,9 +87,42 @@ class PhraseManager:
         return embedding_w, embedding_dic
 
     def get_tokenizer(self):
-        tokenizer = Tokenizer(num_words=self.configuration[support.QUANTITY_WORDS])
-        tokenizer.fit_on_texts(self.train_phrases)
-        return tokenizer
+        if self.tokenizer is None:
+            self.tokenizer = Tokenizer(num_words=self.configuration[support.QUANTITY_WORDS])
+            self.tokenizer.fit_on_texts(self.train_phrases)
+
+        return self.tokenizer
+
+    def text_to_vector_word(self, text):
+        vector = self.get_tokenizer().texts_to_sequences([text])
+        vector = sequence.pad_sequences(vector, maxlen=self.configuration[support.WORD_MAX_LENGTH], padding='post', truncating='post')
+        return vector
+
+    def text_to_vector_char(self, text):
+        embedding_dictionary = self.get_embedding_dictionary()
+        max_length = self.configuration[support.CHAR_MAX_LENGTH]
+        min_length = min(max_length, len(text))
+        doc_vec = numpy.zeros(max_length, dtype='int64')
+        for j in range(min_length):
+            if text[j] in embedding_dictionary:
+                doc_vec[j] = embedding_dictionary[text[j]]
+            else:
+                doc_vec[j] = embedding_dictionary['UNK']
+
+        return doc_vec.reshape(1, self.configuration[support.CHAR_MAX_LENGTH])
+
+    def get_embedding_dictionary(self):
+        return {'UNK': 0, 'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10,
+                'k': 11, 'l': 12,
+                'm': 13, 'n': 14, 'o': 15, 'p': 16, 'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22,
+                'w': 23, 'x': 24,
+                'y': 25, 'z': 26, '0': 27, '1': 28, '2': 29, '3': 30, '4': 31, '5': 32, '6': 33, '7': 34,
+                '8': 35, '9': 36,
+                '-': 60, ',': 38, ';': 39, '.': 40, '!': 41, '?': 42, ':': 43, "'": 44, '"': 45, '/': 46,
+                '\\': 47, '|': 48,
+                '_': 49, '@': 50, '#': 51, '$': 52, '%': 53, '^': 54, '&': 55, '*': 56, '~': 57, '`': 58,
+                '+': 59, '=': 61,
+                '<': 62, '>': 63, '(': 64, ')': 65, '[': 66, ']': 67, '{': 68, '}': 69}
 
     def get_classes(self):
         pass

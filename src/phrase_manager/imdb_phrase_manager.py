@@ -19,7 +19,7 @@ class IMDBPhraseManager(PhraseManager):
         return self._read_phrases([imdb_test_folder_neg_path, imdb_test_folder_pos_path])
 
     def get_classes(self):
-        return "neg: 0\npos: 1"
+        return 2, "neg: 0\npos: 1"
 
     def _read_phrases(self, path_phrases):
         phrases = []

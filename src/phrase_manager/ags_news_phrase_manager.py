@@ -27,7 +27,7 @@ class AGsNewsPhraseManager(PhraseManager):
                 counter += 1
                 line = file.readline()
 
-        return string[0:len(string) - 1]
+        return (counter - 1), string[0:len(string) - 1]
 
     def _read_phrases(self, path_phrases):
         phrases = []

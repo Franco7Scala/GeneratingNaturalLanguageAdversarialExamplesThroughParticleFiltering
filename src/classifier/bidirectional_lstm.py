@@ -8,7 +8,7 @@ from src.support import support
 class BidirectionalLSTM(Model):
 
     def __init__(self, phrase_manager, verbose = False):
-        super().__init__()
+        super().__init__(phrase_manager)
         self.name = "Bidirectional LSTM"
         self.batch_size = phrase_manager.configuration[support.BLSTM_BATCH_SIZE]
         self.epochs = phrase_manager.configuration[support.BLSTM_EPOCHS]

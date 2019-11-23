@@ -35,7 +35,7 @@ class YahooAnswersPhraseManager(PhraseManager):
             string += folder_name.replace(".", " ").replace("\n", "") + ": " + str(counter) + "\n"
             counter += 1
 
-        return string
+        return (counter - 1), string
 
     def _read_phrases(self, path_phrases):
         train_phrases = []

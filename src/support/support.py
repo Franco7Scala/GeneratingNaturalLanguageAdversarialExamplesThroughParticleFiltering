@@ -119,3 +119,11 @@ def get_log_path(dataset_name, model_name):
 
 def get_model_path(dataset_name, model_name):
     return get_base_path() + "model/{}/{}.h5".format(dataset_name, model_name)
+
+
+def get_adversarial_text_path(dataset_name, model_name, quantity_perturbation):
+    return get_base_path() + "adversarial_examples/{}/{}/adv_{}.txt".format(dataset_name, model_name, quantity_perturbation)
+
+
+def get_changed_words_path(dataset_name, model_name, quantity_perturbation):
+    return get_base_path() + "adversarial_examples/{}/{}/changed_{}.txt".format(dataset_name, model_name, quantity_perturbation)
