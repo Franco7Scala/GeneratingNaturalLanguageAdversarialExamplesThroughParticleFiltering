@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/evaluation/evaluator_results.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/adversarial_examples_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/adversarial_examples_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classifier/bidirectional_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/bidirectional_lstm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classifier/char_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/char_cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classifier/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/lstm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classifier/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classifier/word_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/word_cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phrase_manager/ags_news_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/ags_news_phrase_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phrase_manager/imdb_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/imdb_phrase_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phrase_manager/yahoo_answers_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/yahoo_answers_phrase_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/support/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/support.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trash/text_classifier.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -98,6 +98,13 @@ class PhraseManager:
         vector = sequence.pad_sequences(vector, maxlen=self.configuration[support.WORD_MAX_LENGTH], padding='post', truncating='post')
         return vector
 
+    def text_to_vector_word_all(self, texts):
+        result = []
+        for text in texts:
+            result.append(self.text_to_vector_word(text))
+
+        return result
+
     def text_to_vector_char(self, text):
         embedding_dictionary = self.get_embedding_dictionary()
         max_length = self.configuration[support.CHAR_MAX_LENGTH]
@@ -110,6 +117,13 @@ class PhraseManager:
                 doc_vec[j] = embedding_dictionary['UNK']
 
         return doc_vec.reshape(1, self.configuration[support.CHAR_MAX_LENGTH])
+
+    def text_to_vector_char_all(self, texts):
+        result = []
+        for text in texts:
+            result.append(self.text_to_vector_char(text))
+
+        return result
 
     def get_embedding_dictionary(self):
         return {'UNK': 0, 'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10,

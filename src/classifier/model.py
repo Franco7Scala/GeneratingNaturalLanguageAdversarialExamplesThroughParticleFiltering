@@ -36,17 +36,23 @@ class Model:
             support.colored_print("Saving model...", "green", verbose)
             self.model.save(support.get_model_path(dataset_name, self.name))
 
-    def evaluate(self, x, y):
-        return self.model.evaluate(x, y)
+    def evaluate(self, x, y, level):
+        if level == support.WORD_LEVEL:
+            vector = self.phrase_manager.text_to_vector_word(x)
+
+        elif level == support.CHAR_LEVEL:
+            vector = self.phrase_manager.text_to_vector_char(x)
+
+        return self.model.evaluate(vector, y)
 
     def predict(self, x, level):
         if level == support.WORD_LEVEL:
-            perturbed_vector = self.phrase_manager.text_to_vector_word(x)
+            vector = self.phrase_manager.text_to_vector_word(x)
 
         elif level == support.CHAR_LEVEL:
-            perturbed_vector = self.phrase_manager.text_to_vector_char(x)
+            vector = self.phrase_manager.text_to_vector_char(x)
 
-        return self.model.predict(perturbed_vector)
+        return self.model.predict(vector)
 
     def _get_embedding_matrix(self, word_index, num_words, embedding_dimensions, verbose):
         embeddings_index = self._get_embedding_index(verbose)
