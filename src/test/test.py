@@ -110,6 +110,7 @@ print(c.get_classes())
 
 """
 import json
+"""
 
 with open("/Users/francesco/Software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_static/phrase_manager_configurations.json") as json_file:
     data = json.load(json_file)
@@ -118,13 +119,31 @@ with open("/Users/francesco/Software/Python/GeneratingNaturalLanguageAdversarial
         print(a)
 
 
+"""
+"""
+
+class A:
+    def __init__(self, a):
+        self.a = a
 
 
+def met(obj):
+    s = "aaa"
+    return obj.__init__(obj, s)
+
+print(type(met(A)))
 
 
+"""
 
+class a():
+    def __init__(self):
+        print("an object from class a is created")
 
+def hello(the_argument):
+    x = the_argument()
 
+hello(a)
 
 
 

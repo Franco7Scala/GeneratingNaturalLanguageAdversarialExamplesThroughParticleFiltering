@@ -5,32 +5,39 @@ from src.support import support
 
 class AdversarialExampleGenerator:
 
-    def __init__(self, phrase_manager, model, level):
-        self.phrase_manager = phrase_manager
+    def __init__(self, model, level):
         self.model = model
         self.level = level
-        self.name = None  # must be defined in subclasses
+        self.name = None # must be defined in subclasses
 
-    def generate_adversarial_examples(self, examples_x, examples_real_y, examples_predicted_y, verbose = False):
+    def generate_adversarial_examples(self, examples_x, examples_y, verbose = False):
         support.colored_print("Generating Adversarial Examples with tecnique: {}...".format(self.name), "green", verbose)
         successful_perturbations = 0
         failed_perturbations = 0
         adversarial_examples = []
         sub_rate_list = []
         NE_rate_list = []
+        time_to_delete = 0
         start_cpu = time.clock()
-        adversarial_text_path = support.get_adversarial_text_path(self.phrase_manager.name, self.model.name, len(examples_x))
-        words_changed_path = support.get_changed_words_path(self.phrase_manager.name, self.model.name, len(examples_x))
+        adversarial_text_path = support.get_adversarial_text_path(self.model.phrase_manager.name, self.model.name, len(examples_x))
+        words_changed_path = support.get_changed_words_path(self.model.phrase_manager.name, self.model.name, len(examples_x))
         file_adversarial_examples = open(adversarial_text_path, "a")
         file_changed_words = open(words_changed_path, "a")
         for index, text in enumerate(examples_x):
             sub_rate = 0
             NE_rate = 0
             # if model predicted correctly the example
-            if examples_real_y[index] == examples_predicted_y[index]:
+            start_cpu_predicition = time.clock()
+            example_prediction = self.model.predict(text)
+            end_cpu_predicition = time.clock()
+            time_to_delete += (end_cpu_predicition - start_cpu_predicition)
+            if examples_y[index] == example_prediction:
                 adversarial_text, sub_rate, NE_rate, change_tuple_list = self.make_perturbation(text, self.level)
+                start_cpu_predicition = time.clock()
                 adversarial_prediction = self.model.predict(adversarial_text)
-                if adversarial_prediction != examples_real_y[index]:
+                end_cpu_predicition = time.clock()
+                time_to_delete += (end_cpu_predicition - start_cpu_predicition)
+                if adversarial_prediction != examples_y[index]:
                     successful_perturbations += 1
 
                 else:
@@ -47,7 +54,7 @@ class AdversarialExampleGenerator:
         end_cpu = time.clock()
         mean_sub_rate = sum(sub_rate_list) / len(sub_rate_list)
         mean_NE_rate = sum(NE_rate_list) / len(NE_rate_list)
-        support.colored_print("Completed!\nTime elapsed: {} seconds\nMean substitution rate: {}\nMean NE rate: {}".format((end_cpu - start_cpu), mean_sub_rate, mean_NE_rate), "blue", verbose)
+        support.colored_print("Completed!\nModel: {};\nDataset: {};\nTime elapsed: {} seconds;\nMean substitution rate: {};\nMean NE rate: {}.".format(self.model.name, self.model.phrase_manager.name, (end_cpu - start_cpu - time_to_delete), mean_sub_rate, mean_NE_rate), "blue", verbose)
         file_adversarial_examples.close()
         file_changed_words.close()
         return adversarial_examples

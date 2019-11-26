@@ -14,27 +14,27 @@ class Model:
         self.model = None   # must be defined in subclasses
         self.phrase_manager = phrase_manager
 
-    def fit(self, x_train, y_train, x_test, y_test, dataset_name, verbose = False):
-        if path.exists(support.get_model_path(dataset_name, self.name)):
+    def fit(self, x_train, y_train, x_test, y_test, verbose = False):
+        if path.exists(support.get_model_path(self.phrase_manager.name, self.name)):
             support.colored_print("Loading model...", "green", verbose)
-            support.colored_print("Model:\nname: {};\nbatch_size: {};\nepochs: {};\ndataset: {}.".format(self.name, self.batch_size, self.epochs, dataset_name), "blue", verbose)
-            self.model = load_model(support.get_model_path(dataset_name, self.name))
+            support.colored_print("Model:\nname: {};\nbatch_size: {};\nepochs: {};\ndataset: {}.".format(self.name, self.batch_size, self.epochs, self.phrase_manager.name), "blue", verbose)
+            self.model = load_model(support.get_model_path(self.phrase_manager.name, self.name))
 
         else:
             x_train, y_train = shuffle(x_train, y_train, random_state=0)
             support.colored_print("Training model...", "green", verbose)
-            support.colored_print("Model:\nname: {};\nbatch_size: {};\nepochs: {};\ndataset: {}.".format(self.name, self.batch_size, self.epochs, dataset_name), "blue", verbose)
+            support.colored_print("Model:\nname: {};\nbatch_size: {};\nepochs: {};\ndataset: {}.".format(self.name, self.batch_size, self.epochs, self.phrase_manager.name), "blue", verbose)
             self.model.fit(x_train, y_train,
                            batch_size=self.batch_size,
                            epochs=self.epochs,
                            validation_split=0.2,
                            shuffle=True,
-                           callbacks=[keras.callbacks.TensorBoard(log_dir=support.get_log_path(dataset_name, self.name), histogram_freq=0, write_graph=True)])
+                           callbacks=[keras.callbacks.TensorBoard(log_dir=support.get_log_path(self.phrase_manager.name, self.name), histogram_freq=0, write_graph=True)])
             scores = self.model.evaluate(x_test, y_test)
             support.colored_print("Training completed...", "green", verbose)
             support.colored_print("Results:\nloss: {}; accuracy: {}.".format(scores[0], scores[1]), "blue", verbose)
             support.colored_print("Saving model...", "green", verbose)
-            self.model.save(support.get_model_path(dataset_name, self.name))
+            self.model.save(support.get_model_path(self.phrase_manager.name, self.name))
 
     def evaluate(self, x, y, level):
         if level == support.WORD_LEVEL:
