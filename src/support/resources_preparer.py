@@ -96,5 +96,5 @@ def get_phrases(verbose = False):
 
 
 def _read_configuration(dataset_name):
-    with open(dataset_name) as json_file:
+    with open(support.get_phrase_manager_configuration_path()) as json_file:
         return json.load(json_file)[dataset_name]
