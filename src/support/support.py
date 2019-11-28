@@ -68,11 +68,11 @@ def download(url, file_name):
 
 
 def get_base_path():
-    return "/Users/francesco/Software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_dynamic/"
+    return "/home/francesco/software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_dynamic/"
 
 
 def get_phrase_manager_configuration_path():
-    return "/Users/francesco/Software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_static/phrase_manager_configurations.json"
+    return "/home/francesco/software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_static/phrase_manager_configurations.json"
 
 
 def get_glove_paths():

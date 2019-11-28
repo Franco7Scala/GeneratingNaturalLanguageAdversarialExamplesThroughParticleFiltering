@@ -18,7 +18,7 @@ class YahooAnswersPhraseManager(PhraseManager):
             self._read_phrases(yahoo_examples_local_path)
             self.read = True
 
-        return self.phrases_train
+        return self.train_phrases, self.train_labels
 
     def _read_test_phrases(self):
         _, _, yahoo_examples_local_path = support.get_yahoo_answers_topic_paths()
@@ -26,7 +26,7 @@ class YahooAnswersPhraseManager(PhraseManager):
             self._read_phrases(yahoo_examples_local_path)
             self.read = True
 
-        return self.phrases_test
+        return self.test_phrases, self.test_labels
 
     def get_classes(self):
         _, _, yahoo_examples_local_path = support.get_yahoo_answers_topic_paths()
@@ -41,10 +41,13 @@ class YahooAnswersPhraseManager(PhraseManager):
     def _read_phrases(self, path_phrases):
         phrases = []
         labels = []
-        for i, folder_name in os.listdir(path_phrases):
+        i = 0
+        for folder_name in os.listdir(path_phrases):
             for file_name in os.listdir(path_phrases + "/" + folder_name):
                 with open(path_phrases + "/" + folder_name + "/" + file_name, encoding="utf8", errors='ignore') as file_phrases:
                     phrases.append(file_phrases.read())
                     labels.append(i)
 
-        self.train_phrases, self.test_phrases, self.train_labels, self.test_labels = train_test_split(texts, labels, test_size=0.2)
+            i += 1
+
+        self.train_phrases, self.test_phrases, self.train_labels, self.test_labels = train_test_split(phrases, labels, test_size=0.2)

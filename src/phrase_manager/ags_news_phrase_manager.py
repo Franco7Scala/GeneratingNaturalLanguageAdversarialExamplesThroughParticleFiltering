@@ -1,3 +1,5 @@
+import csv
+
 from src.phrase_manager.phrase_manager import PhraseManager, Phrase
 from src.support import support
 
