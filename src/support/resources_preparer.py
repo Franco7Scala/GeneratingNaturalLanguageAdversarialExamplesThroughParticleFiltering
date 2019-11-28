@@ -66,7 +66,7 @@ def get_phrases(verbose = False):
         os.remove(ags_zip_path)
 
     else:
-        support.colored_print("AG's news dataset already downloaded...", "green", verbose)
+        support.colored_print("AG's news dataset already downloaded, unzipped and built...", "green", verbose)
 
     # initializing AG's news review dataset
     support.colored_print("Initializing AG's news dataset...", "green", verbose)
@@ -86,7 +86,7 @@ def get_phrases(verbose = False):
         os.remove(yahoo_examples_zip_path)
 
     else:
-        support.colored_print("Yahoo answers dataset already downloaded...", "green", verbose)
+        support.colored_print("Yahoo answers dataset already downloaded, unzipped and built...", "green", verbose)
 
     # initializing Yahoo answers review dataset
     support.colored_print("Initializing Yahoo answers review dataset...", "green", verbose)

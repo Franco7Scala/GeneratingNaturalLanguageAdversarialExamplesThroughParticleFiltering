@@ -40,4 +40,3 @@ class CharCNN(Model):
         model.add(Dense(quantity_classes))
         model.add(Activation(activation))
         model.compile(loss=loss, optimizer="adam", metrics=["accuracy"])
-        return model
