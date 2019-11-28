@@ -32,14 +32,10 @@ class AGsNewsPhraseManager(PhraseManager):
     def _read_phrases(self, path_phrases):
         phrases = []
         labels = []
-        with open(path_phrases) as file:
-            line = file.readline()
-            while line:
-                values = file.readline().split(",")
-                if len(values) > 1:
-                    phrases.append(values[1][1:-1])
-                    labels.append(int(values[0][1:-1]))
-
-                line = file.readline()
+        csv_file = open(path_phrases, 'r')
+        for line in csv.reader(csv_file, delimiter=',', quotechar='"'):
+            content = line[1] + ". " + line[2]
+            phrases.append(content)
+            labels.append(int(line[0]))
 
         return phrases, labels

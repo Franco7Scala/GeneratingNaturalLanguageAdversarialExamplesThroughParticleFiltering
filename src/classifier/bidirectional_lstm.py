@@ -12,7 +12,7 @@ class BidirectionalLSTM(Model):
         self.name = "Bidirectional LSTM"
         self.batch_size = phrase_manager.configuration[support.BLSTM_BATCH_SIZE]
         self.epochs = phrase_manager.configuration[support.BLSTM_EPOCHS]
-        # model's params
+        # model"s params
         word_max_length = phrase_manager.configuration[support.WORD_MAX_LENGTH]
         quantity_classes = phrase_manager.configuration[support.QUANTITY_CLASSES]
         loss = phrase_manager.configuration[support.LOSS]
@@ -25,5 +25,5 @@ class BidirectionalLSTM(Model):
         model.add(Bidirectional(LSTM(64)))
         model.add(Dropout(0.5))
         model.add(Dense(quantity_classes, activation=activation_last_layer))
-        model.compile('adam', loss, metrics=['accuracy'])
+        model.compile("adam", loss, metrics=["accuracy"])
         return model

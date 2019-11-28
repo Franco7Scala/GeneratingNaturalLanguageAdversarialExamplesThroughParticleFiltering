@@ -12,7 +12,7 @@ class LSTM(Model):
         self.name = "LSTM"
         self.batch_size = phrase_manager.configuration[support.LSTM_BATCH_SIZE]
         self.epochs = phrase_manager.configuration[support.LSTM_EPOCHS]
-        # model's params
+        # model"s params
         drop_out = 0.3
         use_glove = phrase_manager.configuration[support.LSTM_USE_GLOVE]
         max_length = phrase_manager.configuration[support.MAX_LENGTH]
@@ -38,5 +38,5 @@ class LSTM(Model):
         model.add(LSTM(128, name="lstm_layer", dropout=drop_out, recurrent_dropout=drop_out))
         model.add(Dropout(0.5))
         model.add(Dense(quantity_classes, activation=activation_last_layer, name="dense_one"))
-        model.compile(loss=loss, optimizer='adam', metrics=['accuracy'])
+        model.compile(loss=loss, optimizer="adam", metrics=["accuracy"])
         return model

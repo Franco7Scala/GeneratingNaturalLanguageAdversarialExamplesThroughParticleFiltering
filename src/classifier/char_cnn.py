@@ -13,7 +13,7 @@ class CharCNN(Model):
         self.name = "Char CNN"
         self.batch_size = phrase_manager.configuration[support.CHAR_CNN_BATCH_SIZE]
         self.epochs = phrase_manager.configuration[support.CHAR_CNN_EPOCHS]
-        # model's params
+        # model"s params
         word_max_length = phrase_manager.configuration[support.WORD_MAX_LENGTH]
         quantity_classes = phrase_manager.configuration[support.QUANTITY_CLASSES]
         loss = phrase_manager.configuration[support.LOSS]
@@ -21,23 +21,23 @@ class CharCNN(Model):
         support.colored_print("Building Char CNN model...", "green", verbose)
         model = Sequential()
         model.add(Embedding(70, 69, input_length=word_max_length))
-        model.add(Conv1D(256, 7, padding='valid', activation='relu', strides=1))
+        model.add(Conv1D(256, 7, padding="valid", activation="relu", strides=1))
         model.add(MaxPool1D(3))
-        model.add(Conv1D(256, 7, padding='valid', activation='relu', strides=1))
+        model.add(Conv1D(256, 7, padding="valid", activation="relu", strides=1))
         model.add(MaxPool1D(3))
-        model.add(Conv1D(256, 3, padding='valid', activation='relu', strides=1))
-        model.add(Conv1D(256, 3, padding='valid', activation='relu', strides=1))
-        model.add(Conv1D(256, 3, padding='valid', activation='relu', strides=1))
-        model.add(Conv1D(256, 3, padding='valid', activation='relu', strides=1))
+        model.add(Conv1D(256, 3, padding="valid", activation="relu", strides=1))
+        model.add(Conv1D(256, 3, padding="valid", activation="relu", strides=1))
+        model.add(Conv1D(256, 3, padding="valid", activation="relu", strides=1))
+        model.add(Conv1D(256, 3, padding="valid", activation="relu", strides=1))
         model.add(MaxPool1D(3))
         model.add(Flatten())
         model.add(Dense(word_max_length))
         model.add(Dropout(0.1))
-        model.add(Activation('relu'))
+        model.add(Activation("relu"))
         model.add(Dense(word_max_length))
         model.add(Dropout(0.1))
-        model.add(Activation('relu'))
+        model.add(Activation("relu"))
         model.add(Dense(quantity_classes))
         model.add(Activation(activation))
-        model.compile(loss=loss, optimizer='adam', metrics=['accuracy'])
+        model.compile(loss=loss, optimizer="adam", metrics=["accuracy"])
         return model

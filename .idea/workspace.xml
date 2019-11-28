@@ -5,14 +5,26 @@
       <change beforePath="$PROJECT_DIR$/.idea/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/src/support/resources_preparer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/resources_preparer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/support/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/support.py" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/resources_static/install_dependencies.sh" beforeDir="false" afterPath="$PROJECT_DIR$/resources_static/install_dependencies.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/bidirectional_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/bidirectional_lstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/char_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/char_cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/lstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/word_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/word_cnn.py" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">

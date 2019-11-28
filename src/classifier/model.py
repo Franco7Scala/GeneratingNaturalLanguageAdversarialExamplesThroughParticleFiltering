@@ -75,7 +75,7 @@ class Model:
         for line in file:
             values = line.split()
             word = values[0]
-            coefficients = numpy.asarray(values[1:], dtype='float32')
+            coefficients = numpy.asarray(values[1:], dtype="float32")
             embeddings_index[word] = coefficients
 
         file.close()
