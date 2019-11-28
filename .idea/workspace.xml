@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phrase_manager/ags_news_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/ags_news_phrase_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phrase_manager/yahoo_answers_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/yahoo_answers_phrase_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/support/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/support.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources_static/install_dependencies.sh" beforeDir="false" afterPath="$PROJECT_DIR$/resources_static/install_dependencies.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
