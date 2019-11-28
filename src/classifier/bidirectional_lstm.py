@@ -5,7 +5,7 @@ from src.classifier.model import Model
 from src.support import support
 
 
-class BidirectionalLSTM(Model):
+class BidirectionalLstm(Model):
 
     def __init__(self, phrase_manager, verbose = False):
         super().__init__(phrase_manager)
@@ -26,4 +26,3 @@ class BidirectionalLSTM(Model):
         model.add(Dropout(0.5))
         model.add(Dense(quantity_classes, activation=activation_last_layer))
         model.compile("adam", loss, metrics=["accuracy"])
-        return model
