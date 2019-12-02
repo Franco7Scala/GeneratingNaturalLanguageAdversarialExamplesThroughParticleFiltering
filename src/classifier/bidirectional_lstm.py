@@ -5,7 +5,7 @@ from src.classifier.model import Model
 from src.support import support
 
 
-class BidirectionalLSTM(Model):
+class BidirectionalLstm(Model):
 
     def __init__(self, phrase_manager, verbose = False):
         super().__init__(phrase_manager)
@@ -20,10 +20,9 @@ class BidirectionalLSTM(Model):
         embedding_dimensions = phrase_manager.configuration[support.BLSTM_EMBEDDING_DIMENSION]
         quantity_words = phrase_manager.configuration[support.QUANTITY_WORDS]
         support.colored_print("Building Bidirectional LSTM model...", "green", verbose)
-        model = Sequential()
-        model.add(Embedding(quantity_words, embedding_dimensions, input_length=word_max_length))
-        model.add(Bidirectional(LSTM(64)))
-        model.add(Dropout(0.5))
-        model.add(Dense(quantity_classes, activation=activation_last_layer))
-        model.compile("adam", loss, metrics=["accuracy"])
-        return model
+        self.model = Sequential()
+        self.model.add(Embedding(quantity_words, embedding_dimensions, input_length=word_max_length))
+        self.model.add(Bidirectional(LSTM(64)))
+        self.model.add(Dropout(0.5))
+        self.model.add(Dense(quantity_classes, activation=activation_last_layer))
+        self.model.compile("adam", loss, metrics=["accuracy"])

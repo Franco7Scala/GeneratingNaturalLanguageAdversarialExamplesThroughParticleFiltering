@@ -1,6 +1,7 @@
 import csv
+import numpy
 
-from src.phrase_manager.phrase_manager import PhraseManager, Phrase
+from src.phrase_manager.phrase_manager import PhraseManager
 from src.support import support
 
 
@@ -32,12 +33,15 @@ class AGsNewsPhraseManager(PhraseManager):
         return (counter - 1), string[0:len(string) - 1]
 
     def _read_phrases(self, path_phrases):
+        quantity_classes, _ = self.get_classes()
         phrases = []
         labels = []
         csv_file = open(path_phrases, 'r')
-        for line in csv.reader(csv_file, delimiter=',', quotechar='"'):
+        for line in csv.reader(csv_file, delimiter=",", quotechar="\""):
             content = line[1] + ". " + line[2]
             phrases.append(content)
-            labels.append(int(line[0]))
+            output = numpy.zeros(quantity_classes)
+            output[(int(line[0]) - 1)] = 1
+            labels.append(output)
 
         return phrases, labels

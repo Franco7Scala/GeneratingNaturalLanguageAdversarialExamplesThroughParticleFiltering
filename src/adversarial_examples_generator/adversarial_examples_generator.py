@@ -1,4 +1,5 @@
 import time
+import os
 
 from src.support import support
 
@@ -21,7 +22,13 @@ class AdversarialExampleGenerator:
         start_cpu = time.clock()
         adversarial_text_path = support.get_adversarial_text_path(self.model.phrase_manager.name, self.model.name, len(examples_x))
         words_changed_path = support.get_changed_words_path(self.model.phrase_manager.name, self.model.name, len(examples_x))
+        if not os.path.exists(adversarial_text_path[0:adversarial_text_path.rfind("/")]):
+            os.makedirs(adversarial_text_path)
+
         file_adversarial_examples = open(adversarial_text_path, "a")
+        if not os.path.exists(words_changed_path[0:words_changed_path.rfind("/")]):
+            os.makedirs(words_changed_path)
+
         file_changed_words = open(words_changed_path, "a")
         for index, text in enumerate(examples_x):
             sub_rate = 0

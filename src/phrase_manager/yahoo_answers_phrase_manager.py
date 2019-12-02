@@ -1,4 +1,5 @@
 import os
+import numpy
 
 from sklearn.model_selection import train_test_split
 from src.phrase_manager.phrase_manager import PhraseManager, Phrase
@@ -39,6 +40,7 @@ class YahooAnswersPhraseManager(PhraseManager):
         return (counter - 1), string
 
     def _read_phrases(self, path_phrases):
+        quantity_classes, _ = self.get_classes()
         phrases = []
         labels = []
         i = 0
@@ -46,7 +48,9 @@ class YahooAnswersPhraseManager(PhraseManager):
             for file_name in os.listdir(path_phrases + "/" + folder_name):
                 with open(path_phrases + "/" + folder_name + "/" + file_name, encoding="utf8", errors='ignore') as file_phrases:
                     phrases.append(file_phrases.read())
-                    labels.append(i)
+                    output = numpy.zeros(quantity_classes)
+                    output[i] = 1
+                    labels.append(output)
 
             i += 1
 

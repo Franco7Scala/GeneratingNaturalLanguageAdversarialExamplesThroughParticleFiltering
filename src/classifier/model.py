@@ -1,5 +1,6 @@
 import numpy
 import keras
+import os
 
 from os import path
 from src.support import support
@@ -34,7 +35,7 @@ class Model:
             support.colored_print("Training completed...", "green", verbose)
             support.colored_print("Results:\nloss: {}; accuracy: {}.".format(scores[0], scores[1]), "blue", verbose)
             support.colored_print("Saving model...", "green", verbose)
-            self.model.save(support.get_model_path(self.phrase_manager.name, self.name))
+            self._save_model(support.get_model_path(self.phrase_manager.name, self.name))
 
     def evaluate(self, x, y, level):
         if level == support.WORD_LEVEL:
@@ -81,3 +82,10 @@ class Model:
         file.close()
         support.colored_print("Found {} word vectors!".format(len(embeddings_index)), "blue", verbose)
         return embeddings_index
+
+    def _save_model(self, path):
+        folder_path = path[0:path.rfind("/")]
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+
+        self.model.save(path)

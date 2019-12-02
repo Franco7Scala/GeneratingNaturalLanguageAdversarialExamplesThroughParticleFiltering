@@ -27,6 +27,9 @@ class IMDBPhraseManager(PhraseManager):
         for i in range(0, len(path_phrases)):
             for file in os.listdir(path_phrases[i]):
                 phrases.append(open(os.fsdecode(path_phrases[i] + file), "r").read())
-                labels.append(i)
+                if i == 0:
+                    labels.append([1, 0])
+                else:
+                    labels.append([0, 1])
 
         return phrases, labels

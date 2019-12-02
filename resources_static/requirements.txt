@@ -1,0 +1,6 @@
+gensim==3.8.1
+tensorflow==1.13.1
+Keras==2.2.4
+numpy==1.15.4
+scikit_learn==0.21.2
+h5py==2.10.0
