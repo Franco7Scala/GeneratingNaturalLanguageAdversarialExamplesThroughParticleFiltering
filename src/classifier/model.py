@@ -46,12 +46,15 @@ class Model:
 
         return self.model.evaluate(vector, y)
 
-    def predict(self, x, level):
+    def predict(self, x, level = None):
         if level == support.WORD_LEVEL:
             vector = self.phrase_manager.text_to_vector_word(x)
 
         elif level == support.CHAR_LEVEL:
             vector = self.phrase_manager.text_to_vector_char(x)
+
+        else:
+            vector = x
 
         return self.model.predict(vector)
 

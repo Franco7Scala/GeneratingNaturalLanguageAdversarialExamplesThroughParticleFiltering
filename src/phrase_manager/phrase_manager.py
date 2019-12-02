@@ -94,15 +94,15 @@ class PhraseManager:
         return self.tokenizer
 
     def text_to_vector_word(self, text):
-        vector = self.get_tokenizer().texts_to_sequences([text])
-        vector = sequence.pad_sequences(vector, maxlen=self.configuration[support.WORD_MAX_LENGTH], padding='post', truncating='post')
-        return vector
+        print(type(text))
+        print(type([text]))
+        vector_sequence = self.get_tokenizer().texts_to_sequences([text])
+        result = sequence.pad_sequences(vector_sequence, maxlen=self.configuration[support.WORD_MAX_LENGTH], padding='post', truncating='post')
+        return result
 
     def text_to_vector_word_all(self, texts):
-        result = []
-        for text in texts:
-            result.append(self.text_to_vector_word(text))
-
+        vector_sequence = self.get_tokenizer().texts_to_sequences(texts)
+        result = sequence.pad_sequences(vector_sequence, maxlen=self.configuration[support.WORD_MAX_LENGTH], padding='post', truncating='post')
         return result
 
     def text_to_vector_char(self, text):

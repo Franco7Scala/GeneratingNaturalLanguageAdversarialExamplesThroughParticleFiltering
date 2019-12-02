@@ -12,7 +12,7 @@ class AdversarialExampleGenerator:
         self.name = None # must be defined in subclasses
 
     def generate_adversarial_examples(self, examples_x, examples_y, verbose = False):
-        support.colored_print("Generating Adversarial Examples with tecnique: {}...".format(self.name), "green", verbose)
+        support.colored_print("Generating Adversarial Examples with technique: {}...".format(self.name), "green", verbose)
         successful_perturbations = 0
         failed_perturbations = 0
         adversarial_examples = []
@@ -21,13 +21,15 @@ class AdversarialExampleGenerator:
         time_to_delete = 0
         start_cpu = time.clock()
         adversarial_text_path = support.get_adversarial_text_path(self.model.phrase_manager.name, self.model.name, len(examples_x))
+        adversarial_text_path_simple = adversarial_text_path[0:adversarial_text_path.rfind("/")]
         words_changed_path = support.get_changed_words_path(self.model.phrase_manager.name, self.model.name, len(examples_x))
-        if not os.path.exists(adversarial_text_path[0:adversarial_text_path.rfind("/")]):
-            os.makedirs(adversarial_text_path)
+        words_changed_path_simple = adversarial_text_path[0:words_changed_path.rfind("/")]
+        if not os.path.exists(adversarial_text_path_simple):
+            os.makedirs(adversarial_text_path_simple)
 
         file_adversarial_examples = open(adversarial_text_path, "a")
-        if not os.path.exists(words_changed_path[0:words_changed_path.rfind("/")]):
-            os.makedirs(words_changed_path)
+        if not os.path.exists(words_changed_path_simple):
+            os.makedirs(words_changed_path_simple)
 
         file_changed_words = open(words_changed_path, "a")
         for index, text in enumerate(examples_x):
@@ -35,13 +37,13 @@ class AdversarialExampleGenerator:
             NE_rate = 0
             # if model predicted correctly the example
             start_cpu_predicition = time.clock()
-            example_prediction = self.model.predict(text)
+            example_prediction = self.model.predict(text) #TODO fix questione WW
             end_cpu_predicition = time.clock()
             time_to_delete += (end_cpu_predicition - start_cpu_predicition)
             if examples_y[index] == example_prediction:
                 adversarial_text, sub_rate, NE_rate, change_tuple_list = self.make_perturbation(text, self.level)
                 start_cpu_predicition = time.clock()
-                adversarial_prediction = self.model.predict(adversarial_text)
+                adversarial_prediction = self.model.predict(adversarial_text) #TODO
                 end_cpu_predicition = time.clock()
                 time_to_delete += (end_cpu_predicition - start_cpu_predicition)
                 if adversarial_prediction != examples_y[index]:
