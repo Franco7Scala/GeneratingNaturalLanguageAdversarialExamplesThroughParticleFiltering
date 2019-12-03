@@ -67,63 +67,71 @@ def download(url, file_name):
                 f.write(chunk)
 
 
-def get_base_path():
+def get_writable_path():
     return "/home/francesco/software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_dynamic/"
 
 
+def get_read_only_path():
+    return "/home/francesco/software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_static/"
+
+
 def get_phrase_manager_configuration_path():
-    return "/home/francesco/software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_static/phrase_manager_configurations.json"
+    return get_read_only_path() + "phrase_manager_configurations.json"
+
+
+def get_generator_configuration_path(generator_name):
+    return get_read_only_path() + generator_name + ".json"
 
 
 def get_glove_paths():
     glove_remote_path = "http://datasetsresearch.altervista.org/datasets/glove.6B.100d.txt"
-    glove_local_path = get_base_path() + "glove.6B.100d.txt"
+    glove_local_path = get_writable_path() + "glove.6B.100d.txt"
     return glove_remote_path, glove_local_path
 
 
 def get_word2vec_path():
-    word2vec_txt_file = get_base_path() + "word2vec.txt"
+    word2vec_txt_file = get_writable_path() + "word2vec.txt"
     return word2vec_txt_file
 
 
 def get_imdb_paths():
     imdb_remote_path = "http://datasetsresearch.altervista.org/datasets/aclImdb.zip"
-    imdb_folder_path = get_base_path() + "aclImdb"
-    imdb_zip_path = get_base_path() + "aclImdb.zip"
-    imdb_train_folder_neg_path = get_base_path() + "aclImdb/train/neg/"
-    imdb_train_folder_pos_path = get_base_path() + "aclImdb/train/pos/"
-    imdb_test_folder_neg_path = get_base_path() + "aclImdb/test/neg/"
-    imdb_test_folder_pos_path = get_base_path() + "aclImdb/test/pos/"
+    imdb_folder_path = get_writable_path() + "aclImdb"
+    imdb_zip_path = get_writable_path() + "aclImdb.zip"
+    imdb_train_folder_neg_path = get_writable_path() + "aclImdb/train/neg/"
+    imdb_train_folder_pos_path = get_writable_path() + "aclImdb/train/pos/"
+    imdb_test_folder_neg_path = get_writable_path() + "aclImdb/test/neg/"
+    imdb_test_folder_pos_path = get_writable_path() + "aclImdb/test/pos/"
     return imdb_remote_path, imdb_folder_path, imdb_zip_path, imdb_train_folder_neg_path, imdb_train_folder_pos_path, imdb_test_folder_neg_path, imdb_test_folder_pos_path
 
 
 def get_ags_news_paths():
     ags_remote_path = "http://datasetsresearch.altervista.org/datasets/ag_news_csv.zip"
-    ags_zip_path = get_base_path() + "ag_news_csv.zip"
-    ags_classes_local_path = get_base_path() + "ag_news_csv/classes.txt"
-    ags_train_local_path = get_base_path() + "ag_news_csv/train.csv"
-    ags_test_local_path = get_base_path() + "ag_news_csv/test.csv"
+    ags_zip_path = get_writable_path() + "ag_news_csv.zip"
+    ags_classes_local_path = get_writable_path() + "ag_news_csv/classes.txt"
+    ags_train_local_path = get_writable_path() + "ag_news_csv/train.csv"
+    ags_test_local_path = get_writable_path() + "ag_news_csv/test.csv"
     return ags_remote_path, ags_zip_path, ags_classes_local_path, ags_train_local_path, ags_test_local_path
 
 
 def get_yahoo_answers_topic_paths():
     yahoo_examples_remote_path = "http://datasetsresearch.altervista.org/datasets/yahoo_10.zip"
-    yahoo_examples_zip_path = get_base_path() + "yahoo_10.zip"
-    yahoo_examples_local_path = get_base_path() + "yahoo_10"
+    yahoo_examples_zip_path = get_writable_path() + "yahoo_10.zip"
+    yahoo_examples_local_path = get_writable_path() + "yahoo_10"
     return yahoo_examples_remote_path, yahoo_examples_zip_path, yahoo_examples_local_path
 
 
 def get_log_path(dataset_name, model_name):
-    return get_base_path() + "log/{}/{}/".format(dataset_name, model_name)
+    return get_writable_path() + "log/{}/{}/".format(dataset_name, model_name)
 
 
 def get_model_path(dataset_name, model_name):
-    return get_base_path() + "model/{}/{}.h5".format(dataset_name, model_name)
+    return get_writable_path() + "model/{}/{}.h5".format(dataset_name, model_name)
 
 
 def get_adversarial_text_path(dataset_name, model_name, quantity_perturbation):
-    return get_base_path() + "adversarial_examples/{}/{}/adv_{}.txt".format(dataset_name, model_name, quantity_perturbation)
+    return get_writable_path() + "adversarial_examples/{}/{}/adv_{}.txt".format(dataset_name, model_name, quantity_perturbation)
 
 
 def get_changed_words_path(dataset_name, model_name, quantity_perturbation):
-    return get_base_path() + "adversarial_examples/{}/{}/changed_{}.txt".format(dataset_name, model_name, quantity_perturbation)
+    return get_writable_path() + "adversarial_examples/{}/{}/changed_{}.txt".format(dataset_name, model_name, quantity_perturbation)

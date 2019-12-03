@@ -4,4 +4,4 @@ from src.adversarial_examples_generator.adversarial_examples_generator import Ad
 class NoneGenerator(AdversarialExampleGenerator):
 
     def make_perturbation(self, text, level):
-        return text
+        return text, 0, 0, []

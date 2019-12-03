@@ -14,7 +14,7 @@ def get_word_vector(verbose = False):
     glove_remote_path, glove_local_path = support.get_glove_paths()
     word2vec_txt_path = support.get_word2vec_path()
     # downloading GloVe
-    if not any(file_name in word2vec_txt_path for file_name in os.listdir(support.get_base_path())):
+    if not any(file_name in word2vec_txt_path for file_name in os.listdir(support.get_writable_path())):
         support.colored_print("Downloading GloVe...", "green", verbose)
         support.download(glove_remote_path, glove_local_path)
         # building and saving word vector
@@ -32,13 +32,13 @@ def get_word_vector(verbose = False):
 def get_phrases(verbose = False):
     # downloading phrases IMDB
     imdb_remote_path, imdb_folder_path, imdb_zip_path, _, _, _, _ = support.get_imdb_paths()
-    if not any(file_name in imdb_folder_path for file_name in os.listdir(support.get_base_path())):
+    if not any(file_name in imdb_folder_path for file_name in os.listdir(support.get_writable_path())):
         support.colored_print("Downloading IMDB review dataset...", "green", verbose)
         support.download(imdb_remote_path, imdb_zip_path)
         # unzipping and saving IMDB
         support.colored_print("Unzipping IMDB review dataset...", "green", verbose)
         with zipfile.ZipFile(imdb_zip_path, 'r') as zip:
-            zip.extractall(support.get_base_path())
+            zip.extractall(support.get_writable_path())
 
         # deleting unnecessary files
         support.colored_print("Deleting unnecessary files...", "green", verbose)
@@ -53,13 +53,13 @@ def get_phrases(verbose = False):
 
     # downloading phrases AG's news
     ags_remote_path, ags_zip_path, ags_classes_local_path, ags_train_local_path, ags_test_local_path = support.get_ags_news_paths()
-    if not any(file_name in ags_zip_path for file_name in os.listdir(support.get_base_path())):
+    if not any(file_name in ags_zip_path for file_name in os.listdir(support.get_writable_path())):
         support.colored_print("Downloading AG's news dataset...", "green", verbose)
         support.download(ags_remote_path, ags_zip_path)
         # unzipping and saving AG's news
         support.colored_print("Unzipping AG's news dataset...", "green", verbose)
         with zipfile.ZipFile(ags_zip_path, 'r') as zip:
-            zip.extractall(support.get_base_path())
+            zip.extractall(support.get_writable_path())
 
         # deleting unnecessary files
         support.colored_print("Deleting unnecessary files...", "green", verbose)
@@ -74,12 +74,12 @@ def get_phrases(verbose = False):
 
     # downloading phrases Yahoo answers
     yahoo_examples_remote_path, yahoo_examples_zip_path, yahoo_examples_local_path = support.get_yahoo_answers_topic_paths()
-    if not any(file_name in yahoo_examples_local_path for file_name in os.listdir(support.get_base_path())):
+    if not any(file_name in yahoo_examples_local_path for file_name in os.listdir(support.get_writable_path())):
         support.colored_print("Downloading Yahoo answers dataset...", "green", verbose)
         support.download(yahoo_examples_remote_path, yahoo_examples_zip_path)
         # unzipping and saving Yahoo answers
         with zipfile.ZipFile(yahoo_examples_zip_path, 'r') as zip:
-            zip.extractall(support.get_base_path())
+            zip.extractall(support.get_writable_path())
 
         # deleting unnecessary files
         support.colored_print("Deleting unnecessary files...", "green", verbose)

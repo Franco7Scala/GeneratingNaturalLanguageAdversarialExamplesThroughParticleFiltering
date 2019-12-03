@@ -19,7 +19,7 @@ class PhraseManager:
     def get_phrases_test(self):
         return self.test_phrases, self.test_labels
 
-    def get_dataset(self, level):
+    def get_dataset(self, level = None):
         if level == support.WORD_LEVEL:
             return self._word_process(self.configuration[support.WORD_MAX_LENGTH])
 
@@ -94,8 +94,6 @@ class PhraseManager:
         return self.tokenizer
 
     def text_to_vector_word(self, text):
-        print(type(text))
-        print(type([text]))
         vector_sequence = self.get_tokenizer().texts_to_sequences([text])
         result = sequence.pad_sequences(vector_sequence, maxlen=self.configuration[support.WORD_MAX_LENGTH], padding='post', truncating='post')
         return result

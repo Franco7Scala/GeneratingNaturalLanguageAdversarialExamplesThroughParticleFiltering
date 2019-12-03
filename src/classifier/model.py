@@ -39,10 +39,18 @@ class Model:
 
     def evaluate(self, x, y, level):
         if level == support.WORD_LEVEL:
-            vector = self.phrase_manager.text_to_vector_word(x)
+            if isinstance(x, list):
+                vector = self.phrase_manager.text_to_vector_word_all(x)
+
+            else:
+                vector = self.phrase_manager.text_to_vector_word(x)
 
         elif level == support.CHAR_LEVEL:
-            vector = self.phrase_manager.text_to_vector_char(x)
+            if isinstance(x, list):
+                vector = self.phrase_manager.text_to_vector_char_all(x)
+
+            else:
+                vector = self.phrase_manager.text_to_vector_char(x)
 
         return self.model.evaluate(vector, y)
 
@@ -56,7 +64,7 @@ class Model:
         else:
             vector = x
 
-        return self.model.predict(vector)
+        return numpy.argmax(self.model.predict(vector))
 
     def _get_embedding_matrix(self, word_index, num_words, embedding_dimensions, verbose):
         embeddings_index = self._get_embedding_index(verbose)

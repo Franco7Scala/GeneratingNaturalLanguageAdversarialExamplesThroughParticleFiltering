@@ -1,15 +1,19 @@
 import time
 import os
+import numpy
+import json
 
+from os import path
 from src.support import support
 
 
 class AdversarialExampleGenerator:
 
     def __init__(self, model, level):
+        self.name = self.__class__.__name__
         self.model = model
         self.level = level
-        self.name = None # must be defined in subclasses
+        self.configuration = self._read_configuration()
 
     def generate_adversarial_examples(self, examples_x, examples_y, verbose = False):
         support.colored_print("Generating Adversarial Examples with technique: {}...".format(self.name), "green", verbose)
@@ -37,16 +41,17 @@ class AdversarialExampleGenerator:
             NE_rate = 0
             # if model predicted correctly the example
             start_cpu_predicition = time.clock()
-            example_prediction = self.model.predict(text) #TODO fix questione WW
+            example_prediction = self.model.predict(text, self.level)
             end_cpu_predicition = time.clock()
             time_to_delete += (end_cpu_predicition - start_cpu_predicition)
-            if examples_y[index] == example_prediction:
+            current_y = numpy.argmax(examples_y[index])
+            if current_y == example_prediction:
                 adversarial_text, sub_rate, NE_rate, change_tuple_list = self.make_perturbation(text, self.level)
                 start_cpu_predicition = time.clock()
-                adversarial_prediction = self.model.predict(adversarial_text) #TODO
+                adversarial_prediction = self.model.predict(adversarial_text, self.level)
                 end_cpu_predicition = time.clock()
                 time_to_delete += (end_cpu_predicition - start_cpu_predicition)
-                if adversarial_prediction != examples_y[index]:
+                if adversarial_prediction != current_y:
                     successful_perturbations += 1
 
                 else:
@@ -70,3 +75,8 @@ class AdversarialExampleGenerator:
 
     def make_perturbation(self, text, level):
         pass
+
+    def _read_configuration(self):
+        if path.exists(support.get_generator_configuration_path(self.name)):
+            with open(support.get_generator_configuration_path(self.name)) as json_file:
+                return json.load(json_file)
