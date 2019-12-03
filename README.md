@@ -10,7 +10,7 @@ This is a project made @ Unical University in Cosenza, Italy. Our proposal is to
 
 ## Dependencies
 * Python 3.7.1
-* Versions of all depending libraries are specified in requirements.txt. To reproduce the reported results, please make sure that the specified versions are installed.
+* Versions of all depending libraries are specified in `requirements.txt`. To reproduce the reported results, please make sure that the specified versions are installed.
 
 ## Authors
 
