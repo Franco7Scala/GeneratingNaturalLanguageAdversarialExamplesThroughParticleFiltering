@@ -14,7 +14,7 @@ class WordCNN(Model):
         self.level = support.WORD_LEVEL
         self.batch_size = phrase_manager.configuration[support.WORD_CNN_BATCH_SIZE]
         self.epochs = phrase_manager.configuration[support.WORD_CNN_EPOCHS]
-        # model"s params
+        # model's params
         filters = 250
         kernel_size = 3
         hidden_dims = 250

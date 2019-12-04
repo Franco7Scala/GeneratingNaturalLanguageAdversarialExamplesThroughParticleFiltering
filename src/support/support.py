@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import sys
 import requests
+import os
+
+from os import path
 
 
 WORD_CNN_BATCH_SIZE = "batch_size_wc"
@@ -50,7 +53,13 @@ def colored_print(text, color = "", verbose = True, loggable = True):
         text_to_print = code_color + str(text) + '\033[0m'
         print(text_to_print)
         if loggable:
-            pass
+            path_main_log = get_log_path("General", "") + "log.txt" #TODO put dynamic folder name
+            folder_path = path[0:path_main_log.rfind("/")]
+            if not path.exists(folder_path):
+                os.makedirs(folder_path)
+
+            file = open(path_main_log, "a+")
+            file.write(text_to_print)
 
 
 def print_progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):

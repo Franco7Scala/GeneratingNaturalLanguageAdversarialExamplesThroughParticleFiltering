@@ -63,7 +63,6 @@ class Model:
 
         elif level == support.CHAR_LEVEL:
             x = self.phrase_manager.text_to_vector_char(x)
-            print(x.shape)
 
         return numpy.argmax(self.model.predict(x))
 

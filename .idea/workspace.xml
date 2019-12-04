@@ -11118,14 +11118,8 @@
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/serializer.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/tokens.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources_static/phrase_manager_configurations.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources_static/phrase_manager_configurations.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classifier/bidirectional_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/bidirectional_lstm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classifier/char_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/char_cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classifier/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/lstm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classifier/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classifier/word_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/word_cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/support/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/support.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11304,7 +11298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575404138657</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="some bug fixing, prepared base for log saving">
+      <created>1575492645280</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1575492645280</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -11328,6 +11329,7 @@
     <MESSAGE value="alignement" />
     <MESSAGE value="some bug fixing" />
     <MESSAGE value="some sane bug fixing" />
-    <option name="LAST_COMMIT_MESSAGE" value="some sane bug fixing" />
+    <MESSAGE value="some bug fixing, prepared base for log saving" />
+    <option name="LAST_COMMIT_MESSAGE" value="some bug fixing, prepared base for log saving" />
   </component>
 </project>
