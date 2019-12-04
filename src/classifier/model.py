@@ -13,13 +13,14 @@ class Model:
     def __init__(self, phrase_manager):
         self.name = None    # must be defined in subclasses
         self.model = None   # must be defined in subclasses
+        self.level = None   # must be defined in subclasses
         self.phrase_manager = phrase_manager
 
     def fit(self, x_train, y_train, x_test, y_test, verbose = False):
-        if path.exists(support.get_model_path(self.phrase_manager.name, self.name)):
+        if path.exists(support.get_model_path(self.phrase_manager.name, self.level, self.name)):
             support.colored_print("Loading model...", "green", verbose)
             support.colored_print("Model:\nname: {};\nbatch_size: {};\nepochs: {};\ndataset: {}.".format(self.name, self.batch_size, self.epochs, self.phrase_manager.name), "blue", verbose)
-            self.model = load_model(support.get_model_path(self.phrase_manager.name, self.name))
+            self.model = load_model(support.get_model_path(self.phrase_manager.name, self.level, self.name))
 
         else:
             x_train, y_train = shuffle(x_train, y_train, random_state=0)
@@ -35,36 +36,36 @@ class Model:
             support.colored_print("Training completed...", "green", verbose)
             support.colored_print("Results:\nloss: {}; accuracy: {}.".format(scores[0], scores[1]), "blue", verbose)
             support.colored_print("Saving model...", "green", verbose)
-            self._save_model(support.get_model_path(self.phrase_manager.name, self.name))
+            self._save_model(support.get_model_path(self.phrase_manager.name, self.level, self.name))
 
     def evaluate(self, x, y, level):
         if level == support.WORD_LEVEL:
             if isinstance(x, list):
-                vector = self.phrase_manager.text_to_vector_word_all(x)
+                x = self.phrase_manager.text_to_vector_word_all(x)
+                y = numpy.array(y)
 
             else:
-                vector = self.phrase_manager.text_to_vector_word(x)
+                x = self.phrase_manager.text_to_vector_word(x)
 
         elif level == support.CHAR_LEVEL:
             if isinstance(x, list):
-                vector = self.phrase_manager.text_to_vector_char_all(x)
+                x = self.phrase_manager.text_to_vector_char_all(x)
+                y = numpy.array(y)
 
             else:
-                vector = self.phrase_manager.text_to_vector_char(x)
+                x = self.phrase_manager.text_to_vector_char(x)
 
-        return self.model.evaluate(vector, y)
+        return self.model.evaluate(x, y)
 
     def predict(self, x, level = None):
         if level == support.WORD_LEVEL:
-            vector = self.phrase_manager.text_to_vector_word(x)
+            x = self.phrase_manager.text_to_vector_word(x)
 
         elif level == support.CHAR_LEVEL:
-            vector = self.phrase_manager.text_to_vector_char(x)
+            x = self.phrase_manager.text_to_vector_char(x)
+            print(x.shape)
 
-        else:
-            vector = x
-
-        return numpy.argmax(self.model.predict(vector))
+        return numpy.argmax(self.model.predict(x))
 
     def _get_embedding_matrix(self, word_index, num_words, embedding_dimensions, verbose):
         embeddings_index = self._get_embedding_index(verbose)

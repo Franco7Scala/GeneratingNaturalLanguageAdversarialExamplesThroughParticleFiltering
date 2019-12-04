@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="">
+    <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="some sane bug fixing">
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Keras-2.2.4.dist-info/INSTALLER" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Keras-2.2.4.dist-info/METADATA" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Keras-2.2.4.dist-info/RECORD" afterDir="false" />
@@ -11118,13 +11118,14 @@
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/serializer.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/tokens.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/adversarial_examples_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/adversarial_examples_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/none_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/none_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources_static/phrase_manager_configurations.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources_static/phrase_manager_configurations.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/bidirectional_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/bidirectional_lstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/char_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/char_cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/lstm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classifier/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/evaluation/evaluator_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/evaluation/evaluator_results.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classifier/word_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/word_cnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/phrase_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/support/resources_preparer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/resources_preparer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/support/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/support.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11296,7 +11297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575309044460</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="some sane bug fixing">
+      <created>1575404138657</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1575404138657</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

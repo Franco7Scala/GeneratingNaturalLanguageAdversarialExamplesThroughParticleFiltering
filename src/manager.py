@@ -1,6 +1,7 @@
 from src.classifier.bidirectional_lstm import BidirectionalLstm
 from src.classifier.lstm import Lstm
 from src.classifier.word_cnn import WordCNN
+from src.classifier.char_cnn import CharCNN
 from src.support import resources_preparer
 from src.evaluation import evaluator_results
 from src.support import support
@@ -33,7 +34,7 @@ def execute_elaboration(class_generator, quantity_examples_to_generate, verbose)
     model_wBLstm_yahoo = BidirectionalLstm(yahoo_answers_phrase_manager, verbose)
     model_wLstm_imdb = Lstm(imdb_phrase_manager, verbose)
     model_wLstm_ags = Lstm(ags_news_phrase_manager, verbose)
-    model_cLstm_ags = Lstm(ags_news_phrase_manager, verbose)
+    model_cLstm_ags = CharCNN(ags_news_phrase_manager, verbose)
 
     support.colored_print("Training models...", "light_green", verbose)
     model_wc_imdb.fit(imdb_train_wl_x, imdb_train_wl_y, imdb_test_wl_x, imdb_test_wl_y, verbose)

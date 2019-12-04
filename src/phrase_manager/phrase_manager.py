@@ -107,14 +107,14 @@ class PhraseManager:
         embedding_dictionary = self.get_embedding_dictionary()
         max_length = self.configuration[support.CHAR_MAX_LENGTH]
         min_length = min(max_length, len(text))
-        doc_vec = numpy.zeros(max_length, dtype='int64')
+        text_vector = numpy.zeros(max_length, dtype='int64')
         for j in range(min_length):
             if text[j] in embedding_dictionary:
-                doc_vec[j] = embedding_dictionary[text[j]]
+                text_vector[j] = embedding_dictionary[text[j]]
             else:
-                doc_vec[j] = embedding_dictionary['UNK']
+                text_vector[j] = embedding_dictionary['UNK']
 
-        return doc_vec.reshape(1, self.configuration[support.CHAR_MAX_LENGTH])
+        return text_vector.reshape(1, self.configuration[support.CHAR_MAX_LENGTH])
 
     def text_to_vector_char_all(self, texts):
         result = []

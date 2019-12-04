@@ -27,7 +27,7 @@ WORD_LEVEL = "word"
 CHAR_LEVEL = "char"
 
 
-def colored_print(text, color = "", verbose = True):
+def colored_print(text, color = "", verbose = True, loggable = True):
     if verbose:
         if color == "yellow":
             code_color = '\033[93m'
@@ -47,7 +47,10 @@ def colored_print(text, color = "", verbose = True):
         elif color == "pink":
             code_color = '\033[95m'
 
-        print(code_color + str(text) + '\033[0m')
+        text_to_print = code_color + str(text) + '\033[0m'
+        print(text_to_print)
+        if loggable:
+            pass
 
 
 def print_progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
@@ -122,11 +125,11 @@ def get_yahoo_answers_topic_paths():
 
 
 def get_log_path(dataset_name, model_name):
-    return get_writable_path() + "log/{}/{}/".format(dataset_name, model_name)
+    return get_writable_path() + "logs/{}/{}/".format(dataset_name, model_name)
 
 
-def get_model_path(dataset_name, model_name):
-    return get_writable_path() + "model/{}/{}.h5".format(dataset_name, model_name)
+def get_model_path(dataset_name, level_name, model_name):
+    return get_writable_path() + "models/{}/{} - {} level.h5".format(dataset_name, model_name, level_name)
 
 
 def get_adversarial_text_path(dataset_name, model_name, quantity_perturbation):

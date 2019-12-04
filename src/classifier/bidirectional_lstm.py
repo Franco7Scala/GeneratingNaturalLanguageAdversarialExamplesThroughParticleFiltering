@@ -1,5 +1,5 @@
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Activation
+from keras.layers import Dense, Dropout
 from keras.layers import Embedding, LSTM, Bidirectional
 from src.classifier.model import Model
 from src.support import support
@@ -10,6 +10,7 @@ class BidirectionalLstm(Model):
     def __init__(self, phrase_manager, verbose = False):
         super().__init__(phrase_manager)
         self.name = "Bidirectional LSTM"
+        self.level = support.WORD_LEVEL
         self.batch_size = phrase_manager.configuration[support.BLSTM_BATCH_SIZE]
         self.epochs = phrase_manager.configuration[support.BLSTM_EPOCHS]
         # model"s params

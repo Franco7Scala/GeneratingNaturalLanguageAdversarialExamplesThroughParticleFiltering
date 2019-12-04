@@ -30,7 +30,7 @@
       "embedding_dimension_lstm": 100,
       "embedding_dimension_blstm": 128,
       "word_max_length": 150,
-      "char_max_length": 1024,
+      "char_max_length": 1014,
       "quantity_classes": 4,
       "loss": "categorical_crossentropy",
       "activation_last_layer": "softmax",
