@@ -81,7 +81,9 @@ def execute_elaboration(class_generator, quantity_examples_to_generate, verbose)
     evaluator_results.evaluate(ags_test_x, adversarial_examples_ags_cc, ags_test_y, model_cLstm_ags, support.CHAR_LEVEL, verbose)
 
     adversarial_examples_yahoo_wc = generator_yahoo_wc.generate_adversarial_examples(yahoo_test_x, yahoo_test_y, verbose)
-    evaluator_results.evaluate(yahoo_test_x, adversarial_examples_yahoo_wc, yahoo_test_y, generator_yahoo_wc, support.WORD_LEVEL, verbose)
+    evaluator_results.evaluate(yahoo_test_x, adversarial_examples_yahoo_wc, yahoo_test_y, model_wc_yahoo, support.WORD_LEVEL, verbose)
 
     adversarial_examples_yahoo_wBLstm = generator_yahoo_wBLstm.generate_adversarial_examples(yahoo_test_x, yahoo_test_y, verbose)
-    evaluator_results.evaluate(yahoo_test_x, adversarial_examples_yahoo_wBLstm, yahoo_test_y, generator_yahoo_wBLstm, support.WORD_LEVEL, verbose)
+    evaluator_results.evaluate(yahoo_test_x, adversarial_examples_yahoo_wBLstm, yahoo_test_y, model_wBLstm_yahoo, support.WORD_LEVEL, verbose)
+
+    support.colored_print("Everything completed!", "pink", verbose)

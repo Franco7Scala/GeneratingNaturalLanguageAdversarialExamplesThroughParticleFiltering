@@ -104,26 +104,30 @@ class PhraseManager:
         return result
 
     def text_to_vector_char(self, text):
-        embedding_dictionary = self.get_embedding_dictionary()
+        embedding_dictionary = self._get_embedding_dictionary()
         max_length = self.configuration[support.CHAR_MAX_LENGTH]
         min_length = min(max_length, len(text))
-        text_vector = numpy.zeros(max_length, dtype='int64')
+        text_vector = numpy.zeros(max_length, dtype="int64")
         for j in range(min_length):
             if text[j] in embedding_dictionary:
                 text_vector[j] = embedding_dictionary[text[j]]
             else:
-                text_vector[j] = embedding_dictionary['UNK']
+                text_vector[j] = embedding_dictionary["UNK"]
 
-        return text_vector.reshape(1, self.configuration[support.CHAR_MAX_LENGTH])
+        return text_vector
 
     def text_to_vector_char_all(self, texts):
+        embedding_w, embedding_dic = self._onehot_dic_build()
         result = []
-        for text in texts:
-            result.append(self.text_to_vector_char(text))
+        for i in range(len(texts)):
+            doc_vec = self.text_to_vector_char(texts[i].lower())
+            result.append(doc_vec)
 
+        result = numpy.asarray(result, dtype="int64")
+        del embedding_w, embedding_dic
         return result
 
-    def get_embedding_dictionary(self):
+    def _get_embedding_dictionary(self):
         return {'UNK': 0, 'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10,
                 'k': 11, 'l': 12,
                 'm': 13, 'n': 14, 'o': 15, 'p': 16, 'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22,

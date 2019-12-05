@@ -54,7 +54,6 @@ class Model:
             else:
                 x = self.phrase_manager.text_to_vector_char(x)
 
-        y = numpy.array(y)
         return self.model.evaluate(x, y)
 
     def predict(self, x, level = None):
@@ -62,7 +61,7 @@ class Model:
             x = self.phrase_manager.text_to_vector_word(x)
 
         elif level == support.CHAR_LEVEL:
-            x = self.phrase_manager.text_to_vector_char(x)
+            x = self.phrase_manager.text_to_vector_char(x).reshape(1, self.phrase_manager.configuration[support.CHAR_MAX_LENGTH])
 
         return numpy.argmax(self.model.predict(x))
 

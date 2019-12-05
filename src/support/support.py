@@ -55,7 +55,7 @@ def colored_print(text, color = "", verbose = True, loggable = True):
 
         print(code_color + str(text) + "\033[0m")
         if loggable:
-            path_main_log = get_log_path("General", str(_time)) + "log.txt"
+            path_main_log = get_log_path("General") + "log_" + str(_time) + ".txt"
             folder_path = path_main_log[0:path_main_log.rfind("/")]
             if not path.exists(folder_path):
                 os.makedirs(folder_path)
@@ -141,8 +141,12 @@ def get_yahoo_answers_topic_paths():
     return yahoo_examples_remote_path, yahoo_examples_zip_path, yahoo_examples_local_path
 
 
-def get_log_path(dataset_name, model_name):
-    return get_writable_path() + "logs/{}/{}/".format(dataset_name, model_name)
+def get_log_path(dataset_name, model_name = None):
+    if model_name is None:
+        return get_writable_path() + "logs/{}/".format(dataset_name)
+
+    else:
+        return get_writable_path() + "logs/{}/{}/".format(dataset_name, model_name)
 
 
 def get_model_path(dataset_name, model_name):
