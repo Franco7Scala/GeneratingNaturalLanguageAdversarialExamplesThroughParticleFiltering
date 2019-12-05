@@ -2,6 +2,7 @@
 import sys
 import requests
 import os
+import time
 
 from os import path
 
@@ -29,37 +30,44 @@ QUANTITY_WORDS = "quantity_words"
 WORD_LEVEL = "word"
 CHAR_LEVEL = "char"
 
+_time = 0
+
 
 def colored_print(text, color = "", verbose = True, loggable = True):
     if verbose:
         if color == "yellow":
-            code_color = '\033[93m'
+            code_color = "\033[93m"
 
         elif color == "blue":
-            code_color = '\033[94m'
+            code_color = "\033[94m"
 
         elif color == "green":
-            code_color = '\033[32m'
+            code_color = "\033[32m"
 
         elif color == "light_green":
-            code_color = '\033[92m'
+            code_color = "\033[92m"
 
         elif color == "red":
-            code_color = '\033[91m'
+            code_color = "\033[91m"
 
         elif color == "pink":
-            code_color = '\033[95m'
+            code_color = "\033[95m"
 
-        text_to_print = code_color + str(text) + '\033[0m'
-        print(text_to_print)
+        print(code_color + str(text) + "\033[0m")
         if loggable:
-            path_main_log = get_log_path("General", "") + "log.txt" #TODO put dynamic folder name
-            folder_path = path[0:path_main_log.rfind("/")]
+            path_main_log = get_log_path("General", str(_time)) + "log.txt"
+            folder_path = path_main_log[0:path_main_log.rfind("/")]
             if not path.exists(folder_path):
                 os.makedirs(folder_path)
 
             file = open(path_main_log, "a+")
-            file.write(text_to_print)
+            file.write(text + "\n")
+            file.close()
+
+
+def set_time():
+    global _time
+    _time = int(round(time.time() * 1000))
 
 
 def print_progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
@@ -137,8 +145,8 @@ def get_log_path(dataset_name, model_name):
     return get_writable_path() + "logs/{}/{}/".format(dataset_name, model_name)
 
 
-def get_model_path(dataset_name, level_name, model_name):
-    return get_writable_path() + "models/{}/{} - {} level.h5".format(dataset_name, model_name, level_name)
+def get_model_path(dataset_name, model_name):
+    return get_writable_path() + "models/{}/{}.h5".format(dataset_name, model_name)
 
 
 def get_adversarial_text_path(dataset_name, model_name, quantity_perturbation):

@@ -11,7 +11,6 @@ class WordCNN(Model):
     def __init__(self, phrase_manager, verbose = False):
         super().__init__(phrase_manager)
         self.name = "Word CNN"
-        self.level = support.WORD_LEVEL
         self.batch_size = phrase_manager.configuration[support.WORD_CNN_BATCH_SIZE]
         self.epochs = phrase_manager.configuration[support.WORD_CNN_EPOCHS]
         # model's params
