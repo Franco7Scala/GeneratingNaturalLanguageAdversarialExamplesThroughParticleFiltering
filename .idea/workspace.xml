@@ -11118,8 +11118,8 @@
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/serializer.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/tokens.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phrase_manager/imdb_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/imdb_phrase_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phrase_manager/yahoo_answers_phrase_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/phrase_manager/yahoo_answers_phrase_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources_static/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources_static/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11332,7 +11332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575577228961</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="some debugging">
+      <created>1575641893445</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1575641893445</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -11360,17 +11367,7 @@
     <MESSAGE value="added code for log saving" />
     <MESSAGE value="completed log saving, and some cleaning" />
     <MESSAGE value="code debugged :-D, pending latest review" />
-    <option name="LAST_COMMIT_MESSAGE" value="code debugged :-D, pending latest review" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/phrase_manager/yahoo_answers_phrase_manager.py</url>
-          <line>48</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="some debugging" />
+    <option name="LAST_COMMIT_MESSAGE" value="some debugging" />
   </component>
 </project>
