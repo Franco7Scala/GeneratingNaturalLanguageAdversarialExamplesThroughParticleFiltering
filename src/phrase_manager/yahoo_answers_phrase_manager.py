@@ -1,5 +1,6 @@
 import os
 import numpy
+import sys
 
 from sklearn.model_selection import train_test_split
 from src.phrase_manager.phrase_manager import PhraseManager, Phrase
@@ -46,11 +47,18 @@ class YahooAnswersPhraseManager(PhraseManager):
         i = 0
         for folder_name in sorted(os.listdir(path_phrases)):
             for file_name in sorted(os.listdir(path_phrases + "/" + folder_name)):
-                with open(path_phrases + "/" + folder_name + "/" + file_name, encoding="latin-1", errors='ignore') as file_phrases:
-                    phrases.append(file_phrases.read())
-                    output = numpy.zeros(quantity_classes)
-                    output[i] = 1
-                    labels.append(output)
+                path_to_open = path_phrases + "/" + folder_name + "/" + file_name
+                if sys.version_info < (3,):
+                    file_phrases = open(path_to_open)
+
+                else:
+                    file_phrases = open(path_to_open, encoding="latin-1")
+
+                phrases.append(file_phrases.read())
+                file_phrases.close()
+                output = numpy.zeros(quantity_classes)
+                output[i] = 1
+                labels.append(output)
 
             i += 1
 
