@@ -44,9 +44,9 @@ class YahooAnswersPhraseManager(PhraseManager):
         phrases = []
         labels = []
         i = 0
-        for folder_name in os.listdir(path_phrases):
-            for file_name in os.listdir(path_phrases + "/" + folder_name):
-                with open(path_phrases + "/" + folder_name + "/" + file_name, encoding="utf8", errors='ignore') as file_phrases:
+        for folder_name in sorted(os.listdir(path_phrases)):
+            for file_name in sorted(os.listdir(path_phrases + "/" + folder_name)):
+                with open(path_phrases + "/" + folder_name + "/" + file_name, encoding="latin-1", errors='ignore') as file_phrases:
                     phrases.append(file_phrases.read())
                     output = numpy.zeros(quantity_classes)
                     output[i] = 1
