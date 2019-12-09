@@ -23,7 +23,18 @@ class ParticleGenerator(AdversarialExampleGenerator):
         distances = numpy.full(len(particles), numpy.inf)
         for step in range(0, STEPS):
             particles, substitutions, distances = self._move_particles(particles, substitutions, distances)
-            
+            # Movimento: funzioni da provare
+                # Precaricarsi per ogni posizione le possibili sostituzioni (top k più vicene rispetto a glove/word2vec)
+                # Per ogni parola tirare un dado p in [0,1] scegliere:
+                # Se p < pself lasci la parola che c'è nella particella
+                # Altrimenti:
+                        # 1 alternativa - movimento casuale) scegli una parola a caso
+                        # 2 alternativa - movimento per similarità) scegli la parola da sostituire sulla base dell'inverso della distanza dalla parola originale (righiede il calcolo delle distanze all'inizio)
+            # Se non arresto
+                #Filtro partieelle attraverso campionamento generando QUANTITY_PARTICLES campioni(particelle):
+                    # 1 alternativa) campiono le particelle assegnandogli come probabilità il guadagno di classificazione inteso come lo score della classificazione della particella per la/e classi target
+                    # 2 alternativa) campiono le particelle assegnandogli come probabilità il guadagno di classificazione/distanza dalla particella originaria
+
         return self._select_particle(), self.change_tuple_list
 
     def _move_particles(self, texts, substitutions, distances):

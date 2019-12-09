@@ -5,7 +5,7 @@ import os
 from os import path
 from src.support import support
 from sklearn.utils import shuffle
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 
 
 class Model:
@@ -82,7 +82,7 @@ class Model:
     def _get_embedding_index(self, verbose):
         _, file_path = support.get_glove_paths()
         embeddings_index = {}
-        file = open(file_path)
+        file = open(file_path, encoding="utf8")
         for line in file:
             values = line.split()
             word = values[0]
