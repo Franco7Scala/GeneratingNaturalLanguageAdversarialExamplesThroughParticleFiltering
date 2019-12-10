@@ -9,6 +9,8 @@ from src.support import support
 
 def execute_elaboration(class_generator, quantity_examples_to_generate, verbose):
     support.set_time()
+    support.colored_print("Installing dependencies...", "light_green", verbose)
+    support.install_dependencies()
     support.colored_print("Loading resources...", "light_green", verbose)
     imdb_phrase_manager, ags_news_phrase_manager, yahoo_answers_phrase_manager = resources_preparer.get_phrases(verbose)
     imdb_train_wl_x, imdb_train_wl_y, imdb_test_wl_x, imdb_test_wl_y = imdb_phrase_manager.get_dataset(support.WORD_LEVEL)

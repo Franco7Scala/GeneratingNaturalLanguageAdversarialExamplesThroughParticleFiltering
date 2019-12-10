@@ -135,7 +135,7 @@ print(type(met(A)))
 
 
 """
-
+"""
 class a():
     def __init__(self):
         print("an object from class a is created")
@@ -145,15 +145,121 @@ def hello(the_argument):
 
 hello(a)
 
+"""
+
+
+"""
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+
+
+text = "The rain in Spain falls mainly on the plain."
+doc = nlp(text)
+
+for token in doc:
+    print(token.text, token.lemma_, token.pos_, token.is_stop)
+
+
+
+def get_related(word):
+  filtered_words = [w for w in word.vocab if w.is_lower == word.is_lower and w.prob >= -15]
+  similarity = sorted(filtered_words, key=lambda w: word.similarity(w), reverse=True)
+  return similarity[:10]
+
+
+print(nlp.vocab["dog"].cluster)
+
+print([w.lower for w in get_related(nlp.vocab['dog'])])
 
 
 
 
+"""
+"""
+import numpy as np
+import pandas as pd
+import spacy
+from tqdm import tqdm
+import hdbscan
+
+nlp = spacy.load('en_core_web_lg')
+
+
+strings = []
+vectors = []
+for key, vector in tqdm(nlp.vocab.vectors.items(), total=len(nlp.vocab.vectors.keys())):
+  try:
+    strings.append(nlp.vocab.strings[key])
+    vectors.append(vector)
+  except:
+    pass
+
+vectors = np.vstack(vectors)
+
+
+clusterer = hdbscan.HDBSCAN(min_cluster_size=1000)
+clusterer.fit(vectors)
+labels = clusterer.labels_
+
+
+# main function
+def closest(word, count=10):
+  word = nlp(word)
+  main = word.vector
+
+  cluster = clusterer.fit(main).labels_
+  tmp_vectors = vectors[np.where(labels == cluster)[0]]
+  tmp_strings = np.array(strings)[np.where(labels == cluster)[0]]
+
+  diff = tmp_vectors - main
+  diff = diff ** 2
+  diff = np.sqrt(diff.sum(axis=1), dtype=np.float64)
+
+  df = pd.DataFrame(tmp_strings, columns=['keyword'])
+  df['diff'] = diff
+  df = df.sort_values('diff', ascending=True).head(count)
+  df['keyword'] = df['keyword'].str.lower()
+  df = df.drop_duplicates(subset='keyword', keep='first')
+  return df
+
+
+closest("Dogs", count=10)
+"""
+"""
+import spacy
 
 
 
+def most_similar(word):
+  by_similarity = sorted(word.vocab, key=lambda w: word.similarity(w), reverse=True)
+  return [w.orth_ for w in by_similarity[:10]]
 
 
+nlp = spacy.load("en_vectors_web_lg")
+most_similar(nlp.vocab[u'dog'])
+
+"""
+"""
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
+
+import spacy
+nlp = spacy.load('en_vectors_web_lg', parser=False)
+def get_related(word):
+  filtered_words = [w for w in word.vocab if w.is_lower == word.is_lower and w.prob >= -15]
+  similarity = sorted(filtered_words, key=lambda w: word.similarity(w), reverse=True)
+  return similarity[:10]
+
+print([w.text for w in get_related(nlp.vocab[u'plane'])])
+"""
+
+import spacy
+nlp = spacy.load('en_vectors_web_lg', parser=False)
+
+a = nlp("at the bus stop")
+for i in a:
+    print(i.is_stop)
 
 
 

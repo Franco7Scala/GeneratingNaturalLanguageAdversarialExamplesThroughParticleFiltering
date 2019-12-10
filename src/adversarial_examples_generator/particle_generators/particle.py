@@ -13,26 +13,35 @@ class Particle:
         self.distance = 0
         self.substitutions = []
         # loading k nearest words inside the phrase
-        self.nearest_words = self._find_nearest_k_words()
+        self._find_nearest_k_words()
 
     def permutate_phrase(self):
-        new_phrase = [w.text + " " for w in self.words]
+        print("permutating")
+        new_phrase = [w.text for w in self.words]
         changed = False
-        for i, current_word in self.words:
-            selected = self._get_index_word_to_change(current_word)
-            # changing word in the phrase
-            selected_word = self.nearest_words[current_word][selected]
-            if not current_word == selected_word[0]:
-                self.nearest_words[current_word][selected] = [current_word, selected_word[1]]
-                new_phrase[i] = selected_word[0]
-                changed = True
+        for i, current_word in enumerate(self.words):
+            if self._is_admissible_word(current_word):
+                print(current_word)
+                print(type(current_word))
+                print([o for o in self.nearest_words.keys()])
+
+
+
+                selected = self._get_index_word_to_change(current_word)
+                print("ooooooK")
+                # changing word in the phrase
+                selected_word = self.nearest_words[current_word][selected]
+                if not current_word == selected_word[0]:
+                    self.nearest_words[current_word][selected] = [current_word, selected_word[1]]
+                    new_phrase[i] = selected_word[0]
+                    changed = True
 
         if changed:
-            self.words = self.nlp(new_phrase)
-            self.phrase = new_phrase
+            self.phrase = "".join(new_phrase)
+            self.words = self.nlp(self.phrase)
             self.distance = 0
             self.substitutions = []
-            self.nearest_words = self._find_nearest_k_words()
+            self._find_nearest_k_words()
 
     def _get_index_word_to_change(self, current_word):
         pass
@@ -48,18 +57,35 @@ class Particle:
         return substitution_count/len(self.words), 0, changed_words
 
     def _find_nearest_k_words(self):
-        nearest_words = {}
+        print("FINDING")
+        self.nearest_words = {}
         for word in self.words:
-            if word not in nearest_words.keys():
+            if self._is_admissible_word(word) and word not in self.nearest_words.keys():
+                print("adding: " + word.text)
                 similar_words = self._most_similar_words(word)
+                print(word.text)
+                print(len(similar_words))
                 weighted_similar_words = {}
                 for similar_word in similar_words:
                     weighted_similar_words[similar_word] = word.similarity(similar_word)
 
                 weighted_similar_words[word] = self.p_self
-                nearest_words[word] = weighted_similar_words
-
-        return nearest_words
+                self.nearest_words[word] = weighted_similar_words
 
     def _most_similar_words(self, word):
-        return self.nlp.vocab.vectors.most_similar(self.nlp(word).vector)[:self.k]
+        filtered_words = [w for w in word.vocab if w.is_lower == word.is_lower and w.prob >= -15]
+        similarity = sorted(filtered_words, key=lambda w: word.similarity(w), reverse=True)
+        return similarity[:self.k]
+
+    def _is_admissible_word(self, current_word):
+        return not current_word.is_digit and \
+               not current_word.is_punct and \
+               not current_word.is_left_punct and \
+               not current_word.is_right_punct and \
+               not current_word.is_space and \
+               not current_word.is_space and \
+               not current_word.is_bracket and \
+               not current_word.is_quote and \
+               not current_word.is_currency and \
+               not current_word.is_stop and \
+               "'" not in current_word.text

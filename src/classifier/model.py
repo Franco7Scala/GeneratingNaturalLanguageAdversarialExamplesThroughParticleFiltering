@@ -57,7 +57,7 @@ class Model:
         return self.model.evaluate(x, y)
 
     def predict(self, x, level = None):
-        return numpy.argmax(self.model.predict_in_vector(x, level))
+        return numpy.argmax(self.predict_in_vector(x, level))
 
     def predict_in_vector(self, x, level = None):
         if level == support.WORD_LEVEL:

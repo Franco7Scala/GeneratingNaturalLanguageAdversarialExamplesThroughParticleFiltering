@@ -18,14 +18,14 @@ class ParticleGenerator(AdversarialExampleGenerator):
 
     def __init__(self, model, level):
         super().__init__(model, level)
-        self.nlp = spacy.load('en', tagger=False, entity=False)
+        self.nlp = spacy.load("en_vectors_web_lg")
         seed(1)
         self.class_particle = None  # must be defined in subclasses
         self.classification = 0
 
     def make_perturbation(self, text, level):
         particles = numpy.full(self.configuration[QUANTITY_PARTICLES], self.class_particle(text, self.nlp, self.configuration[QUANTITY_NEAREST_WORDS], self.configuration[P_SELF]))
-        self.classification = self.model.predict(self.model, self.level)
+        self.classification = self.model.predict(text, self.level)
         for step in range(0, self.configuration[STEPS]):
             self._move_particles(particles)
             self._respawn_particles(particles)
@@ -59,6 +59,3 @@ class ParticleGenerator(AdversarialExampleGenerator):
         selected = min(self.particles, key=attrgetter("distance"))
         sub_rate, NE_rate, changed_words = selected.get_statistics()
         return selected.phrase, sub_rate, NE_rate, changed_words
-
-
-

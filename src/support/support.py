@@ -93,6 +93,10 @@ def softmax(x):
     return e_x / e_x.sum(axis=0)
 
 
+def install_dependencies():
+    os.system("python -m spacy download en_vectors_web_lg")
+
+
 def get_writable_path():
     return "/home/francesco/software/Python/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering/resources_dynamic/"
 
