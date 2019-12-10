@@ -5,7 +5,7 @@ import os
 from os import path
 from src.support import support
 from sklearn.utils import shuffle
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 
 
 class Model:
@@ -57,13 +57,16 @@ class Model:
         return self.model.evaluate(x, y)
 
     def predict(self, x, level = None):
+        return numpy.argmax(self.model.predict_in_vector(x, level))
+
+    def predict_in_vector(self, x, level = None):
         if level == support.WORD_LEVEL:
             x = self.phrase_manager.text_to_vector_word(x)
 
         elif level == support.CHAR_LEVEL:
             x = self.phrase_manager.text_to_vector_char(x).reshape(1, self.phrase_manager.configuration[support.CHAR_MAX_LENGTH])
 
-        return numpy.argmax(self.model.predict(x))
+        return self.model.predict(x)
 
     def _get_embedding_matrix(self, word_index, num_words, embedding_dimensions, verbose):
         embeddings_index = self._get_embedding_index(verbose)
@@ -82,7 +85,7 @@ class Model:
     def _get_embedding_index(self, verbose):
         _, file_path = support.get_glove_paths()
         embeddings_index = {}
-        file = open(file_path)
+        file = open(file_path, encoding="utf8")
         for line in file:
             values = line.split()
             word = values[0]

@@ -1,6 +1,6 @@
-from keras.models import Sequential
-from keras.layers import Dense, Dropout
-from keras.layers import Embedding, LSTM
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.layers import Embedding, LSTM
 from src.classifier.model import Model
 from src.support import support
 

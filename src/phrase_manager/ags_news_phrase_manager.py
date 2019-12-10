@@ -40,7 +40,7 @@ class AGsNewsPhraseManager(PhraseManager):
         for line in csv.reader(csv_file, delimiter=",", quotechar="\""):
             content = line[1] + ". " + line[2]
             phrases.append(content)
-            output = numpy.zeros(quantity_classes)
+            output = numpy.zeros(quantity_classes, dtype="float32")
             output[(int(line[0]) - 1)] = 1
             labels.append(output)
 

@@ -3,6 +3,7 @@ import sys
 import requests
 import os
 import time
+import numpy
 
 from os import path
 
@@ -85,6 +86,11 @@ def download(url, file_name):
         for chunk in get_response.iter_content(chunk_size=1024):
             if chunk:
                 f.write(chunk)
+
+
+def softmax(x):
+    e_x = numpy.exp(x - numpy.max(x))
+    return e_x / e_x.sum(axis=0)
 
 
 def get_writable_path():

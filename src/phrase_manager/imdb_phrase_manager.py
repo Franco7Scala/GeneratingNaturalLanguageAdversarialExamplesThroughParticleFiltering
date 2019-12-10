@@ -1,4 +1,5 @@
 import os
+import re
 
 from src.phrase_manager.phrase_manager import PhraseManager, Phrase
 from src.support import support
@@ -26,10 +27,15 @@ class IMDBPhraseManager(PhraseManager):
         labels = []
         for i in range(0, len(path_phrases)):
             for file in os.listdir(path_phrases[i]):
-                phrases.append(open(os.fsdecode(path_phrases[i] + file), "r").read())
+                phrases.append(self._rm_tags(" ".join(open(os.fsdecode(path_phrases[i] + file), "r", encoding="utf-8").readlines())))
                 if i == 0:
                     labels.append([1, 0])
+
                 else:
                     labels.append([0, 1])
 
         return phrases, labels
+
+    def _rm_tags(self, text):
+        re_tag = re.compile(r"<[^>]+>")
+        return re_tag.sub('', text)
