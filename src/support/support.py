@@ -106,7 +106,7 @@ def get_phrase_manager_configuration_path():
 
 
 def get_generator_configuration_path(generator_name):
-    return get_read_only_path() + generator_name + ".json"
+    return get_read_only_path() + "generator_configurations/" +  generator_name + ".json"
 
 
 def get_glove_paths():

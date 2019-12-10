@@ -1,6 +1,3 @@
-from random import random
-from operator import itemgetter
-from src.support import support
 
 
 class Particle:
