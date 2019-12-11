@@ -14,4 +14,4 @@ class ParticleGeneratorRandom(ParticleGenerator):
 class ParticleRandom(Particle):
 
     def _get_index_word_to_change(self, current_word):
-        return random.randint(0, len(self.nearest_words[current_word]))
+        return random.choice(list(self.nearest_words[current_word]))

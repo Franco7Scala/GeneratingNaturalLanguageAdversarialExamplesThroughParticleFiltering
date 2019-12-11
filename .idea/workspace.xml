@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="added conf files for particle generators">
-      <change afterPath="$PROJECT_DIR$/src/test/test_small.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Cython-0.29.14.dist-info/INSTALLER" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Cython-0.29.14.dist-info/METADATA" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Cython-0.29.14.dist-info/RECORD" afterDir="false" />
@@ -12965,11 +12964,7 @@
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/tokens.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classifier/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/classifier/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/support/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/support.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator_random.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator_random.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13261,7 +13256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575973573293</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="some debugging">
+      <created>1575999604074</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1575999604074</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -13289,9 +13291,9 @@
     <MESSAGE value="added code for log saving" />
     <MESSAGE value="completed log saving, and some cleaning" />
     <MESSAGE value="code debugged :-D, pending latest review" />
-    <MESSAGE value="some debugging" />
     <MESSAGE value="completed particle filtering base code" />
     <MESSAGE value="added conf files for particle generators" />
-    <option name="LAST_COMMIT_MESSAGE" value="added conf files for particle generators" />
+    <MESSAGE value="some debugging" />
+    <option name="LAST_COMMIT_MESSAGE" value="some debugging" />
   </component>
 </project>

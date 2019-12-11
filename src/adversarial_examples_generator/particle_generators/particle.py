@@ -1,3 +1,4 @@
+from spacy.tokens.doc import Doc
 
 
 class Particle:
@@ -27,13 +28,20 @@ class Particle:
 
 
 
-                selected = self._get_index_word_to_change(current_word)
+
                 print("ooooooK")
+                print(type(self.nearest_words[current_word]))
+                print([o for o in self.nearest_words[current_word].keys()])
+                print([self.nearest_words[current_word][o] for o in self.nearest_words[current_word].keys()])
                 # changing word in the phrase
-                selected_word = self.nearest_words[current_word][selected]
-                if not current_word == selected_word[0]:
-                    self.nearest_words[current_word][selected] = [current_word, selected_word[1]]
-                    new_phrase[i] = selected_word[0]
+                selected_word = self._get_index_word_to_change(current_word)
+                selected_similarity = self.nearest_words[current_word][selected_word]
+
+                print(type(selected_word))
+
+                if not current_word == selected_word:
+                    self.nearest_words[current_word][selected_word] = [current_word, selected_similarity]
+                    new_phrase[i] = selected_word
                     changed = True
 
         if changed:
@@ -75,7 +83,11 @@ class Particle:
     def _most_similar_words(self, word):
         filtered_words = [w for w in word.vocab if w.is_lower == word.is_lower and w.prob >= -15]
         similarity = sorted(filtered_words, key=lambda w: word.similarity(w), reverse=True)
-        return similarity[:self.k]
+        result = []
+        for i in range(0, self.k):
+            result.append(Doc(similarity[i].vocab, words=[similarity[i].orth_])) #TODO inserire nel dizionario la similarità gia calcolata
+
+        return result
 
     def _is_admissible_word(self, current_word):
         return not current_word.is_digit and \
