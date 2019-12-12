@@ -21,27 +21,32 @@ class ParticleGenerator(AdversarialExampleGenerator):
         self.nlp = spacy.load("en_vectors_web_lg")
         seed(1)
         self.class_particle = None  # must be defined in subclasses
-        self.classification = 0
+        self.particles = []
+        self.classification_index = 0
+        self.classification_value = 0
 
     def make_perturbation(self, text, level):
-        particles = numpy.full(self.configuration[QUANTITY_PARTICLES], self.class_particle(text, self.nlp, self.configuration[QUANTITY_NEAREST_WORDS], self.configuration[P_SELF]))
-        self.classification = self.model.predict(text, self.level)
+        print("FROM: " + text)
+        self.particles = numpy.full(self.configuration[QUANTITY_PARTICLES], self.class_particle(text, self.nlp, self.configuration[QUANTITY_NEAREST_WORDS], self.configuration[P_SELF]))
+        classification = self.model.predict_in_vector(text, self.level)
+        self.classification_index = numpy.argmax(classification)
+        self.classification_value = classification[self.classification_index]
         for step in range(0, self.configuration[STEPS]):
-            self._move_particles(particles)
-            self._respawn_particles(particles)
+            #self._move_particles()
+            self._respawn_particles()
 
         return self._select_particle()
 
-    def _move_particles(self, particles):
-        for particle in particles:
+    def _move_particles(self):
+        for particle in self.particles:
             particle.permutate_phrase()
 
-    def _respawn_particles(self, particles):
+    def _respawn_particles(self):
         new_particles = []
-        for particle in particles:
-            particle.distance = self.model.predict_in_vector(particle.phrase, self.level)
-
-        particles.sort(key=lambda x: x.distance, reverse=True)
+        for particle in self.particles:
+            particle.distance = abs(self.model.predict_in_vector(particle.phrase, self.level)[self.classification_index] - self.classification_value)
+        #TODO debug here WTF
+        particles = sorted(self.particles, key=lambda x: x.distance, reverse=True)
         vector_ranges = [e.distance for e in particles]
         for i in range(0, self.configuration[QUANTITY_PARTICLES]):
             random_value = random()
@@ -53,9 +58,10 @@ class ParticleGenerator(AdversarialExampleGenerator):
                 else:
                     summed_value += current_value
 
-        particles = new_particles
+        self.particles = new_particles
 
     def _select_particle(self):
         selected = min(self.particles, key=attrgetter("distance"))
         sub_rate, NE_rate, changed_words = selected.get_statistics()
+        print("TO: " + selected)
         return selected.phrase, sub_rate, NE_rate, changed_words

@@ -1,6 +1,6 @@
 {
   "p_self": 0.2,
-  "quantity_nearest_words": 10,
-  "quantity_particles": 100,
-  "steps": 1000
+  "quantity_nearest_words": 2,
+  "quantity_particles": 3,
+  "steps": 10
 }

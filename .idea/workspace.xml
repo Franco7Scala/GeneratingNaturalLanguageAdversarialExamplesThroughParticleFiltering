@@ -12963,8 +12963,9 @@
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/serializer.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/tokens.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources_static/generator_configurations/ParticleGeneratorRandom.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources_static/generator_configurations/ParticleGeneratorRandom.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator_random.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator_random.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13263,7 +13264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575999604074</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="some bug fixing">
+      <created>1576089952344</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1576089952344</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -13285,7 +13293,6 @@
     <MESSAGE value="some bug fixing, added file requirements for dependencies" />
     <MESSAGE value="bug fixing" />
     <MESSAGE value="alignement" />
-    <MESSAGE value="some bug fixing" />
     <MESSAGE value="some sane bug fixing" />
     <MESSAGE value="some bug fixing, prepared base for log saving" />
     <MESSAGE value="added code for log saving" />
@@ -13294,6 +13301,7 @@
     <MESSAGE value="completed particle filtering base code" />
     <MESSAGE value="added conf files for particle generators" />
     <MESSAGE value="some debugging" />
-    <option name="LAST_COMMIT_MESSAGE" value="some debugging" />
+    <MESSAGE value="some bug fixing" />
+    <option name="LAST_COMMIT_MESSAGE" value="some bug fixing" />
   </component>
 </project>
