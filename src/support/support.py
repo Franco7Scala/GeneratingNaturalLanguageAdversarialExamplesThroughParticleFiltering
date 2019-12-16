@@ -89,6 +89,8 @@ def download(url, file_name):
 
 
 def softmax(x):
+    print(type(x))
+    print(x)
     e_x = numpy.exp(x - numpy.max(x))
     return e_x / e_x.sum(axis=0)
 

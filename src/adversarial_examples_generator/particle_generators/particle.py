@@ -16,29 +16,23 @@ class Particle:
         # loading k nearest words inside the phrase
         self._find_nearest_k_words()
 
+    def __eq__(self, other):
+        return self.distance == other.distance
+
+    def __lt__(self, other):
+        return self.distance < other.distance
+
+    def __gt__(self, other):
+        return not self.__lt__(other)
+
     def permutate_phrase(self):
-        #print("permutating")
         new_phrase = [w.text for w in self.words]
         changed = False
         for i, current_word in enumerate(self.words):
             if self._is_admissible_word(current_word):
-                #print(current_word)
-                #print(type(current_word))
-                #print([o for o in self.nearest_words.keys()])
-
-
-
-
-                #print("ooooooK")
-                #print(type(self.nearest_words[current_word]))
-                #print([o for o in self.nearest_words[current_word].keys()])
-                #print([self.nearest_words[current_word][o] for o in self.nearest_words[current_word].keys()])
                 # changing word in the phrase
                 selected_word = self._get_index_word_to_change(current_word)
                 selected_similarity = self.nearest_words[current_word][selected_word]
-
-                #print(type(selected_word))
-
                 if not current_word == selected_word:
                     self.nearest_words[current_word][selected_word] = [current_word, selected_similarity]
                     new_phrase[i] = selected_word.text
@@ -57,30 +51,20 @@ class Particle:
     def get_statistics(self):
         changed_words = []
         substitution_count = 0
-        for i, word in self.words:
-            if word.text == self.original_words[i]:
+        print(len(self.original_words))
+        print(len(self.words))
+        for i, word in enumerate(self.words):
+            if word.text == self.original_words[i].text:
                 changed_words.append(word.text)
                 substitution_count += 1
 
         return substitution_count/len(self.words), 0, changed_words
 
     def _find_nearest_k_words(self):
-        #print("FINDING")
         self.nearest_words = {}
         for word in self.words:
             if self._is_admissible_word(word) and word not in self.nearest_words.keys():
                 self.nearest_words[word] = self._most_similar_words(word)
-
-                # #print("adding: " + word.text)
-                # similar_words = self._most_similar_words(word)
-                # #print(word.text)
-                # #print(len(similar_words))
-                # weighted_similar_words = {}
-                # for similar_word in similar_words:
-                #     weighted_similar_words[similar_word] = word.similarity(similar_word)
-                #
-                # weighted_similar_words[word] = self.p_self
-                # self.nearest_words[word] = weighted_similar_words
 
     def _most_similar_words(self, word):
         weighted_similar_words = {}

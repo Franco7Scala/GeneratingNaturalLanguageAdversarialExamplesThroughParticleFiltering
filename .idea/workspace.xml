@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="added conf files for particle generators">
+    <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="some bug fixing">
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Cython-0.29.14.dist-info/INSTALLER" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Cython-0.29.14.dist-info/METADATA" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Cython-0.29.14.dist-info/RECORD" afterDir="false" />
@@ -12966,6 +12966,7 @@
       <change beforePath="$PROJECT_DIR$/resources_static/generator_configurations/ParticleGeneratorRandom.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources_static/generator_configurations/ParticleGeneratorRandom.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/support/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/support.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13271,7 +13272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576089952344</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="some bug fixing">
+      <created>1576190545314</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1576190545314</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -13303,5 +13311,22 @@
     <MESSAGE value="some debugging" />
     <MESSAGE value="some bug fixing" />
     <option name="LAST_COMMIT_MESSAGE" value="some bug fixing" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py</url>
+          <line>45</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="self" />
+        <watch expression="self" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
