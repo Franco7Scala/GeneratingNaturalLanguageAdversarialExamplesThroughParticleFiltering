@@ -50,7 +50,6 @@ class ParticleGenerator(AdversarialExampleGenerator):
             print(self.classification_value)
             print(particle.distance)
 
-
         self.particles.sort()
         vector_ranges = [e.distance for e in self.particles]
         for i in range(0, self.configuration[QUANTITY_PARTICLES]):

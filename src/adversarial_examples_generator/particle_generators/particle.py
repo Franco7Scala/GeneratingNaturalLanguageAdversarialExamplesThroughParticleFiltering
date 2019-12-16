@@ -25,8 +25,8 @@ class Particle:
     def __gt__(self, other):
         return not self.__lt__(other)
 
-    def permutate_phrase(self):
-        new_phrase = [w.text for w in self.words]
+    def permutate_phrase(self):                         #TODO - 2 - contrllare discorso array words potrebbe causare errori
+        new_phrase = [w.text for w in self.words]       #TODO - 3 - selezionale subsample words to reduce elaboration time
         changed = False
         for i, current_word in enumerate(self.words):
             if self._is_admissible_word(current_word):
@@ -45,9 +45,6 @@ class Particle:
             self.substitutions = []
             self._find_nearest_k_words()
 
-    def _get_index_word_to_change(self, current_word):
-        pass
-
     def get_statistics(self):
         changed_words = []
         substitution_count = 0
@@ -60,7 +57,10 @@ class Particle:
 
         return substitution_count/len(self.words), 0, changed_words
 
-    def _find_nearest_k_words(self):
+    def _get_index_word_to_change(self, current_word):
+        pass
+
+    def _find_nearest_k_words(self): #TODO - 1 - create matrix adiacence between words and similars nearest_words now will be immutable
         self.nearest_words = {}
         for word in self.words:
             if self._is_admissible_word(word) and word not in self.nearest_words.keys():
