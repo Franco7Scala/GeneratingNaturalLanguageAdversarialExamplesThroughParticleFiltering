@@ -253,16 +253,24 @@ def get_related(word):
 
 print([w.text for w in get_related(nlp.vocab[u'plane'])])
 """
-
+"""
 import spacy
 nlp = spacy.load('en_vectors_web_lg', parser=False)
 
 a = nlp("at the bus stop")
 for i in a:
     print(i.is_stop)
+"""
+import spacy
+from spacy.tokens.doc import Doc
 
 
+nlp = spacy.load('en_vectors_web_lg', parser=False)
 
+def most_similar(word):
+    queries = [(Doc(w.vocab, words=[w.orth_])[0], word.similarity(w)) for w in word.vocab if w.is_lower == word.is_lower and w.prob >= -15]
+    by_similarity = {w : s for w, s in sorted(queries, key=lambda w: w[1], reverse=True)[:10]}
+    return by_similarity
 
-
-
+#print([str(w.lower_) + " " + str(wnlp.vocab[u'dog'].similarity) for w in most_similar(])
+print(most_similar(nlp.vocab[u'dog']))

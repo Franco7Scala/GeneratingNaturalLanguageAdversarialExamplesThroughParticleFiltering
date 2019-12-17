@@ -25,16 +25,14 @@ class Particle:
     def __gt__(self, other):
         return not self.__lt__(other)
 
-    def permutate_phrase(self):                         #TODO - 2 - contrllare discorso array words potrebbe causare errori
-        new_phrase = [w.text for w in self.words]       #TODO - 3 - selezionale subsample words to reduce elaboration time
+    def permutate_phrase(self):
+        new_phrase = [w.text for w in self.words]
         changed = False
-        for i, current_word in enumerate(self.words):
+        for i, current_word in enumerate(self.words):   # TODO select subsample words to reduce elaboration time
             if self._is_admissible_word(current_word):
                 # changing word in the phrase
-                selected_word = self._get_index_word_to_change(current_word)
-                selected_similarity = self.nearest_words[current_word][selected_word]
+                selected_word = self._get_word_to_change(current_word)
                 if not current_word == selected_word:
-                    self.nearest_words[current_word][selected_word] = [current_word, selected_similarity]
                     new_phrase[i] = selected_word.text
                     changed = True
 
@@ -43,7 +41,6 @@ class Particle:
             self.words = self.nlp(self.phrase)
             self.distance = 0
             self.substitutions = []
-            self._find_nearest_k_words()
 
     def get_statistics(self):
         changed_words = []
@@ -57,30 +54,33 @@ class Particle:
 
         return substitution_count/len(self.words), 0, changed_words
 
-    def _get_index_word_to_change(self, current_word):
+    def _get_word_to_change(self, current_word):
         pass
 
-    def _find_nearest_k_words(self): #TODO - 1 - create matrix adiacence between words and similars nearest_words now will be immutable
-        self.nearest_words = {}
+    def _find_nearest_k_words(self):
+        self.similarities = {}
         for word in self.words:
-            if self._is_admissible_word(word) and word not in self.nearest_words.keys():
-                self.nearest_words[word] = self._most_similar_words(word)
+            if self._is_admissible_word(word) and not self._is_added_similarity(word):
+                similar_words = self._get_similitaries(word)
+                self._add_similarity(word, similar_words)
+                for similar_word in similar_words:
+                    if self._is_admissible_word(similar_word) and not self._is_added_similarity(similar_word):
+                        similar_to_similar_words = self._get_similitaries(similar_word)
+                        self._add_similarity(similar_word, similar_to_similar_words)
 
-    def _most_similar_words(self, word):
-        weighted_similar_words = {}
+    def _add_similarity(self, word, similar_words):
+        self.similarities[word] = similar_words
 
-        filtered_words = [w for w in word.vocab if w.is_lower == word.is_lower and w.prob >= -15]
-        similarity = sorted(filtered_words, key=lambda w: word.similarity(w), reverse=True)
+    def _is_added_similarity(self, word):
+        return word in self.similarities
 
-        for i in range(0, self.k):
+    def _find_similarities(self, word):
+        weighted_similar_words = [(Doc(w.vocab, words=[w.orth_])[0], word.similarity(w)) for w in word.vocab if w.is_lower == word.is_lower and w.prob >= -15]
+        similarities = {w: s for w, s in sorted(weighted_similar_words, key=lambda w: w[1], reverse=True)[:self.k]}
+        return similarities
 
-            #TODO to optimize recalculating distance between words
-            #print("TIPO DO OGGETTO IN DICT")
-            #print(type(similarity[i]))
-            weighted_similar_words[Doc(similarity[i].vocab, words=[similarity[i].orth_])[0]] = word.similarity(similarity[i])
-           # result.append(Doc(similarity[i].vocab, words=[similarity[i].orth_])[0]) #TODO inserire nel dizionario la similarità gia calcolata
-
-        return weighted_similar_words
+    def _get_similarities(self, word):
+        return self.similarities[word]
 
     def _is_admissible_word(self, current_word):
         return not current_word.is_digit and \
