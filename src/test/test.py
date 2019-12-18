@@ -261,6 +261,7 @@ a = nlp("at the bus stop")
 for i in a:
     print(i.is_stop)
 """
+"""
 import spacy
 from spacy.tokens.doc import Doc
 
@@ -274,3 +275,23 @@ def most_similar(word):
 
 #print([str(w.lower_) + " " + str(wnlp.vocab[u'dog'].similarity) for w in most_similar(])
 print(most_similar(nlp.vocab[u'dog']))
+"""
+
+class A:
+    def __hash__(self):
+        return 1
+
+def __hash__(self):
+    return 123123123123
+
+v = A()
+
+print(hash(v))
+
+A.__hash__ = __hash__
+
+print(hash(v))
+
+
+
+

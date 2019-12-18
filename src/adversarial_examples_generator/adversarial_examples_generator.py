@@ -9,10 +9,11 @@ from src.support import support
 
 class AdversarialExampleGenerator:
 
-    def __init__(self, model, level):
+    def __init__(self, model, level, verbose):
         self.name = self.__class__.__name__
         self.model = model
         self.level = level
+        self.verbose = verbose
         self.configuration = self._read_configuration()
 
     def generate_adversarial_examples(self, examples_x, examples_y, verbose = False):

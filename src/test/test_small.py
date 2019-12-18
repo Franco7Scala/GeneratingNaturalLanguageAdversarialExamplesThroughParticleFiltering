@@ -30,7 +30,7 @@ def execute_elaboration(class_generator, quantity_examples_to_generate, verbose)
     model_wc_imdb.fit(imdb_train_wl_x, imdb_train_wl_y, imdb_test_wl_x, imdb_test_wl_y, verbose)
 
     support.colored_print("Generating and evaluating adversarial examples...", "light_green", verbose)
-    generator_imdb_wc = class_generator(model_wc_imdb, support.WORD_LEVEL)
+    generator_imdb_wc = class_generator(model_wc_imdb, support.WORD_LEVEL, True)
 
     adversarial_examples_imdb_wc = generator_imdb_wc.generate_adversarial_examples(imdb_test_x, imdb_test_y, verbose)
     evaluator_results.evaluate(imdb_test_x, adversarial_examples_imdb_wc, imdb_test_y, model_wc_imdb, support.WORD_LEVEL, verbose)

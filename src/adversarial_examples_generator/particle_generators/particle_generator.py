@@ -6,6 +6,7 @@ from random import seed
 from operator import attrgetter
 from src.adversarial_examples_generator.adversarial_examples_generator import AdversarialExampleGenerator
 from src.support import support
+from src.support.similarities import Similarities
 
 
 P_SELF = "p_self"
@@ -16,21 +17,30 @@ STEPS = "steps"
 
 class ParticleGenerator(AdversarialExampleGenerator):
 
-    def __init__(self, model, level):
-        super().__init__(model, level)
+    def __init__(self, model, level, verbose):
+        super().__init__(model, level, verbose)
+        support.colored_print("Loading SpaCy...", "green", self.verbose, False)
         self.nlp = spacy.load("en_vectors_web_lg")
         seed(1)
         self.class_particle = None  # must be defined in subclasses
         self.particles = []
         self.classification_index = 0
         self.classification_value = 0
+        self.p_self = self.configuration[P_SELF]
+        self.k = self.configuration[QUANTITY_NEAREST_WORDS]
 
     def make_perturbation(self, text, level):
-        print("FROM: " + text)
-        self.particles = numpy.full(self.configuration[QUANTITY_PARTICLES], self.class_particle(text, self.nlp, self.configuration[QUANTITY_NEAREST_WORDS], self.configuration[P_SELF]))
+        support.colored_print("From: {}".format(text), "light_magenta", self.verbose, False)
+        # loading k nearest words inside the phrase
+        support.colored_print("Loading distances...", "light_magenta", self.verbose, False)
+        similarities = Similarities(text, self.nlp, self.k)
+        support.colored_print("Generating particles...", "light_magenta", self.verbose, False)
+        self.particles = numpy.full(self.configuration[QUANTITY_PARTICLES], self.class_particle(text, self.nlp, similarities))
+        support.colored_print("Performing preliminary calculations...", "light_magenta", self.verbose, False)
         classification = self.model.predict_in_vector(text, self.level)
         self.classification_index = numpy.argmax(classification)
         self.classification_value = classification[0][self.classification_index]
+        support.colored_print("Elaborating...", "light_magenta", self.verbose, False)
         for step in range(0, self.configuration[STEPS]):
             self._move_particles()
             self._respawn_particles()
@@ -45,10 +55,6 @@ class ParticleGenerator(AdversarialExampleGenerator):
         new_particles = []
         for particle in self.particles:
             particle.distance = abs(self.model.predict_in_vector(particle.phrase, self.level)[0][self.classification_index] - self.classification_value)
-
-            print(self.model.predict_in_vector(particle.phrase, self.level)[0][self.classification_index])
-            print(self.classification_value)
-            print(particle.distance)
 
         self.particles.sort()
         vector_ranges = [e.distance for e in self.particles]
@@ -70,5 +76,5 @@ class ParticleGenerator(AdversarialExampleGenerator):
     def _select_particle(self):
         selected = min(self.particles, key=attrgetter("distance"))
         sub_rate, NE_rate, changed_words = selected.get_statistics()
-        print("TO: " + selected.phrase)
+        support.colored_print("To: {}".format(selected.phrase), "light_magenta", self.verbose, False)
         return selected.phrase, sub_rate, NE_rate, changed_words

@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="scheduled next work">
+      <change afterPath="$PROJECT_DIR$/src/support/similarities.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/adversarial_examples_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/adversarial_examples_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator_random.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator_random.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/support/support.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/support.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/test_small.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test_small.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +60,7 @@
       <recent name="$PROJECT_DIR$/src/phrase_manager" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.test_small">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,8 +156,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.test_small" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -179,7 +184,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573039004758</updated>
-      <workItem from="1576511436096" duration="6957000" />
+      <workItem from="1576511436096" duration="32326000" />
     </task>
     <task id="LOCAL-00001" summary="some bug fixing">
       <created>1574878248811</created>
@@ -306,46 +311,58 @@
     <option name="LAST_COMMIT_MESSAGE" value="scheduled next work" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="496" y="439" width="927" height="321" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog" timestamp="1576688629272">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state x="496" y="439" width="927" height="321" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576688629272" />
     <state x="389" y="205" key="CommitChangelistDialog2" timestamp="1576518508885">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="389" y="205" key="CommitChangelistDialog2/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576518508885" />
-    <state width="1878" height="344" key="GridCell.Tab.0.bottom" timestamp="1576582457635">
+    <state width="1878" height="344" key="GridCell.Tab.0.bottom" timestamp="1576690209841">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
+    <state width="1398" height="344" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576590066956" />
     <state width="1358" height="107" key="GridCell.Tab.0.bottom/0.23.1440.796@0.23.1440.796" timestamp="1576512158378" />
-    <state width="1878" height="344" key="GridCell.Tab.0.bottom/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576582457635" />
-    <state width="1878" height="344" key="GridCell.Tab.0.center" timestamp="1576582457634">
+    <state width="1878" height="344" key="GridCell.Tab.0.bottom/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576690209841" />
+    <state width="1878" height="344" key="GridCell.Tab.0.center" timestamp="1576690209840">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
+    <state width="1398" height="344" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576590066956" />
     <state width="1358" height="107" key="GridCell.Tab.0.center/0.23.1440.796@0.23.1440.796" timestamp="1576512158377" />
-    <state width="1878" height="344" key="GridCell.Tab.0.center/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576582457634" />
-    <state width="1878" height="344" key="GridCell.Tab.0.left" timestamp="1576582457632">
+    <state width="1878" height="344" key="GridCell.Tab.0.center/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576690209840" />
+    <state width="1878" height="344" key="GridCell.Tab.0.left" timestamp="1576690209839">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
+    <state width="1398" height="344" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576590066955" />
     <state width="1358" height="107" key="GridCell.Tab.0.left/0.23.1440.796@0.23.1440.796" timestamp="1576512158376" />
-    <state width="1878" height="344" key="GridCell.Tab.0.left/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576582457632" />
-    <state width="1878" height="344" key="GridCell.Tab.0.right" timestamp="1576582457634">
+    <state width="1878" height="344" key="GridCell.Tab.0.left/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576690209839" />
+    <state width="1878" height="344" key="GridCell.Tab.0.right" timestamp="1576690209841">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
+    <state width="1398" height="344" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576590066956" />
     <state width="1358" height="107" key="GridCell.Tab.0.right/0.23.1440.796@0.23.1440.796" timestamp="1576512158377" />
-    <state width="1878" height="344" key="GridCell.Tab.0.right/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576582457634" />
-    <state width="1878" height="423" key="GridCell.Tab.1.bottom" timestamp="1576582062820">
+    <state width="1878" height="344" key="GridCell.Tab.0.right/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576690209841" />
+    <state width="1878" height="423" key="GridCell.Tab.1.bottom" timestamp="1576602415824">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="423" key="GridCell.Tab.1.bottom/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576582062820" />
-    <state width="1878" height="423" key="GridCell.Tab.1.center" timestamp="1576582062819">
+    <state width="1878" height="423" key="GridCell.Tab.1.bottom/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576602415824" />
+    <state width="1878" height="423" key="GridCell.Tab.1.bottom/219.1223.1440.796/0.0.1920.1200@0.0.1920.1200" timestamp="1576597861901" />
+    <state width="1878" height="423" key="GridCell.Tab.1.center" timestamp="1576602415823">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="423" key="GridCell.Tab.1.center/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576582062819" />
-    <state width="1878" height="423" key="GridCell.Tab.1.left" timestamp="1576582062818">
+    <state width="1878" height="423" key="GridCell.Tab.1.center/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576602415823" />
+    <state width="1878" height="423" key="GridCell.Tab.1.center/219.1223.1440.796/0.0.1920.1200@0.0.1920.1200" timestamp="1576597861899" />
+    <state width="1878" height="423" key="GridCell.Tab.1.left" timestamp="1576602415822">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="423" key="GridCell.Tab.1.left/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576582062818" />
-    <state width="1878" height="423" key="GridCell.Tab.1.right" timestamp="1576582062820">
+    <state width="1878" height="423" key="GridCell.Tab.1.left/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576602415822" />
+    <state width="1878" height="423" key="GridCell.Tab.1.left/219.1223.1440.796/0.0.1920.1200@0.0.1920.1200" timestamp="1576597861898" />
+    <state width="1878" height="423" key="GridCell.Tab.1.right" timestamp="1576602415823">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
-    <state width="1878" height="423" key="GridCell.Tab.1.right/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576582062820" />
+    <state width="1878" height="423" key="GridCell.Tab.1.right/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576602415823" />
+    <state width="1878" height="423" key="GridCell.Tab.1.right/219.1223.1440.796/0.0.1920.1200@0.0.1920.1200" timestamp="1576597861901" />
     <state x="229" y="60" key="SettingsEditor" timestamp="1576511701014">
       <screen x="0" y="23" width="1440" height="796" />
     </state>
@@ -354,13 +371,18 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="560" y="341" key="Vcs.Push.Dialog.v2/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576518497983" />
+    <state width="960" height="600" key="XDebugger.FullValuePopup" timestamp="1576601675169">
+      <screen x="0" y="0" width="1920" height="1200" />
+    </state>
+    <state width="960" height="600" key="XDebugger.FullValuePopup/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576601675169" />
+    <state width="960" height="600" key="XDebugger.FullValuePopup/219.1223.1440.796/0.0.1920.1200@0.0.1920.1200" timestamp="1576601644385" />
     <state x="610" y="161" key="ftp.server.browser" timestamp="1576512122810">
       <screen x="0" y="23" width="1440" height="796" />
     </state>
     <state x="610" y="161" key="ftp.server.browser/0.23.1440.796@0.23.1440.796" timestamp="1576512122810" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering$test_small.coverage" NAME="test_small Coverage Results" MODIFIED="1576512158360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/test" />
-    <SUITE FILE_PATH="coverage/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering$test.coverage" NAME="test Coverage Results" MODIFIED="1576582377788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/test" />
+    <SUITE FILE_PATH="coverage/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering$test_small.coverage" NAME="test_small Coverage Results" MODIFIED="1576690209828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/test" />
+    <SUITE FILE_PATH="coverage/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering$test.coverage" NAME="test Coverage Results" MODIFIED="1576595047178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/test" />
   </component>
 </project>

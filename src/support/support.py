@@ -51,6 +51,9 @@ def colored_print(text, color = "", verbose = True, loggable = True):
         elif color == "red":
             code_color = "\033[91m"
 
+        elif color == "light_magenta":
+            code_color = "\033[95m"
+
         elif color == "pink":
             code_color = "\033[95m"
 
@@ -89,8 +92,6 @@ def download(url, file_name):
 
 
 def softmax(x):
-    print(type(x))
-    print(x)
     e_x = numpy.exp(x - numpy.max(x))
     return e_x / e_x.sum(axis=0)
 
