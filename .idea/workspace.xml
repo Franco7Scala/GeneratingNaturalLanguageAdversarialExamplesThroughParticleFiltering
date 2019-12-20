@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="scheduled next work">
+    <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/adversarial_examples_generator/particle_generators/particle_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/support/similarities.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/support/similarities.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +180,8 @@
       <workItem from="1576770106679" duration="153000" />
       <workItem from="1576770282903" duration="2319000" />
       <workItem from="1576796791301" duration="2700000" />
-      <workItem from="1576861163172" duration="290000" />
+      <workItem from="1576861163172" duration="1187000" />
+      <workItem from="1576867394706" duration="1323000" />
     </task>
     <task id="LOCAL-00001" summary="some bug fixing">
       <created>1574878248811</created>
@@ -276,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576518496430</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="bug fixing">
+      <created>1576861594819</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1576861594819</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,7 +304,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="debugged loading resources module" />
     <MESSAGE value="some bug fixing, added file requirements for dependencies" />
-    <MESSAGE value="bug fixing" />
     <MESSAGE value="alignement" />
     <MESSAGE value="some bug fixing" />
     <MESSAGE value="some sane bug fixing" />
@@ -307,7 +311,8 @@
     <MESSAGE value="added code for log saving" />
     <MESSAGE value="completed log saving, and some cleaning" />
     <MESSAGE value="scheduled next work" />
-    <option name="LAST_COMMIT_MESSAGE" value="scheduled next work" />
+    <MESSAGE value="bug fixing" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixing" />
   </component>
   <component name="WindowStateProjectService">
     <state x="880" y="387" key="#Notifications" timestamp="1576770113286">
@@ -318,10 +323,11 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="496" y="439" width="927" height="321" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576688629272" />
-    <state x="389" y="205" key="CommitChangelistDialog2" timestamp="1576518508885">
-      <screen x="0" y="0" width="1920" height="1200" />
+    <state x="519" y="246" key="CommitChangelistDialog2" timestamp="1576861594602">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="389" y="205" key="CommitChangelistDialog2/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576518508885" />
+    <state x="519" y="246" key="CommitChangelistDialog2/567.1440.1440.900/0.0.2560.1440@0.0.2560.1440" timestamp="1576861594602" />
     <state width="2518" height="232" key="GridCell.Tab.0.bottom" timestamp="1576861151443">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -387,15 +393,20 @@
       <screen x="0" y="23" width="1440" height="796" />
     </state>
     <state x="229" y="60" key="SettingsEditor/0.23.1440.796@0.23.1440.796" timestamp="1576511701014" />
-    <state x="560" y="341" key="Vcs.Push.Dialog.v2" timestamp="1576518497983">
-      <screen x="0" y="0" width="1920" height="1200" />
+    <state x="747" y="409" key="Vcs.Push.Dialog.v2" timestamp="1576861596473">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="560" y="341" key="Vcs.Push.Dialog.v2/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576518497983" />
+    <state x="747" y="409" key="Vcs.Push.Dialog.v2/567.1440.1440.900/0.0.2560.1440@0.0.2560.1440" timestamp="1576861596473" />
     <state width="960" height="600" key="XDebugger.FullValuePopup" timestamp="1576601675169">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state width="960" height="600" key="XDebugger.FullValuePopup/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576601675169" />
     <state width="960" height="600" key="XDebugger.FullValuePopup/219.1223.1440.796/0.0.1920.1200@0.0.1920.1200" timestamp="1576601644385" />
+    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1576867907011">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/567.1463.1440.796/0.0.2560.1440@0.0.2560.1440" timestamp="1576867907011" />
     <state x="610" y="161" key="ftp.server.browser" timestamp="1576512122810">
       <screen x="0" y="23" width="1440" height="796" />
     </state>
