@@ -1,3 +1,4 @@
+from src.support.similarities import TokenContainer
 
 
 class Particle:
@@ -24,16 +25,17 @@ class Particle:
     def permutate_phrase(self):
         new_phrase = [w.text_with_ws for w in self.words]
         changed = False
-        for i, current_word in enumerate(self.words):
+        for i, word in enumerate(self.words):
+            current_word = TokenContainer(word)
             if self.similarities.is_permutable_word(current_word):
                 # changing word in the phrase
                 selected_word = self._get_word_to_change(current_word)
                 if selected_word is not None and not current_word == selected_word:
                     if new_phrase[i][len(new_phrase[i]) - 1] == " ":
-                        new_phrase[i] = selected_word.text_with_ws
+                        new_phrase[i] = selected_word.token.text_with_ws
 
                     else:
-                        new_phrase[i] = selected_word.text_with_ws[:len(selected_word.text_with_ws) - 1]
+                        new_phrase[i] = selected_word.token.text_with_ws[:len(selected_word.token.text_with_ws) - 1]
 
                     changed = True
 
