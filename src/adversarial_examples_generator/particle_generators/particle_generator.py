@@ -74,6 +74,9 @@ class ParticleGenerator(AdversarialExampleGenerator):
         self.particles = new_particles
 
     def _select_particle(self):
+        print("aaa")
+        print([w.phrase for w in self.particles])
+        print("bbbbbbbbbb")
         selected = min(self.particles, key=attrgetter("distance"))
         sub_rate, NE_rate, changed_words = selected.get_statistics()
         support.colored_print("To: {}".format(selected.phrase), "light_magenta", self.verbose, False)

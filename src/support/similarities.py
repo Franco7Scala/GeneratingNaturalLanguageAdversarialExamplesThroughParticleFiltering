@@ -11,7 +11,6 @@ class Similarities:
         self._find_nearest_k_similarities()
 
     def _find_nearest_k_similarities(self):
-        self.similarities = {}
         for current_word in self.nlp(self.phrase):
             if self._is_admissible_word(current_word) and not self._is_added_similarity(current_word):
                 similar_words = self._find_similarities(current_word)
@@ -21,7 +20,7 @@ class Similarities:
                         similar_to_similar_words = self._find_similarities(similar_word)
                         self._add_similarity(similar_word, similar_to_similar_words)
 
-    def is_admissible_word(self, word):
+    def is_permutable_word(self, word):
         return self._is_admissible_word(word) and self._is_added_similarity(word)
 
     def get_similarities(self, word):

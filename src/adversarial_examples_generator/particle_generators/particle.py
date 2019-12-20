@@ -25,7 +25,7 @@ class Particle:
         new_phrase = [w.text_with_ws for w in self.words]
         changed = False
         for i, current_word in enumerate(self.words):
-            if self.similarities.is_admissible_word(current_word):
+            if self.similarities.is_permutable_word(current_word):
                 # changing word in the phrase
                 selected_word = self._get_word_to_change(current_word)
                 if selected_word is not None and not current_word == selected_word:
