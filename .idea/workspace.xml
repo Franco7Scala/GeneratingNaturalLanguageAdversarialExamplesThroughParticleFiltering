@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="">
-=======
     <list default="true" id="15dfbe02-3cce-468e-b227-1701f53e602a" name="Default Changelist" comment="scheduled next work">
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Cython-0.29.14.dist-info/INSTALLER" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/Cython-0.29.14.dist-info/METADATA" afterDir="false" />
@@ -12965,8 +12962,6 @@
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/scanner.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/serializer.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/yaml/tokens.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GeneratingNaturalLanguageAdversarialExamplesThroughParticleFiltering.iml" afterDir="false" />
->>>>>>> d5516d14bea65fb50215a34f0e863bf4c757ef00
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -12983,6 +12978,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/support/support.py" root0="FORCE_HIGHLIGHTING" />
@@ -13145,8 +13141,7 @@
       <workItem from="1576770106679" duration="153000" />
       <workItem from="1576770282903" duration="2319000" />
       <workItem from="1576796791301" duration="2700000" />
-      <workItem from="1576861163172" duration="1187000" />
-      <workItem from="1576867394706" duration="1323000" />
+      <workItem from="1576861163172" duration="290000" />
     </task>
     <task id="LOCAL-00001" summary="some bug fixing">
       <created>1574878248811</created>
@@ -13239,12 +13234,12 @@
       <option name="project" value="LOCAL" />
       <updated>1576518496430</updated>
     </task>
-    <task id="LOCAL-00014" summary="bug fixing">
-      <created>1576861594819</created>
+    <task id="LOCAL-00014" summary="debugged code, first version that works (not yet perfectly! :-P)">
+      <created>1576871079462</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1576861594819</updated>
+      <updated>1576871079463</updated>
     </task>
     <option name="localTasksCounter" value="15" />
     <servers />
@@ -13269,6 +13264,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="debugged loading resources module" />
     <MESSAGE value="some bug fixing, added file requirements for dependencies" />
+    <MESSAGE value="bug fixing" />
     <MESSAGE value="alignement" />
     <MESSAGE value="some bug fixing" />
     <MESSAGE value="some sane bug fixing" />
@@ -13276,13 +13272,8 @@
     <MESSAGE value="added code for log saving" />
     <MESSAGE value="completed log saving, and some cleaning" />
     <MESSAGE value="scheduled next work" />
-<<<<<<< HEAD
-    <MESSAGE value="bug fixing" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixing" />
-=======
     <MESSAGE value="debugged code, first version that works (not yet perfectly! :-P)" />
     <option name="LAST_COMMIT_MESSAGE" value="debugged code, first version that works (not yet perfectly! :-P)" />
->>>>>>> d5516d14bea65fb50215a34f0e863bf4c757ef00
   </component>
   <component name="WindowStateProjectService">
     <state x="880" y="387" key="#Notifications" timestamp="1576770113286">
@@ -13293,24 +13284,13 @@
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="496" y="439" width="927" height="321" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576688629272" />
-<<<<<<< HEAD
-    <state x="519" y="246" key="CommitChangelistDialog2" timestamp="1576861594602">
-      <screen x="0" y="0" width="2560" height="1440" />
-=======
-    <state x="389" y="226" width="1019" height="800" key="CommitChangelistDialog2" timestamp="1576871066013">
+    <state x="389" y="226" width="1019" height="800" key="CommitChangelistDialog2" timestamp="1576871361300">
       <screen x="0" y="25" width="1920" height="1175" />
->>>>>>> d5516d14bea65fb50215a34f0e863bf4c757ef00
     </state>
-    <state x="389" y="226" width="1019" height="800" key="CommitChangelistDialog2/0.25.1920.1175@0.25.1920.1175" timestamp="1576871066013" />
+    <state x="389" y="226" width="1019" height="800" key="CommitChangelistDialog2/0.25.1920.1175@0.25.1920.1175" timestamp="1576871361300" />
     <state x="389" y="205" key="CommitChangelistDialog2/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576518508885" />
-<<<<<<< HEAD
-    <state x="519" y="246" key="CommitChangelistDialog2/567.1440.1440.900/0.0.2560.1440@0.0.2560.1440" timestamp="1576861594602" />
-    <state width="2518" height="232" key="GridCell.Tab.0.bottom" timestamp="1576861151443">
-      <screen x="0" y="0" width="2560" height="1440" />
-=======
     <state width="1897" height="245" key="GridCell.Tab.0.bottom" timestamp="1576870397825">
       <screen x="0" y="25" width="1920" height="1175" />
->>>>>>> d5516d14bea65fb50215a34f0e863bf4c757ef00
     </state>
     <state width="1398" height="232" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576796777743" />
     <state width="1398" height="232" key="GridCell.Tab.0.bottom/0.23.1440.796@0.23.1440.796" timestamp="1576800085172" />
@@ -13370,6 +13350,10 @@
     <state width="1878" height="423" key="GridCell.Tab.1.right/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576602415823" />
     <state width="1878" height="423" key="GridCell.Tab.1.right/219.1223.1440.796/0.0.1920.1200@0.0.1920.1200" timestamp="1576597861901" />
     <state width="1878" height="423" key="GridCell.Tab.1.right/567.1440.1440.900/0.0.2560.1440@0.0.2560.1440" timestamp="1576770095109" />
+    <state x="673" y="329" width="566" height="562" key="MultipleFileMergeDialog" timestamp="1576871315062">
+      <screen x="0" y="25" width="1920" height="1175" />
+    </state>
+    <state x="673" y="329" width="566" height="562" key="MultipleFileMergeDialog/0.25.1920.1175@0.25.1920.1175" timestamp="1576871315062" />
     <state x="312" y="178" key="RollbackChangesDialog" timestamp="1576796798258">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -13378,27 +13362,24 @@
       <screen x="0" y="23" width="1440" height="796" />
     </state>
     <state x="229" y="60" key="SettingsEditor/0.23.1440.796@0.23.1440.796" timestamp="1576511701014" />
-    <state x="747" y="409" key="Vcs.Push.Dialog.v2" timestamp="1576861596473">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="560" y="359" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1576871081428">
+      <screen x="0" y="25" width="1920" height="1175" />
     </state>
+    <state x="560" y="359" width="802" height="523" key="Vcs.Push.Dialog.v2/0.25.1920.1175@0.25.1920.1175" timestamp="1576871081428" />
     <state x="560" y="341" key="Vcs.Push.Dialog.v2/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576518497983" />
-    <state x="747" y="409" key="Vcs.Push.Dialog.v2/567.1440.1440.900/0.0.2560.1440@0.0.2560.1440" timestamp="1576861596473" />
     <state width="960" height="600" key="XDebugger.FullValuePopup" timestamp="1576601675169">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state width="960" height="600" key="XDebugger.FullValuePopup/219.1200.1440.900/0.0.1920.1200@0.0.1920.1200" timestamp="1576601675169" />
     <state width="960" height="600" key="XDebugger.FullValuePopup/219.1223.1440.796/0.0.1920.1200@0.0.1920.1200" timestamp="1576601644385" />
-<<<<<<< HEAD
-    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1576867907011">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="100" y="100" width="2360" height="1240" key="com.intellij.history.integration.ui.views.FileHistoryDialog/567.1463.1440.796/0.0.2560.1440@0.0.2560.1440" timestamp="1576867907011" />
-=======
     <state x="99" y="125" width="1722" height="976" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1576867781044">
       <screen x="0" y="25" width="1920" height="1175" />
     </state>
     <state x="99" y="125" width="1722" height="976" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1920.1175@0.25.1920.1175" timestamp="1576867781044" />
->>>>>>> d5516d14bea65fb50215a34f0e863bf4c757ef00
+    <state x="750" y="533" width="411" height="155" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576871303703">
+      <screen x="0" y="25" width="1920" height="1175" />
+    </state>
+    <state x="750" y="533" width="411" height="155" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1920.1175@0.25.1920.1175" timestamp="1576871303703" />
     <state x="610" y="161" key="ftp.server.browser" timestamp="1576512122810">
       <screen x="0" y="23" width="1440" height="796" />
     </state>
