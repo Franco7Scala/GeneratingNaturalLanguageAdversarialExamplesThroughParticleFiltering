@@ -17,7 +17,6 @@ class Similarities:
                 similar_words = self._find_similarities(current_word)
                 self._add_similarity(current_word, similar_words)
                 for similar_word in similar_words:
-                    #similar_word = TokenContainer(s_word)
                     if self._is_admissible_word(similar_word) and not self._is_added_similarity(similar_word):
                         similar_to_similar_words = self._find_similarities(similar_word)
                         self._add_similarity(similar_word, similar_to_similar_words)
@@ -57,7 +56,7 @@ class Similarities:
                "'" not in current_word.token.text
 
 
-class TokenContainer():
+class TokenContainer:
 
     def __init__(self, token):
         self.token = token
