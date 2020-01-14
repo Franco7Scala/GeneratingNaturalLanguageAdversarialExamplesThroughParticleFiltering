@@ -47,7 +47,7 @@ class AdversarialExampleGenerator:
             time_to_delete += (end_cpu_predicition - start_cpu_predicition)
             current_y = numpy.argmax(examples_y[index])
             if current_y == example_prediction:
-                adversarial_text, sub_rate, NE_rate, change_tuple_list = self.make_perturbation(text, self.level)
+                adversarial_text, sub_rate, NE_rate, _, change_tuple_list = self.make_perturbation(text, self.level)
                 start_cpu_predicition = time.clock()
                 adversarial_prediction = self.model.predict(adversarial_text, self.level)
                 end_cpu_predicition = time.clock()

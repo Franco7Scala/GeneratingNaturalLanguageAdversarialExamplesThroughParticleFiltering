@@ -96,6 +96,16 @@ def softmax(x):
     return e_x / e_x.sum(axis=0)
 
 
+def softmax_bounded(x, bound):
+    result = []
+    denominator = sum(numpy.exp(x))
+    for value in x:
+        proportionated_value = (numpy.exp(value)/denominator) * bound
+        result.append(proportionated_value)
+
+    return result
+
+
 def install_dependencies():
     os.system("python -m spacy download en_vectors_web_lg")
 

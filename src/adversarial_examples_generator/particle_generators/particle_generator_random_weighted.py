@@ -14,16 +14,18 @@ class ParticleGeneratorRandomWeighted(ParticleGenerator):
 
 class ParticleRandomWeighted(Particle):
 
-    def _get_word_to_change(self, current_word):
+    def _get_word_to_change(self, current_word, original_word):
         similar_words = [(key, value) for key, value in self.similarities.get_similarities(current_word).items()]
         sorted(similar_words, key=itemgetter(1), reverse=True)
-        vector_ranges = [e[1] for e in similar_words]
+        vector_ranges = [self.p_self]
+        vector_ranges.extend(support.softmax_bounded([e[1] for e in similar_words][1:], (1 - self.p_self)))
         random_value = random()
         summed_value = 0
         index = len(vector_ranges) - 1
-        for j, current_value in enumerate(support.softmax(vector_ranges)):
+        for j, current_value in enumerate(vector_ranges):
             if summed_value > random_value:
                 index = j - 1
+                break
 
             else:
                 summed_value += current_value

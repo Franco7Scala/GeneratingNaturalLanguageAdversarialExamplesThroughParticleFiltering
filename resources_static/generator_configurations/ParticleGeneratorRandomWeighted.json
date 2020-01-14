@@ -1,6 +1,9 @@
 {
-  "p_self": 0.2,
-  "quantity_nearest_words": 10,
-  "quantity_particles": 100,
-  "steps": 1000
+  "p_self": 0.50,
+  "p_original": 0.70,
+  "quantity_nearest_words": 5,
+  "quantity_particles": 50,
+  "percentage_changes": 1,
+  "steps": 1000,
+  "lambda": 0.8
 }
