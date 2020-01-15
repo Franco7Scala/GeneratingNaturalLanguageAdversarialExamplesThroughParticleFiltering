@@ -2,6 +2,7 @@ import warnings
 import os
 
 from src.adversarial_examples_generator.particle_generators.particle_generator_random import ParticleGeneratorRandom
+from src.adversarial_examples_generator.particle_generators.particle_generator_random_weighted import ParticleGeneratorRandomWeighted
 from src.classifier.word_cnn import WordCNN
 from src.support import resources_preparer
 from src.evaluation import evaluator_results
@@ -39,4 +40,4 @@ def execute_elaboration(class_generator, quantity_examples_to_generate, verbose)
 
 
 if __name__ == "__main__":
-    execute_elaboration(ParticleGeneratorRandom, 1000, True)
+    execute_elaboration(ParticleGeneratorRandomWeighted, 1000, True)

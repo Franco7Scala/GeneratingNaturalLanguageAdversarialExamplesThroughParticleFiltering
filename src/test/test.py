@@ -276,7 +276,7 @@ def most_similar(word):
 #print([str(w.lower_) + " " + str(wnlp.vocab[u'dog'].similarity) for w in most_similar(])
 print(most_similar(nlp.vocab[u'dog']))
 """
-
+"""
 class A:
     def __hash__(self):
         return 1
@@ -291,6 +291,41 @@ print(hash(v))
 A.__hash__ = __hash__
 
 print(hash(v))
+
+
+"""
+
+"""
+from random import seed, random, sample
+seed(1)
+
+words = ["aaa", "bbb", "ccc", "ddd", "eee", "fff", "ggg"]
+percentage_changes = 0.2
+
+
+
+samples = sample(range(len(words)), int(len(words) * percentage_changes))
+
+for i, word in enumerate(words):
+    if percentage_changes >= 1 or i in samples:
+        print(word)
+"""
+
+import numpy
+
+
+
+def softmax_bounded(x, bound):
+    result = []
+    denominator = sum(numpy.exp(x))
+    for value in x:
+        proportionated_value = (numpy.exp(value)/denominator) * bound
+        result.append(proportionated_value)
+
+    return result
+
+print(softmax_bounded([1, 2, 4], 0.5))
+
 
 
 
