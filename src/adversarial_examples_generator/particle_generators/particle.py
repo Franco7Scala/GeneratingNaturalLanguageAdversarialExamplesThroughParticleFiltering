@@ -4,7 +4,7 @@ from random import sample
 
 class Particle:
 
-    def __init__(self, phrase, nlp, similarities, percentage_changes, p_self):
+    def __init__(self, phrase, nlp, similarities, percentage_changes, p_self, p_original):
         self.nlp = nlp
         self.words = nlp(phrase)
         self.phrase = phrase
@@ -15,6 +15,7 @@ class Particle:
         self.percentage_changes = percentage_changes
         self.substitutions = []
         self.p_self = p_self
+        self.p_original = p_original
 
     def __eq__(self, other):
         return self.distance == other.distance
@@ -65,7 +66,7 @@ class Particle:
         return substitution_count/len(permutated_words), 0, changed_words
 
     def copy(self):
-        copy = type(self)(self.phrase, self.nlp, self.similarities, self.percentage_changes, self.p_self)
+        copy = type(self)(self.phrase, self.nlp, self.similarities, self.percentage_changes, self.p_self, self.p_original)
         copy.original_words = self.nlp(self.original_phrase)
         copy.original_phrase = self.original_phrase
         return copy

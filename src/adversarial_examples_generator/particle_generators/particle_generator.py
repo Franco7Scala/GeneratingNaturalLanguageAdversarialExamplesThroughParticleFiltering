@@ -32,7 +32,7 @@ class ParticleGenerator(AdversarialExampleGenerator):
         self.classification_index = 0
         self.classification_value = 0
         self.p_self = self.configuration[P_SELF]
-      #  self.p_original = self.configuration[P_ORIGINAL]
+        self.p_original = self.configuration[P_ORIGINAL]
         self.percentage_changes = self.configuration[PERCENTAGE_CHANGES]
         self.k = self.configuration[QUANTITY_NEAREST_WORDS]
         self.lmbda = self.configuration[LAMBDA]
@@ -47,7 +47,7 @@ class ParticleGenerator(AdversarialExampleGenerator):
         support.colored_print("Generating particles...", "light_magenta", self.verbose, False)
         self.particles = []
         for i in range(0, self.configuration[QUANTITY_PARTICLES]):
-            self.particles.append(self.class_particle(text, self.nlp, similarities, self.percentage_changes, self.p_self))
+            self.particles.append(self.class_particle(text, self.nlp, similarities, self.percentage_changes, self.p_self, self.p_original))
 
         support.colored_print("Performing preliminary calculations...", "light_magenta", self.verbose, False)
         classification = self.model.predict_in_vector(text, self.level)
@@ -70,7 +70,7 @@ class ParticleGenerator(AdversarialExampleGenerator):
         new_particles = []
         max_distance = max(self.particles, key=operator.attrgetter("distance")).distance
         if max_distance > 0:
-            for particle in self.particles:
+            for particle in self.particles: #TODO dare prelazione a quelle che fanno cambiare classe
                 classification_distance = abs(self.model.predict_in_vector(particle.phrase, self.level)[0][self.classification_index] - self.classification_value)
                 word_distance = particle.distance / max_distance
                 particle.distance = self.lmbda * word_distance + (1 - self.lmbda) * classification_distance
