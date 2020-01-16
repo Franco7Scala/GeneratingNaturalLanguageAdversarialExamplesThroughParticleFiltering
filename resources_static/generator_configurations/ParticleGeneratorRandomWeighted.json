@@ -3,7 +3,6 @@
   "p_original": 0.60,
   "quantity_nearest_words": 5,
   "quantity_particles": 50,
-  "percentage_changes": 1,
   "steps": 1000,
   "lambda": 0.8
 }

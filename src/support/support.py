@@ -4,6 +4,7 @@ import requests
 import os
 import time
 import numpy
+import re
 
 from os import path
 
@@ -30,6 +31,9 @@ QUANTITY_WORDS = "quantity_words"
 
 WORD_LEVEL = "word"
 CHAR_LEVEL = "char"
+
+REGEX_SELECTOR = "(\d*[a-zA-Z]+\d*)+"
+REGEX_TOKENIZER = "(\d*[a-zA-Z]+\d*)+"
 
 _time = 0
 
@@ -104,6 +108,10 @@ def softmax_bounded(x, bound):
         result.append(proportionated_value)
 
     return result
+
+
+def tokenize_phrase(phrase):
+    return re.split(REGEX_TOKENIZER, phrase)
 
 
 def install_dependencies():

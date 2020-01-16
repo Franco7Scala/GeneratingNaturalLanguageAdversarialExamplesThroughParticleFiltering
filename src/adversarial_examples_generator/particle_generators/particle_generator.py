@@ -1,5 +1,4 @@
 import numpy
-import spacy
 import sys
 import operator
 
@@ -8,6 +7,7 @@ from random import seed
 from operator import attrgetter
 from src.adversarial_examples_generator.adversarial_examples_generator import AdversarialExampleGenerator
 from src.support import support
+from src.support import resources_preparer
 from src.support.similarities import Similarities
 
 
@@ -15,7 +15,6 @@ P_SELF = "p_self"
 P_ORIGINAL = "p_original"
 QUANTITY_NEAREST_WORDS = "quantity_nearest_words"
 QUANTITY_PARTICLES = "quantity_particles"
-PERCENTAGE_CHANGES = "percentage_changes"
 STEPS = "steps"
 LAMBDA = "lambda"
 
@@ -25,7 +24,7 @@ class ParticleGenerator(AdversarialExampleGenerator):
     def __init__(self, model, level, verbose):
         super().__init__(model, level, verbose)
         support.colored_print("Loading SpaCy...", "green", self.verbose, False)
-        self.nlp = spacy.load("en_vectors_web_lg")
+        self.word_vector = resources_preparer.get_word_vector()
         seed(1)
         self.class_particle = None  # must be defined in subclasses
         self.particles = []
@@ -33,7 +32,6 @@ class ParticleGenerator(AdversarialExampleGenerator):
         self.classification_value = 0
         self.p_self = self.configuration[P_SELF]
         self.p_original = self.configuration[P_ORIGINAL]
-        self.percentage_changes = self.configuration[PERCENTAGE_CHANGES]
         self.k = self.configuration[QUANTITY_NEAREST_WORDS]
         self.lmbda = self.configuration[LAMBDA]
         self.best_particle_phrase = self.best_particle_sub_rate = self.best_particle_NE_rate = self.best_particle_changed_words = self.best_particle_classification_value = None
@@ -43,18 +41,18 @@ class ParticleGenerator(AdversarialExampleGenerator):
         support.colored_print("From: {}".format(text), "light_magenta", self.verbose, False)
         # loading k nearest words inside the phrase
         support.colored_print("Loading distances...", "light_magenta", self.verbose, False)
-        similarities = Similarities(text, self.nlp, self.k)
+        similarities = Similarities(text, self.word_vector, self.k)
         support.colored_print("Generating particles...", "light_magenta", self.verbose, False)
         self.particles = []
         for i in range(0, self.configuration[QUANTITY_PARTICLES]):
-            self.particles.append(self.class_particle(text, self.nlp, similarities, self.percentage_changes, self.p_self, self.p_original))
+            self.particles.append(self.class_particle(text, similarities, self.p_self, self.p_original))
 
         support.colored_print("Performing preliminary calculations...", "light_magenta", self.verbose, False)
         classification = self.model.predict_in_vector(text, self.level)
         self.classification_index = numpy.argmax(classification)
         self.classification_value = classification[0][self.classification_index]
         support.colored_print("Elaborating...", "light_magenta", self.verbose, False)
-        for step in range(0, self.configuration[STEPS]):
+        for _ in range(0, self.configuration[STEPS]):
             self._move_particles()
             self._select_and_respawn_particles()
 

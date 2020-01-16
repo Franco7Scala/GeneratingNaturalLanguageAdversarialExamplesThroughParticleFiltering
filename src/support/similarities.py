@@ -1,21 +1,22 @@
-from spacy.tokens.doc import Doc
+import re
+
+from src.support import support
 
 
 class Similarities:
 
-    def __init__(self, phrase, nlp, k):
-        self.phrase = phrase
-        self.nlp = nlp
+    def __init__(self, phrase, word_vector, k):
+        self.tokenized_phrase = support.tokenize_phrase(phrase)
+        self.word_vector = word_vector
         self.k = k
         self.similarities = {}
         self._find_nearest_k_similarities()
 
     def _find_nearest_k_similarities(self):
-        for word in self.nlp(self.phrase):
-            current_word = TokenContainer(word)
-            if self._is_admissible_word(current_word) and not self._is_added_similarity(current_word):
-                similar_words = self._find_similarities(current_word)
-                self._add_similarity(current_word, similar_words)
+        for word in self.tokenized_phrase:
+            if self._is_admissible_word(word) and not self._is_added_similarity(word):
+                similar_words = self._find_similarities(word)
+                self._add_similarity(word, similar_words)
                 for similar_word in similar_words:
                     if self._is_admissible_word(similar_word) and not self._is_added_similarity(similar_word):
                         similar_to_similar_words = self._find_similarities(similar_word)
@@ -30,11 +31,12 @@ class Similarities:
 
         return None
 
+    def calcualte_similarity(self, word_1, word_2):
+        return self.word_vector.similarity(word_1, word_2)
+
     def _find_similarities(self, word):
-        word = word.token
-        weighted_similar_words = [(TokenContainer(Doc(w.vocab, words=[w.orth_])[0]), word.similarity(w)) for w in word.vocab if w.is_lower == word.is_lower and w.prob >= -15]
-        similarities = {w: s for w, s in sorted(weighted_similar_words, key=lambda w: w[1], reverse=True)[:self.k]}
-        return similarities
+        most_similar = self.word_vector.most_similar(word, topn=self.k)
+        return {w: s for w, s in most_similar}
 
     def _is_added_similarity(self, word):
         return word in self.similarities
@@ -42,33 +44,8 @@ class Similarities:
     def _add_similarity(self, word, similar_words):
         self.similarities[word] = similar_words
 
-    def _is_admissible_word(self, current_word):
-        return not current_word.token.is_digit and \
-               not current_word.token.is_punct and \
-               not current_word.token.is_left_punct and \
-               not current_word.token.is_right_punct and \
-               not current_word.token.is_space and \
-               not current_word.token.is_space and \
-               not current_word.token.is_bracket and \
-               not current_word.token.is_quote and \
-               not current_word.token.is_currency and \
-               not current_word.token.is_stop and \
-               "'" not in current_word.token.text
+    def _is_admissible_word(self, word):
+        if len(word) <= 1:
+            return False
 
-
-class TokenContainer:
-
-    def __init__(self, token):
-        self.token = token
-
-    def __hash__(self):
-        return hash(self.token.lower_)
-
-    def __eq__(self, other):
-        return self.token.lower_ == other.token.lower_
-
-    def __repr__(self):
-        return self.token.lower_
-
-    def __repr__(self):
-        return self.token.lower_
+        return re.match(support.REGEX_SELECTOR, word)
