@@ -23,7 +23,7 @@ class ParticleGenerator(AdversarialExampleGenerator):
 
     def __init__(self, model, level, verbose):
         super().__init__(model, level, verbose)
-        support.colored_print("Loading SpaCy...", "green", self.verbose, False)
+        support.colored_print("Loading Word Vector...", "green", self.verbose, False)
         self.word_vector = resources_preparer.get_word_vector()
         seed(1)
         self.class_particle = None  # must be defined in subclasses
