@@ -65,15 +65,20 @@ class ParticleGenerator(AdversarialExampleGenerator):
             particle.permutate_phrase()
 
     def _select_and_respawn_particles(self):
-        new_particles = []
+        changing_class_particles = []
         max_distance = max(self.particles, key=operator.attrgetter("distance")).distance
         if max_distance > 0:
-            for particle in self.particles: #TODO dare prelazione a quelle che fanno cambiare classe
-                classification_distance = abs(self.model.predict_in_vector(particle.phrase, self.level)[0][self.classification_index] - self.classification_value)
+            # selecting best particle
+            for particle in self.particles:
+                current_classification = self.model.predict_in_vector(particle.phrase, self.level)
+                current_classification_index = numpy.argmax(current_classification)
+                classification_distance = abs(current_classification[0][self.classification_index] - self.classification_value)
                 word_distance = particle.distance / max_distance
                 particle.distance = self.lmbda * word_distance + (1 - self.lmbda) * classification_distance
+                if current_classification_index != self.classification_index:
+                    changing_class_particles.append(particle)
 
-            selected = min(self.particles, key=attrgetter("distance"))
+            selected = min(self.particles, key=attrgetter("distance")) #TODO vedere se è la politica migliore di scelta!
             sub_rate, NE_rate, changed_words = selected.get_statistics()
             if self.best_particle_distance > selected.distance:
                 self.best_particle_phrase = selected.phrase
@@ -83,8 +88,16 @@ class ParticleGenerator(AdversarialExampleGenerator):
                 self.best_particle_distance = selected.distance
                 self.best_particle_classification_value = self.model.predict_in_vector(particle.phrase, self.level)[0][self.classification_index]
 
-        self.particles.sort()
-        vector_ranges = [e.distance for e in self.particles]
+        if len(changing_class_particles) > 0:
+            self.particles = self._extract_new_particles(changing_class_particles)
+
+        else:
+            self.particles = self._extract_new_particles(self.particles)
+
+    def _extract_new_particles(self, particles_to_select):
+        new_particles = []
+        particles_to_select.sort()
+        vector_ranges = [e.distance for e in particles_to_select]
         for i in range(0, self.configuration[QUANTITY_PARTICLES]):
             random_value = random()
             summed_value = 0
@@ -97,6 +110,6 @@ class ParticleGenerator(AdversarialExampleGenerator):
                 else:
                     summed_value += current_value
 
-            new_particles.append(self.particles[index - 1].copy())
+            new_particles.append(particles_to_select[index - 1].copy())
 
-        self.particles = new_particles
+        return new_particles
