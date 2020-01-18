@@ -78,7 +78,12 @@ class ParticleGenerator(AdversarialExampleGenerator):
                 if current_classification_index != self.classification_index:
                     changing_class_particles.append(particle)
 
-            selected = min(self.particles, key=attrgetter("distance")) #TODO vedere se è la politica migliore di scelta!
+            if len(changing_class_particles) > 0:
+                selected = min(changing_class_particles, key=attrgetter("distance"))
+
+            else:
+                selected = min(self.particles, key=attrgetter("distance"))
+
             sub_rate, NE_rate, changed_words = selected.get_statistics()
             if self.best_particle_distance > selected.distance:
                 self.best_particle_phrase = selected.phrase

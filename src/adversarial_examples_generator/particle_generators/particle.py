@@ -20,6 +20,12 @@ class Particle:
     def __gt__(self, other):
         return not self.__lt__(other)
 
+    def __repr__(self):
+        return "".join(self.tokenized_phrase)
+
+    def __str__(self):
+        return self.__repr__()
+
     def permutate_phrase(self):
         changed = False
         distance = 0
