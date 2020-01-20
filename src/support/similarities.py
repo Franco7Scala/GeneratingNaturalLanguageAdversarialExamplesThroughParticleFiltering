@@ -1,4 +1,5 @@
 import re
+import sys
 
 from src.support import support
 
@@ -32,11 +33,19 @@ class Similarities:
         return None
 
     def calcualte_similarity(self, word_1, word_2):
-        return self.word_vector.similarity(word_1, word_2)
+        try:
+            return self.word_vector.similarity(word_1, word_2)
+
+        except:
+            return sys.float_info.max
 
     def _find_similarities(self, word):
-        most_similar = self.word_vector.most_similar(word, topn=self.k)
-        return {w: s for w, s in most_similar}
+        try:
+            most_similar = self.word_vector.most_similar(word, topn=self.k)
+            return {w: s for w, s in most_similar}
+
+        except:
+            return {word: 1.0}
 
     def _is_added_similarity(self, word):
         return word in self.similarities

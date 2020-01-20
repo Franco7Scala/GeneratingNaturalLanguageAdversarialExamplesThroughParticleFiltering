@@ -3,9 +3,9 @@ from src.support import support
 
 class Particle:
 
-    def __init__(self, phrase, similarities, p_self, p_original):
-        self.tokenized_phrase = support.tokenize_phrase(phrase)
-        self.tokenized_original_phrase = support.tokenize_phrase(phrase)
+    def __init__(self, tokenized_phrase, similarities, p_self, p_original):
+        self.tokenized_phrase = tokenized_phrase
+        self.tokenized_original_phrase = tokenized_phrase.copy()
         self.similarities = similarities
         self.distance = 0
         self.p_self = p_self
@@ -51,8 +51,11 @@ class Particle:
 
         return substitution_count/len(self.tokenized_phrase), 0, changed_words
 
+    def get_phrase(self):
+        return "".join(self.tokenized_phrase)
+
     def copy(self):
-        copy = type(self)(self.phrase, self.similarities, self.p_self, self.p_original)
+        copy = type(self)(self.tokenized_phrase, self.similarities, self.p_self, self.p_original)
         copy.tokenized_original_phrase = self.tokenized_original_phrase
         return copy
 

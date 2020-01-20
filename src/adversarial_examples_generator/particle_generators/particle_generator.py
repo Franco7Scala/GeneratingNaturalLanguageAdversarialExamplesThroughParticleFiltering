@@ -45,7 +45,7 @@ class ParticleGenerator(AdversarialExampleGenerator):
         support.colored_print("Generating particles...", "light_magenta", self.verbose, False)
         self.particles = []
         for i in range(0, self.configuration[QUANTITY_PARTICLES]):
-            self.particles.append(self.class_particle(text, similarities, self.p_self, self.p_original))
+            self.particles.append(self.class_particle(support.tokenize_phrase(text), similarities, self.p_self, self.p_original))
 
         support.colored_print("Performing preliminary calculations...", "light_magenta", self.verbose, False)
         classification = self.model.predict_in_vector(text, self.level)
@@ -57,7 +57,7 @@ class ParticleGenerator(AdversarialExampleGenerator):
             self._select_and_respawn_particles()
 
         support.colored_print("To: {}".format(self.best_particle_phrase), "light_magenta", self.verbose, False)
-        support.colored_print("Sub rate: {}, NE rate: {}, Distance: {}, Classification value: {}".format(self.best_particle_sub_rate, self.best_particle_NE_rate, self.best_particle_distance, self.best_particle_classification_value), "light_magenta", self.verbose, False)
+        support.colored_print("Sub rate: {}, NE rate: {}, Distance: {}, Classification value: {}, Original classification value: {}".format(self.best_particle_sub_rate, self.best_particle_NE_rate, self.best_particle_distance, self.best_particle_classification_value, self.classification_value), "light_magenta", self.verbose, False)
         return self.best_particle_phrase, self.best_particle_sub_rate, self.best_particle_NE_rate, self.best_particle_distance, self.best_particle_changed_words
 
     def _move_particles(self):
@@ -70,7 +70,7 @@ class ParticleGenerator(AdversarialExampleGenerator):
         if max_distance > 0:
             # selecting best particle
             for particle in self.particles:
-                current_classification = self.model.predict_in_vector(particle.phrase, self.level)
+                current_classification = self.model.predict_in_vector(particle.get_phrase(), self.level)
                 current_classification_index = numpy.argmax(current_classification)
                 classification_distance = abs(current_classification[0][self.classification_index] - self.classification_value)
                 word_distance = particle.distance / max_distance
@@ -86,12 +86,12 @@ class ParticleGenerator(AdversarialExampleGenerator):
 
             sub_rate, NE_rate, changed_words = selected.get_statistics()
             if self.best_particle_distance > selected.distance:
-                self.best_particle_phrase = selected.phrase
+                self.best_particle_phrase = selected.get_phrase()
                 self.best_particle_sub_rate = sub_rate
                 self.best_particle_NE_rate = NE_rate
                 self.best_particle_changed_words = changed_words
                 self.best_particle_distance = selected.distance
-                self.best_particle_classification_value = self.model.predict_in_vector(particle.phrase, self.level)[0][self.classification_index]
+                self.best_particle_classification_value = self.model.predict_in_vector(particle.get_phrase(), self.level)[0][self.classification_index]
 
         if len(changing_class_particles) > 0:
             self.particles = self._extract_new_particles(changing_class_particles)
