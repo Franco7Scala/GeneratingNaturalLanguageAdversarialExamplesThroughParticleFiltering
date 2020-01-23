@@ -115,7 +115,7 @@ def tokenize_phrase(phrase):
 
 
 def install_dependencies():
-    os.system("python -m spacy download en_vectors_web_lg")
+    pass
 
 
 def get_writable_path():

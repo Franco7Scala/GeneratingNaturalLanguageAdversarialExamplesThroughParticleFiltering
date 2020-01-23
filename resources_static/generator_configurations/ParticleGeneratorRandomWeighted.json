@@ -2,7 +2,7 @@
   "p_self": 0.20,
   "p_original": 0.60,
   "quantity_nearest_words": 5,
-  "quantity_particles": 50,
-  "steps": 1000,
-  "lambda": 0.8
+  "quantity_particles": 100,
+  "steps": 200,
+  "lambda": 0.4
 }

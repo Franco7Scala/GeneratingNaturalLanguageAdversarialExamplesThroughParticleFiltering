@@ -17,9 +17,9 @@ class ParticleRandomWeighted(Particle):
     def _get_word_to_change(self, current_word, original_word):
         similar_words = [(key, value) for key, value in self.similarities.get_similarities(current_word).items()]
         sorted(similar_words, key=itemgetter(1), reverse=True)
-        similar_words.insert(0, (original_word, 1))
+        similar_words.insert(0, (original_word, 0.0))
         vector_ranges = [self.p_original, self.p_self]
-        vector_ranges.extend(support.softmax_bounded([e[1] for e in similar_words][2:], (1 - (self.p_original + self.p_self))))
+        vector_ranges.extend(support.softmax_bounded([(1 - e[1]) for e in similar_words][2:], (1 - (self.p_original + self.p_self))))
         random_value = random()
         summed_value = 0
         index = len(vector_ranges) - 1
@@ -31,4 +31,4 @@ class ParticleRandomWeighted(Particle):
             else:
                 summed_value += current_value
 
-        return similar_words[index - 1][0]
+        return similar_words[index][0]

@@ -10,6 +10,7 @@ class Similarities:
         self.tokenized_phrase = support.tokenize_phrase(phrase)
         self.word_vector = word_vector
         self.k = k
+        self.max_distance = 0
         self.similarities = {}
         self._find_nearest_k_similarities()
 
@@ -23,6 +24,11 @@ class Similarities:
                         similar_to_similar_words = self._find_similarities(similar_word)
                         self._add_similarity(similar_word, similar_to_similar_words)
 
+        # normalizing distances
+        for outer_key in self.similarities:
+            for inner_key in self.similarities[outer_key]:
+                self.similarities[outer_key][inner_key] = self.similarities[outer_key][inner_key] / self.max_distance
+
     def is_permutable_word(self, word):
         return self._is_admissible_word(word) and self._is_added_similarity(word)
 
@@ -34,18 +40,26 @@ class Similarities:
 
     def calcualte_similarity(self, word_1, word_2):
         try:
-            return self.word_vector.similarity(word_1, word_2)
+            # return self.word_vector.similarity(word_1, word_2)
+            return self.similarities[word_1][word_2]
 
         except:
-            return sys.float_info.max
+            return 1
 
     def _find_similarities(self, word):
+        result = {word: 0.0}
         try:
             most_similar = self.word_vector.most_similar(word, topn=self.k)
-            return {w: s for w, s in most_similar}
+            for current_word, raw_score in most_similar:
+                score = 1 - raw_score
+                result[current_word] = score
+                if score > self.max_distance:
+                    self.max_distance = score
 
         except:
-            return {word: 1.0}
+            pass
+
+        return result
 
     def _is_added_similarity(self, word):
         return word in self.similarities

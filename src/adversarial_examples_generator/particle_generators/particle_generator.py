@@ -48,6 +48,8 @@ class ParticleGenerator(AdversarialExampleGenerator):
             self.particles.append(self.class_particle(support.tokenize_phrase(text), similarities, self.p_self, self.p_original))
 
         support.colored_print("Performing preliminary calculations...", "light_magenta", self.verbose, False)
+        self.best_particle_phrase = self.best_particle_sub_rate = self.best_particle_NE_rate = self.best_particle_changed_words = self.best_particle_classification_value = None
+        self.best_particle_distance = sys.float_info.max
         classification = self.model.predict_in_vector(text, self.level)
         self.classification_index = numpy.argmax(classification)
         self.classification_value = classification[0][self.classification_index]
@@ -72,7 +74,7 @@ class ParticleGenerator(AdversarialExampleGenerator):
             for particle in self.particles:
                 current_classification = self.model.predict_in_vector(particle.get_phrase(), self.level)
                 current_classification_index = numpy.argmax(current_classification)
-                classification_distance = abs(current_classification[0][self.classification_index] - self.classification_value)
+                classification_distance = current_classification[0][self.classification_index] - self.classification_value
                 word_distance = particle.distance / max_distance
                 particle.distance = self.lmbda * word_distance + (1 - self.lmbda) * classification_distance
                 if current_classification_index != self.classification_index:
@@ -115,6 +117,6 @@ class ParticleGenerator(AdversarialExampleGenerator):
                 else:
                     summed_value += current_value
 
-            new_particles.append(particles_to_select[index - 1].copy())
+            new_particles.append(particles_to_select[index].copy())
 
         return new_particles
