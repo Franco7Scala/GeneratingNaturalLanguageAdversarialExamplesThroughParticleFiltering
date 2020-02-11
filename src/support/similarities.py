@@ -1,7 +1,8 @@
 import re
-import sys
 
+from nltk.corpus import wordnet
 from src.support import support
+from operator import itemgetter
 
 
 class Similarities:
@@ -47,19 +48,21 @@ class Similarities:
             return 1
 
     def _find_similarities(self, word):
-        result = {word: 0.0}
-        try:
-            most_similar = self.word_vector.most_similar(word, topn=self.k)
-            for current_word, raw_score in most_similar:
-                score = 1 - raw_score
-                result[current_word] = score
-                if score > self.max_distance:
-                    self.max_distance = score
+        raw_result = [(word, 0.0)]
+        synonyms = wordnet.synsets(word)
+        for synonymous in synonyms: #TODO su piu cores
+            for value in synonymous.lemmas():
+                try:
+                    score = 1 - self.word_vector.similarity(word, value.name())
+                    raw_result.append((value.name(), score))
+                    if score > self.max_distance:
+                        self.max_distance = score
 
-        except:
-            pass
+                except KeyError:
+                    pass
 
-        return result
+        raw_result.sort(key=itemgetter(1))
+        return { w : s for w, s in raw_result[:self.k] }
 
     def _is_added_similarity(self, word):
         return word in self.similarities

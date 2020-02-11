@@ -59,11 +59,12 @@ class ParticleGenerator(AdversarialExampleGenerator):
             self._select_and_respawn_particles()
 
         support.colored_print("To: {}".format(self.best_particle_phrase), "light_magenta", self.verbose, False)
+        # TODO salvare dati frase come: lunghezza, classificazione originale e dopo, percentuale sostituzioni, distanza, dataset, time elapsed, model, NE rate
         support.colored_print("Sub rate: {}, NE rate: {}, Distance: {}, Classification value: {}, Original classification value: {}".format(self.best_particle_sub_rate, self.best_particle_NE_rate, self.best_particle_distance, self.best_particle_classification_value, self.classification_value), "light_magenta", self.verbose, False)
         return self.best_particle_phrase, self.best_particle_sub_rate, self.best_particle_NE_rate, self.best_particle_distance, self.best_particle_changed_words
 
     def _move_particles(self):
-        for particle in self.particles:
+        for particle in self.particles: #TODO su piu core
             particle.permutate_phrase()
 
     def _select_and_respawn_particles(self):

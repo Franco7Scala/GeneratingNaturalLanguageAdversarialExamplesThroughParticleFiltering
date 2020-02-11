@@ -30,7 +30,7 @@ class Particle:
         changed = False
         distance = 0
         counter = 0
-        for i, word in enumerate(self.tokenized_phrase):
+        for i, word in enumerate(self.tokenized_phrase): #TODO su piu core
             if self.similarities.is_permutable_word(word):
                 counter += 1
                 # changing word in the phrase
