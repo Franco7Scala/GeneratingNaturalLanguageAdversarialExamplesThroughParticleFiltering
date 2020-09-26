@@ -1,5 +1,5 @@
 gensim==3.8.1
-tensorflow==1.13.1
+tensorflow==1.15.4
 Keras==2.2.4
 numpy==1.15.4
 scikit_learn==0.21.2
